@@ -26,7 +26,7 @@ public class RunToIdleState : State
     {
         if (IsArrivedIdlePosition)
         {
-            IdlePositionManager.RemoveWaiterFromIdlePosition(transform);
+            IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(GetComponent<Waiter>());
             _isRunning = false;
 
             return IdleState;
@@ -35,7 +35,7 @@ public class RunToIdleState : State
         {
             if (!_isRunning)
             {
-                Transform avaibleTransform = IdlePositionManager.GetAvaibleIdlePosition(transform);
+                Transform avaibleTransform = IdlePositionManager.Instance.GetAvaibleIdlePosition(GetComponent<Waiter>());
                 RunWaiterCommand(avaibleTransform.position);
                 _isRunning = true;
             }

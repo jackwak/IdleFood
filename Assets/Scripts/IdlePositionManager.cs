@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,26 +6,45 @@ using UnityEngine;
 
 public class IdlePositionManager : MonoBehaviour
 {
-    public static List<Transform> IdlePositions;
+    public static IdlePositionManager Instance;
 
-    public static Transform GetAvaibleIdlePosition(Transform waiterTransform)
+    [Header("References")]
+    public List<Transform> IdlePositions = new List<Transform>();
+
+    public Waiter[] Waiters;
+
+    private void Awake()
     {
-        for (int i = 0; i < IdlePositions.Count; i++)
+        if (Instance == null)
         {
-            Transform idlePosition = IdlePositions[i];
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-            if (IdlePositions == null)
+    public Transform GetAvaibleIdlePosition(Waiter waiter)
+    {
+        int idlePositionCount = IdlePositions.Count;
+
+        for (int i = 0; i < idlePositionCount; i++)
+        {
+            if (Waiters[i] == null)
             {
-                IdlePositions[i] = waiterTransform;
-                return idlePosition;
-            } 
+                Waiters[i] = waiter;
+                return IdlePositions[i];
+            }
         }
 
         return null;
     }
 
-    public static void RemoveWaiterFromIdlePosition(Transform waiterTransfom)
+    public void RemoveWaiterFromIdlePosition(Waiter waiter)
     {
-        IdlePositions.Remove(waiterTransfom);
+        int indexOfWaiter = Array.IndexOf(Waiters, waiter);
+
+        Waiters[indexOfWaiter] = null;
     }
 }
