@@ -11,7 +11,8 @@ public class IdlePositionManager : MonoBehaviour
     [Header("References")]
     public List<Transform> IdlePositions = new List<Transform>();
 
-    public Waiter[] Waiters;
+    [Header("Variables")]
+    private Waiter[] _waiters;
 
     private void Awake()
     {
@@ -31,9 +32,9 @@ public class IdlePositionManager : MonoBehaviour
 
         for (int i = 0; i < idlePositionCount; i++)
         {
-            if (Waiters[i] == null)
+            if (_waiters[i] == null)
             {
-                Waiters[i] = waiter;
+                _waiters[i] = waiter;
                 return IdlePositions[i];
             }
         }
@@ -43,8 +44,8 @@ public class IdlePositionManager : MonoBehaviour
 
     public void RemoveWaiterFromIdlePosition(Waiter waiter)
     {
-        int indexOfWaiter = Array.IndexOf(Waiters, waiter);
+        int indexOfWaiter = Array.IndexOf(_waiters, waiter);
 
-        Waiters[indexOfWaiter] = null;
+        _waiters[indexOfWaiter] = null;
     }
 }
