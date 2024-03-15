@@ -7,9 +7,12 @@ public class Waiter : MonoBehaviour
 {
     [HideInInspector]
     public NavMeshAgent Agent;
+    [HideInInspector]
+    public Animator Animator;
 
     private void Awake()
     {
+        Animator = GetComponent<Animator>();
         Agent = GetComponent<NavMeshAgent>();
     }
 }

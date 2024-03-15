@@ -26,7 +26,6 @@ public class RunToIdleState : State
     {
         if (IsArrivedIdlePosition)
         {
-            IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(GetComponent<Waiter>());
             _isRunning = false;
 
             return IdleState;
