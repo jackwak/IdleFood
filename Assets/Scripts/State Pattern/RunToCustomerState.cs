@@ -28,10 +28,14 @@ public class RunToCustomerState : State
     {
         if (IsArrivedToCustomer && HasFoodOnHand)
         {
+            _isRunning = false;
+
             return GivingFoodState;
         }
         else if (IsArrivedToCustomer && !HasFoodOnHand)
         {
+            _isRunning = false;
+
             return TakingOrderState;
         }
         else
@@ -52,4 +56,6 @@ public class RunToCustomerState : State
         ICommand command = new MoveCommand(_waiter, position);
         _commandInvoker.ExecuteCommand(command);
     }
+
+    
 }

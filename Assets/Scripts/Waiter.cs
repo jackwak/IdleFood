@@ -9,10 +9,15 @@ public class Waiter : MonoBehaviour
     public NavMeshAgent Agent;
     [HideInInspector]
     public Animator Animator;
+    public GameObject SleepingGO;
 
     private void Awake()
     {
         Animator = GetComponent<Animator>();
         Agent = GetComponent<NavMeshAgent>();
     }
+
+
+
+
 }

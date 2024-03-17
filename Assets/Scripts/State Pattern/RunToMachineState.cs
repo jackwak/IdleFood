@@ -25,6 +25,8 @@ public class RunToMachineState : State
     {
         if (IsArrivedToMachine)
         {
+            _isRunning = false;
+
             return PrepareState;
         }
         else

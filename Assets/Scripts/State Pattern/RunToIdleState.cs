@@ -7,7 +7,9 @@ public class RunToIdleState : State
 {
     [Header("State Variables")]
     public State IdleState;
+    public State RunToCustomerState;
     public bool IsArrivedIdlePosition;
+    public bool HasAnyCustomer;
 
     [Header("References")]
     private CommandInvoker _commandInvoker;
@@ -26,9 +28,16 @@ public class RunToIdleState : State
     {
         if (IsArrivedIdlePosition)
         {
-            _isRunning = false;
+            ResetVariables();
 
             return IdleState;
+        }
+        else if (HasAnyCustomer)
+        {
+            ResetVariables();
+            IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
+
+            return RunToCustomerState;
         }
         else
         {
@@ -47,5 +56,11 @@ public class RunToIdleState : State
     {
         ICommand command = new MoveCommand(_waiter, position);
         _commandInvoker.ExecuteCommand(command);
+    }
+
+    private void ResetVariables()
+    {
+        _isRunning = false;
+        _waiter.Agent.ResetPath();
     }
 }
