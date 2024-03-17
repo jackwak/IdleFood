@@ -8,8 +8,10 @@ public class RunToIdleState : State
     [Header("State Variables")]
     public State IdleState;
     public State RunToCustomerState;
+    public State RunToMachineState;
     public bool IsArrivedIdlePosition;
     public bool HasAnyCustomer;
+    public bool HasAnyOrder;
 
     [Header("References")]
     private CommandInvoker _commandInvoker;
@@ -26,18 +28,26 @@ public class RunToIdleState : State
 
     public override State RunCurrentState()
     {
-        if (IsArrivedIdlePosition)
-        {
-            ResetVariables();
-
-            return IdleState;
-        }
-        else if (HasAnyCustomer)
+        if (HasAnyCustomer)
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
 
             return RunToCustomerState;
+        }
+        else if (HasAnyOrder)
+        {
+            ResetVariables();
+            IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
+            //müsait sipariþi al (makinesi dolu olmayan sipariþi)
+
+            return RunToMachineState;
+        }
+        else if (IsArrivedIdlePosition)
+        {
+            ResetVariables();
+
+            return IdleState;
         }
         else
         {

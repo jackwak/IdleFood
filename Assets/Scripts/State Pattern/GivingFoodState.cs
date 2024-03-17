@@ -6,7 +6,10 @@ public class GivingFoodState : State
 {
     [Header("State Variables")]
     public State RunToIdleState;
+    public State RunToCustomerState;
     public bool HasFoodOnHand;
+    public bool HasAnyCustomer;
+    
 
     [Header("References")]
     private Waiter _waiter;
@@ -23,7 +26,13 @@ public class GivingFoodState : State
 
     public override State RunCurrentState()
     {
-        if (!HasFoodOnHand)
+        if (HasAnyCustomer)
+        {
+            _isFoodGiving = false;
+
+            return RunToCustomerState;
+        }
+        else if (!HasFoodOnHand)
         {
             _isFoodGiving = false;
 
@@ -34,9 +43,7 @@ public class GivingFoodState : State
             if (!_isFoodGiving)
             {
                 // command kullanmadan yapýlabilir.
-
                 GiveFoodCommand();
-
 
                 _isFoodGiving = true;
             }

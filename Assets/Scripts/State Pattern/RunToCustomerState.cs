@@ -46,6 +46,8 @@ public class RunToCustomerState : State
                 // sipariþ vericek olan müþterinin pozisyonunu getir / get the customer position who will order
                 //RunWaiterCommand();
                 _isRunning = true;
+
+                Debug.Log("RunToCustomerState");
             }
             return this;
         }
@@ -56,6 +58,4 @@ public class RunToCustomerState : State
         ICommand command = new MoveCommand(_waiter, position);
         _commandInvoker.ExecuteCommand(command);
     }
-
-    
 }

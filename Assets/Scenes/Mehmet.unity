@@ -744,7 +744,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RunToCustomerState: {fileID: 475957811}
+  RunToMachineState: {fileID: 1226702687}
   HasAnyCustomer: 0
+  HasAnyOrder: 0
 --- !u!4 &660919598
 Transform:
   m_ObjectHideFlags: 0
@@ -806,8 +808,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IdleState: {fileID: 660919597}
   RunToCustomerState: {fileID: 475957811}
+  RunToMachineState: {fileID: 1226702687}
   IsArrivedIdlePosition: 0
   HasAnyCustomer: 0
+  HasAnyOrder: 0
 --- !u!1 &725134910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,7 +1762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RunToIdleState: {fileID: 691462790}
+  RunToCustomerState: {fileID: 475957811}
   HasFoodOnHand: 0
+  HasAnyCustomer: 0
 --- !u!1 &1999262555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,9 +1853,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029759888}
-  m_LocalRotation: {x: 0.35695842, y: -0, z: -0, w: 0.9341203}
-  m_LocalPosition: {x: 0, y: -2.2563043, z: -17.374672}
-  m_LocalScale: {x: 10, y: 1.6673919, z: 1.9989563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 428808507}

@@ -5,7 +5,6 @@ using UnityEngine;
 public class TakingOrderState : State
 {
     public State RunToMachineState;
-
     public bool IsOrderTook;
 
     public override State RunCurrentState()

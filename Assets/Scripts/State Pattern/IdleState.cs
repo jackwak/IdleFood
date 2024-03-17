@@ -6,7 +6,9 @@ public class IdleState : State
 {
     [Header("State Variables")]
     public State RunToCustomerState;
+    public State RunToMachineState;
     public bool HasAnyCustomer;
+    public bool HasAnyOrder;
 
     [Header("References")]
     private Waiter _waiter;
@@ -23,11 +25,18 @@ public class IdleState : State
     {
         if (HasAnyCustomer)
         {
-            //ResetVariables();
+            ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
 
-
             return RunToCustomerState;
+        }
+        else if (HasAnyOrder)
+        {
+            ResetVariables();
+            IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
+            //müsait sipariþi al (makinesi dolu olmayan sipariþi)
+
+            return RunToMachineState;
         }
         else
         {
