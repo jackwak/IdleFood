@@ -630,8 +630,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musteriOlmaSansii: 50
   bakilacakYon: 3
-  sahnedeKacAdetParkPointVar: 7
+  sahnedeKacAdetParkPointVar: 5
   parkPointsBusy: 
+  siradakiSiparisinMusterisi: {fileID: 0}
   musterilerList: []
 --- !u!1 &742592665
 GameObject:

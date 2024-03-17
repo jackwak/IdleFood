@@ -10,9 +10,8 @@ public class CustomerManager : MonoBehaviour
     public int sahnedeKacAdetParkPointVar;
     public bool[] parkPointsBusy;
 
-    public GameObject siradakiSiparisinMusterisi;
     public List<GameObject> musterilerList = new List<GameObject>();
-    public Queue<GameObject> musterilerQueue = new Queue<GameObject>();
+    public List<GameObject> siparisSirasi = new List<GameObject>();
 
     public enum BakilacakYon
     {
@@ -31,8 +30,7 @@ public class CustomerManager : MonoBehaviour
     public void ParkPointResetAndRebuild()
     {
         musterilerList.Clear();
-        musterilerQueue = new Queue<GameObject>();
-        siradakiSiparisinMusterisi = null;
+        siparisSirasi.Clear();
 
         for (int i = 0; i < sahnedeKacAdetParkPointVar; i++)
         {

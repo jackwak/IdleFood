@@ -99,8 +99,9 @@ public class Customer : MonoBehaviour
         customerManager.parkPointsBusy[selectedParkPointIndex] = true;
         selectedParkPoint = customerManager.gameObject.transform.GetChild(selectedParkPointIndex).gameObject;
         customerManager.musterilerList[selectedParkPointIndex] = this.gameObject;               //YENÝ KOD
-        customerManager.musterilerQueue.Enqueue(this.gameObject);                               //YENÝ KOD
-        customerManager.siradakiSiparisinMusterisi = customerManager.musterilerQueue.Peek();    //YENÝ KOD
+        customerManager.siparisSirasi.Add(this.gameObject);
+        //customerManager.musterilerQueue.Enqueue(this.gameObject);                               //YENÝ KOD
+        //customerManager.siradakiSiparisinMusterisi = customerManager.musterilerQueue.Peek();    //YENÝ KOD
 
 
         musteriOlunanKonum = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
@@ -210,8 +211,9 @@ public class Customer : MonoBehaviour
         if (durumAciklamasi == "Sipariþ Verdim" && siparisTamamlandiMi == true)
         {
             customerManager.musterilerList[selectedParkPointIndex] = null;      //YENÝ KOD
-            customerManager.musterilerQueue.Dequeue();  //YENÝ KOD
-            customerManager.siradakiSiparisinMusterisi = customerManager.musterilerQueue.Peek();    //YENÝ KOD
+            customerManager.siparisSirasi.Remove(this.gameObject);
+            //customerManager.musterilerQueue.Dequeue();  //YENÝ KOD
+            //customerManager.siradakiSiparisinMusterisi = customerManager.musterilerQueue.Peek();    //YENÝ KOD
 
 
             durumAciklamasi = "Sipariþimi Aldým, Ayrýlýyorum";
