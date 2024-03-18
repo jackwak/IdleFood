@@ -42,14 +42,21 @@ public class RunToCustomerState : State
         {
             if (!_isRunning)
             {
-                // hepsinden önce bu state e geçmesi için sipariþ bekleyen bir müþteri olmalý
-                // sipariþ vericek olan müþterinin pozisyonunu getir / get the customer position who will order
-                //RunWaiterCommand();
+                if (_waiter.CurrentOrder != null)
+                {
+                    HasFoodOnHand = true;
+
+                    // sipariþ isteyen customera git
+                    // yemeði poola yolla
+                    //müþterinin yeemeeðini ver
+                }
+                else
+                {
+                    //sipariþ vericek olan customera git
+                }
 
                 _isRunning = true;
             }
-
-            //waiterýn agentý yolu bitirince is arrived to customer true yap
 
             return this;
         }

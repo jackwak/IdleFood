@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class IdleState : State
 {
-    [Header("State Variables")]
+    [Header("States")]
     public State RunToCustomerState;
     public State RunToMachineState;
+
+    [Header("Transitions")]
     public bool HasAnyCustomer;
     public bool HasAnyOrder;
 
@@ -31,13 +33,11 @@ public class IdleState : State
 
             return RunToCustomerState;
         }
-        else if (HasAnyOrder)
+        else if (OrderManager.Instance.HasAnyOrder)
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-            //müsait sipariþi al (makinesi dolu olmayan sipariþi)
-            //sipariþi waiterda tut
-            //geneldeki sipariþten çýkart
+            _waiter.CurrentOrder = OrderManager.Instance.GetOrder();
 
             return RunToMachineState;
         }

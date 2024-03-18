@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class TakingOrderState : State
 {
+    [Header("States")]
     public State RunToIdleState;
+
+    [Header("Transitions")]
     public bool IsOrderTook;
     public bool HasAvailableMachine;
 
@@ -15,8 +18,7 @@ public class TakingOrderState : State
     {
         if (IsOrderTook && !HasAvailableMachine)
         {
-            IsOrderTook = false;
-            _passingTime = 0f;
+            
 
             return RunToIdleState;
         }
@@ -26,7 +28,7 @@ public class TakingOrderState : State
             {
                 //sipariþi sipariþ listine ekle
 
-                //sipariþ alma süresi
+                //sipariþ alma süresi ÝENUMERATORLE YAP
                 while (_passingTime < LevelManager.Instance.TakingOrderTime)
                 {
                     _passingTime += Time.deltaTime;
@@ -35,6 +37,7 @@ public class TakingOrderState : State
                 //sipariþ alma sesi
 
                 //sipariþi al
+                //customer managerdan sipariþi al ekle
                 IsOrderTook = true;
             }
             //sipariþ hangi makinenin kontrol eet
@@ -43,5 +46,13 @@ public class TakingOrderState : State
 
             return this;
         }
+    }
+
+    public void ResetVariables()
+    {
+        IsOrderTook = false;
+        HasAvailableMachine = false;
+
+        _passingTime = 0f;
     }
 }

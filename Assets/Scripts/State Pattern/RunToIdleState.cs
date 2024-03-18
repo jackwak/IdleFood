@@ -9,6 +9,8 @@ public class RunToIdleState : State
     public State IdleState;
     public State RunToCustomerState;
     public State RunToMachineState;
+
+    [Header("Transitions")]
     public bool IsArrivedIdlePosition;
     public bool HasAnyCustomer;
     public bool HasAnyOrder;
@@ -36,12 +38,11 @@ public class RunToIdleState : State
 
             return RunToCustomerState;
         }
-        else if (HasAnyOrder)
+        else if (OrderManager.Instance.HasAnyOrder)
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-            //müsait sipariþi al (makinesi dolu olmayan sipariþi)
-            //sipariþi listten sil
+            _waiter.CurrentOrder = OrderManager.Instance.GetOrder();
 
             return RunToMachineState;
         }
@@ -72,6 +73,9 @@ public class RunToIdleState : State
 
     private void ResetVariables()
     {
+        HasAnyCustomer = false;
+        HasAnyOrder = false;
+
         _isRunning = false;
         _waiter.Agent.ResetPath();
     }

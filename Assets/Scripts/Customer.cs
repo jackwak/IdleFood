@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    public bool HasOrder;
+    public string OrderedFood;
+    public int FoodCount;
 }

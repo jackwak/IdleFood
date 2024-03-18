@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class RunToMachineState : State
 {
-    [Header("State Variables")]
+    [Header("States")]
     public State PrepareState;
+
+    [Header("Transitions")]
     public bool IsArrivedToMachine;
 
     [Header("References")]
@@ -26,6 +28,7 @@ public class RunToMachineState : State
         if (IsArrivedToMachine)
         {
             _isRunning = false;
+            IsArrivedToMachine = false;
 
             return PrepareState;
         }
@@ -33,11 +36,17 @@ public class RunToMachineState : State
         {
             if (!_isRunning)
             {
-                // her þeyden önce müsait makine olmasý gerekiyor
-                // müsait makinenin pozisyonunu getir / get the avaible machine position
-                //RunWaiterCommand();
+                Transform machinePosition = _waiter.CurrentOrder.Machine.FoodPrepareTransfrom;
+                RunWaiterCommand(machinePosition.position);
                 _isRunning = true;
             }
+
+            // is arrived to machine?
+            if ((_waiter.transform.position - _waiter.CurrentOrder.Machine.FoodPrepareTransfrom.position).magnitude < 0.1)
+            {
+                IsArrivedToMachine = true;
+            }
+
             return this;
         }
     }

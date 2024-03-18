@@ -8,10 +8,11 @@ public class MachinePositionManager : MonoBehaviour
     public static MachinePositionManager Instance;
 
     [Header("References")]
-    public List<Transform> MachinePosition = new List<Transform>();
+    public List<Machine> Machines = new List<Machine>();
 
     [Header("Variables")]
     private Waiter[] _waiters;
+    private bool[] _isPositionAvailable;
 
     private void Awake()
     {
@@ -23,18 +24,21 @@ public class MachinePositionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _isPositionAvailable = new bool[Machines.Count];
     }
 
-    public Transform GetAvaibleMachinePosition(Waiter waiter)
+    public Machine GetAvaibleMachine()
     {
-        int machinePositionCount = MachinePosition.Count;
+        int machinePositionCount = Machines.Count;
 
         for (int i = 0; i < machinePositionCount; i++)
         {
-            if (_waiters[i] == null)
+            if (_isPositionAvailable[i])
             {
-                _waiters[i] = waiter;
-                return MachinePosition[i];
+                _isPositionAvailable[i] = false;
+
+                return Machines[i];
             }
         }
 

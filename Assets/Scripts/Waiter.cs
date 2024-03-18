@@ -12,6 +12,8 @@ public class Waiter : MonoBehaviour
     public GameObject SleepingGO;
     public bool HasFoodOnHand;
 
+    public Order CurrentOrder;
+
     private void Awake()
     {
         Animator = GetComponent<Animator>();
