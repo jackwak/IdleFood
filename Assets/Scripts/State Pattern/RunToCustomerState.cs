@@ -26,13 +26,13 @@ public class RunToCustomerState : State
 
     public override State RunCurrentState()
     {
-        if (IsArrivedToCustomer && HasFoodOnHand)
+        if (IsArrivedToCustomer && _waiter.HasFoodOnHand)
         {
             _isRunning = false;
 
             return GivingFoodState;
         }
-        else if (IsArrivedToCustomer && !HasFoodOnHand)
+        else if (IsArrivedToCustomer && !_waiter.HasFoodOnHand)
         {
             _isRunning = false;
 
@@ -45,10 +45,12 @@ public class RunToCustomerState : State
                 // hepsinden önce bu state e geçmesi için sipariþ bekleyen bir müþteri olmalý
                 // sipariþ vericek olan müþterinin pozisyonunu getir / get the customer position who will order
                 //RunWaiterCommand();
-                _isRunning = true;
 
-                Debug.Log("RunToCustomerState");
+                _isRunning = true;
             }
+
+            //waiterýn agentý yolu bitirince is arrived to customer true yap
+
             return this;
         }
     }

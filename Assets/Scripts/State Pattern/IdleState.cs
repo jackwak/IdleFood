@@ -27,6 +27,7 @@ public class IdleState : State
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
+            //yeni customerdan çýkart
 
             return RunToCustomerState;
         }
@@ -35,6 +36,8 @@ public class IdleState : State
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
             //müsait sipariþi al (makinesi dolu olmayan sipariþi)
+            //sipariþi waiterda tut
+            //geneldeki sipariþten çýkart
 
             return RunToMachineState;
         }

@@ -7,7 +7,6 @@ public class GivingFoodState : State
     [Header("State Variables")]
     public State RunToIdleState;
     public State RunToCustomerState;
-    public bool HasFoodOnHand;
     public bool HasAnyCustomer;
     
 
@@ -32,7 +31,7 @@ public class GivingFoodState : State
 
             return RunToCustomerState;
         }
-        else if (!HasFoodOnHand)
+        else if (!_waiter.HasFoodOnHand)
         {
             _isFoodGiving = false;
 

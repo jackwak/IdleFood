@@ -10,6 +10,7 @@ public class Waiter : MonoBehaviour
     [HideInInspector]
     public Animator Animator;
     public GameObject SleepingGO;
+    public bool HasFoodOnHand;
 
     private void Awake()
     {

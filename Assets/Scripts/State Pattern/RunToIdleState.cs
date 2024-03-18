@@ -32,6 +32,7 @@ public class RunToIdleState : State
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
+            //yeni müþteriyi listten çýkart
 
             return RunToCustomerState;
         }
@@ -40,6 +41,7 @@ public class RunToIdleState : State
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
             //müsait sipariþi al (makinesi dolu olmayan sipariþi)
+            //sipariþi listten sil
 
             return RunToMachineState;
         }
