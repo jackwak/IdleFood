@@ -16,10 +16,14 @@ public class Customer : MonoBehaviour
     [SerializeField] public int musteriOlmaSansi;
     [SerializeField] bool buNpcMusteriMi;
     [SerializeField] GameObject selectedParkPoint;
+    [SerializeField] GameObject selectedWaiterPoint;
     [SerializeField] int selectedParkPointIndex;
     [SerializeField] int istenenYemekAdedi; //Müþterinin istediði yemek adedi. (1,2,3)
     [SerializeField] int alinanYemekAdedi;  //Sipariþ verdiði yemeklerden kaç tanesini aldý?
     [SerializeField] string istenenYemek;
+
+
+
 
     [SerializeField] bool hedefeVardim;
     [SerializeField] string durumAciklamasi;
@@ -50,7 +54,7 @@ public class Customer : MonoBehaviour
 
         SuEkseneDogruBak(); //stand önüne vardýktan sonra çalýþýr
 
-        if(alinanYemegiBirArttýrSadeceDevMod == true)
+        if (alinanYemegiBirArttýrSadeceDevMod == true)
         {
             alinanYemegiBirArttýrSadeceDevMod = false;
             YemegiAl();
@@ -98,6 +102,7 @@ public class Customer : MonoBehaviour
         this.gameObject.name = "Musteri " + selectedParkPointIndex;                             //YENÝ KOD
         customerManager.parkPointsBusy[selectedParkPointIndex] = true;
         selectedParkPoint = customerManager.gameObject.transform.GetChild(selectedParkPointIndex).gameObject;
+        selectedWaiterPoint = selectedParkPoint.transform.GetChild(0).gameObject;
         customerManager.musterilerList[selectedParkPointIndex] = this.gameObject;               //YENÝ KOD
         customerManager.siparisSirasi.Add(this.gameObject);
         //customerManager.musterilerQueue.Enqueue(this.gameObject);                               //YENÝ KOD
@@ -120,17 +125,27 @@ public class Customer : MonoBehaviour
 
     private int SelectHowManyFoodYouWant()
     {
-        int range = UnityEngine.Random.Range(1, 101);
+        int birYemekSansi = 0;
+        int ikiYemekSansi = 0;
+        int ucYemekSansi = 0;
+        birYemekSansi = customerManager.birYemekSansi;
+        ikiYemekSansi = customerManager.ikiYemekSansi; 
+        ucYemekSansi = customerManager.ucYemekSansi; 
 
-        if (range <= 45)
+        int toplamYemekSansi = birYemekSansi + ikiYemekSansi + ucYemekSansi;
+
+
+        int range = UnityEngine.Random.Range(1, toplamYemekSansi + 1);
+
+        if (range <= birYemekSansi)
         {
             return 1;
         }
-        else if (range <= 80)
+        else if (range <= birYemekSansi + ikiYemekSansi)
         {
             return 2;
         }
-        else if (range <= 100)
+        else if (range <= toplamYemekSansi)
         {
             return 3;
         }
@@ -220,6 +235,7 @@ public class Customer : MonoBehaviour
             hedefeVardim = false;
             customerManager.parkPointsBusy[selectedParkPointIndex] = false;
             selectedParkPoint = null;
+            selectedWaiterPoint = null;
             buNpcMusteriMi = false;
             npcScript.buNpcMusteriMi = false;
 
@@ -249,7 +265,7 @@ public class Customer : MonoBehaviour
     void YemegiAl()
     {
         alinanYemekAdedi = alinanYemekAdedi + 1;
-        if(alinanYemekAdedi >= istenenYemekAdedi)
+        if (alinanYemekAdedi >= istenenYemekAdedi)
         {
             siparisTamamlandiMi = true;
             GoBack();

@@ -8,10 +8,14 @@ public class CustomerManager : MonoBehaviour
     public int musteriOlmaSansii; //NPC'nin müþteri olma þansý. (Yüzdesel Olarak)
     public BakilacakYon bakilacakYon;
     public int sahnedeKacAdetParkPointVar;
-    public bool[] parkPointsBusy;
+    public int birYemekSansi;
+    public int ikiYemekSansi;
+    public int ucYemekSansi;
 
+    public bool[] parkPointsBusy;
     public List<GameObject> musterilerList = new List<GameObject>();
     public List<GameObject> siparisSirasi = new List<GameObject>();
+
 
     public enum BakilacakYon
     {

@@ -27,6 +27,7 @@ public class SpawnerManager : MonoBehaviour
         NavMeshAgent,
         //AddForce,
     }
+
     GameObject customerManager; 
 
 
@@ -40,10 +41,6 @@ public class SpawnerManager : MonoBehaviour
     {
         AralikliSpawnlama(kacSaniyedeBirSpawnlansin);
         TumNpcleriOldur();
-
-        if (spawnlamaBaslasinMi && currentNpcObjectCount < sahnedekiMaxNpcSayisi) //GEREKSÝZ SÝL
-        {
-        }
     }
 
     private void SpawnNpc()
