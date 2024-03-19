@@ -9,16 +9,15 @@ public class TakingOrderState : State
 
     [Header("Transitions")]
     public bool IsOrderTook;
-    public bool HasAvailableMachine;
 
     [Header("Variables")]
     private float _passingTime;
 
     public override State RunCurrentState()
     {
-        if (IsOrderTook && !HasAvailableMachine)
+        if (IsOrderTook)
         {
-            
+            ResetVariables();
 
             return RunToIdleState;
         }
@@ -26,23 +25,20 @@ public class TakingOrderState : State
         {
             if (!IsOrderTook)
             {
-                //sipariþi sipariþ listine ekle
+                //sipariï¿½i sipariï¿½ listine ekle
 
-                //sipariþ alma süresi ÝENUMERATORLE YAP
+                //sipariï¿½ alma sï¿½resi ï¿½ENUMERATORLE YAP
                 while (_passingTime < LevelManager.Instance.TakingOrderTime)
                 {
                     _passingTime += Time.deltaTime;
                 }
 
-                //sipariþ alma sesi
+                //sipariï¿½ alma sesi
 
-                //sipariþi al
-                //customer managerdan sipariþi al ekle
+                //sipariï¿½i al
+                //customer managerdan sipariï¿½i al ekle
                 IsOrderTook = true;
             }
-            //sipariþ hangi makinenin kontrol eet
-
-            //müsait machine var mý bak
 
             return this;
         }
@@ -51,7 +47,6 @@ public class TakingOrderState : State
     public void ResetVariables()
     {
         IsOrderTook = false;
-        HasAvailableMachine = false;
 
         _passingTime = 0f;
     }

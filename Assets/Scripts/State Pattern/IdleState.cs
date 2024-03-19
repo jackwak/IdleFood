@@ -29,7 +29,7 @@ public class IdleState : State
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-            //yeni customerdan çýkart
+            //yeni customerdan cikart
 
             return RunToCustomerState;
         }
