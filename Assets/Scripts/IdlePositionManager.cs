@@ -12,7 +12,7 @@ public class IdlePositionManager : MonoBehaviour
     public List<Transform> IdlePositions = new List<Transform>();
 
     [Header("Variables")]
-    private Waiter[] _waiters;
+    [SerializeField] private Waiter[] _waiters;
 
     private void Awake()
     {
@@ -24,6 +24,8 @@ public class IdlePositionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _waiters = new Waiter[IdlePositions.Count];
     }
 
     public Transform GetAvaibleIdlePosition(Waiter waiter)
@@ -46,6 +48,9 @@ public class IdlePositionManager : MonoBehaviour
     {
         int indexOfWaiter = Array.IndexOf(_waiters, waiter);
 
-        _waiters[indexOfWaiter] = null;
+        if (_waiters[indexOfWaiter] != null)
+        {
+            _waiters[indexOfWaiter] = null;
+        }
     }
 }

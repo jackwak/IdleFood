@@ -59,7 +59,7 @@ public class IdleState : State
     {
         _isSleeping = false;
 
-        _waiter.Animator.SetBool("isSleeping", false);
+        //_waiter.Animator.SetBool("isSleeping", false);
         _waiter.SleepingGO.SetActive(false);
     }
 }

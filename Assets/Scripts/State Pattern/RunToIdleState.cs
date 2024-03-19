@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RunToIdleState : State
 {
@@ -56,9 +57,14 @@ public class RunToIdleState : State
         {
             if (!_isRunning)
             {
-                Transform avaibleTransform = IdlePositionManager.Instance.GetAvaibleIdlePosition(GetComponent<Waiter>());
+                Transform avaibleTransform = IdlePositionManager.Instance.GetAvaibleIdlePosition(_waiter);
                 RunWaiterCommand(avaibleTransform.position);
                 _isRunning = true;
+            }
+
+            if (IsWaiterReached())
+            {
+                IsArrivedIdlePosition = true;
             }
 
             return this;
@@ -71,10 +77,27 @@ public class RunToIdleState : State
         _commandInvoker.ExecuteCommand(command);
     }
 
+    public bool IsWaiterReached()
+    {
+        NavMeshAgent agent = _waiter.Agent;
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private void ResetVariables()
     {
         HasAnyCustomer = false;
         HasAnyOrder = false;
+        IsArrivedIdlePosition = false;
 
         _isRunning = false;
         _waiter.Agent.ResetPath();

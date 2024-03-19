@@ -20,7 +20,10 @@ public class Waiter : MonoBehaviour
         Agent = GetComponent<NavMeshAgent>();
     }
 
-
+    public void SetWaiterAgentPosition(Vector3 position)
+    {
+        Agent.SetDestination(position);
+    }
 
 
 }

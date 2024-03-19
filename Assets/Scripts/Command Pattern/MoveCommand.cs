@@ -16,8 +16,6 @@ public class MoveCommand : ICommand
 
     public void Execute()
     {
-        NavMeshAgent agent = _waiter.Agent;
-
-        agent.SetDestination(_position);
+        _waiter.SetWaiterAgentPosition(_position);
     }
 }
