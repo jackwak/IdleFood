@@ -46,13 +46,11 @@ public class RunToCustomerState : State
                 {
                     HasFoodOnHand = true;
 
-                    // sipariþ isteyen customera git
-                    // yemeði poola yolla
-                    //müþterinin yeemeeðini ver
+                    // sipariï¿½ isteyen customera git
                 }
                 else
                 {
-                    //sipariþ vericek olan customera git
+                    //sipariï¿½ vericek olan customera git
                 }
 
                 _isRunning = true;
