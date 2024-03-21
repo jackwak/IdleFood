@@ -35,11 +35,12 @@ public class RunToIdleState : State
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
+            //customerý çek ve waiterýn current customerý yap
             //yeni müþteriyi listten çýkart
 
             return RunToCustomerState;
         }
-        else if (OrderManager.Instance.HasAnyOrder)
+        else if (HasAnyOrder)
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
@@ -66,6 +67,8 @@ public class RunToIdleState : State
             {
                 IsArrivedIdlePosition = true;
             }
+
+            HasAnyOrder = OrderManager.Instance.HasAnyOrder;
 
             return this;
         }

@@ -12,6 +12,7 @@ public class Waiter : MonoBehaviour
     public GameObject SleepingGO;
     public bool HasFoodOnHand;
 
+    public Customer CurrentCustomer;
     public Order CurrentOrder;
 
     private void Awake()

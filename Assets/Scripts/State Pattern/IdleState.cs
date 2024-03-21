@@ -29,11 +29,11 @@ public class IdleState : State
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-            //yeni customerdan cikart
+            //yeni customerdan cikart ve waiterýn current customerýna ekle
 
             return RunToCustomerState;
         }
-        else if (OrderManager.Instance.HasAnyOrder)
+        else if (HasAnyOrder)
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
@@ -50,6 +50,8 @@ public class IdleState : State
 
                 _isSleeping = true;
             }
+
+            HasAnyOrder = OrderManager.Instance.HasAnyOrder;
 
             return this;
         }

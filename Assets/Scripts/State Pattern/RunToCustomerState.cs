@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RunToCustomerState : State
 {
@@ -10,6 +11,7 @@ public class RunToCustomerState : State
 
     public bool HasFoodOnHand;
     public bool IsArrivedToCustomer;
+
 
     [Header("References")]
     private CommandInvoker _commandInvoker;
@@ -26,15 +28,17 @@ public class RunToCustomerState : State
 
     public override State RunCurrentState()
     {
-        if (IsArrivedToCustomer && _waiter.HasFoodOnHand)
+        if (IsArrivedToCustomer && HasFoodOnHand)
         {
             _isRunning = false;
+            IsArrivedToCustomer = false;
 
             return GivingFoodState;
         }
-        else if (IsArrivedToCustomer && !_waiter.HasFoodOnHand)
+        else if (IsArrivedToCustomer && !HasFoodOnHand)
         {
             _isRunning = false;
+            IsArrivedToCustomer = false;
 
             return TakingOrderState;
         }
@@ -44,7 +48,7 @@ public class RunToCustomerState : State
             {
                 if (_waiter.CurrentOrder != null)
                 {
-                    HasFoodOnHand = true;
+                    HasFoodOnHand = _waiter.HasFoodOnHand;
 
                     // sipari� isteyen customera git
                 }
@@ -56,8 +60,29 @@ public class RunToCustomerState : State
                 _isRunning = true;
             }
 
+            /*if (IsWaiterReached())
+            {
+                IsArrivedToCustomer = true;
+            }*/
+
             return this;
         }
+    }
+
+    public bool IsWaiterReached()
+    {
+        NavMeshAgent agent = _waiter.Agent;
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void RunWaiterCommand(Vector3 position)

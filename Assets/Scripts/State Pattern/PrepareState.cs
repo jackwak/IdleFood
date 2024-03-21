@@ -45,5 +45,7 @@ public class PrepareState : State
         yield return new WaitForSeconds(dispenceTime);
 
         IsFoodCompleted = true;
+        _waiter.HasFoodOnHand = true;
+
     }
 }
