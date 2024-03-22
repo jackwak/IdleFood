@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FoodManager : MonoBehaviour
 {
-    private string[] allFoods;
+    public string[] allFoods;
     public List<string> buyableFoods;
 
     void Start()
     {
         allFoods = new string[1];
-        allFoods[0] = "limonata";
+        allFoods[0] = "Lemonade";
 
 
     }

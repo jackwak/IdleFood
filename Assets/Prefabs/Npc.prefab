@@ -216,12 +216,16 @@ MonoBehaviour:
   musteriOlmaSansi: 0
   buNpcMusteriMi: 0
   selectedParkPoint: {fileID: 0}
+  selectedWaiterPoint: {fileID: 0}
   selectedParkPointIndex: 0
-  istenenYemekAdedi: 0
-  istenenYemek: 
+  FoodCount: 0
+  alinanYemekAdedi: 0
+  OrderedFood: 
   hedefeVardim: 0
   durumAciklamasi: 
-  siparisVerilenUrunAlindiMi: 0
+  siparisTamamlandiMi: 0
+  musteriOlunanKonum: {x: 0, y: 0, z: 0}
+  "alinanYemegiBirArtt\u0131rSadeceDevMod": 0
 --- !u!136 &8722362183102396367
 CapsuleCollider:
   m_ObjectHideFlags: 0

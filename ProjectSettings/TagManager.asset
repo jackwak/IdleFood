@@ -14,6 +14,8 @@ TagManager:
   - SpawnerManager
   - CustomerManager
   - FoodManager
+  - QuestManager
+  - MachineManager
   layers:
   - Default
   - TransparentFX

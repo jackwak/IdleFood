@@ -14,30 +14,35 @@ public class Customer : MonoBehaviour
     NavMeshAgent navMeshAgent;
 
     [SerializeField] public int musteriOlmaSansi;
-    [SerializeField] bool buNpcMusteriMi;
-    [SerializeField] GameObject selectedParkPoint;
-    [SerializeField] GameObject selectedWaiterPoint;
-    [SerializeField] int selectedParkPointIndex;
-    [SerializeField] int istenenYemekAdedi; //Müþterinin istediði yemek adedi. (1,2,3)
-    [SerializeField] int alinanYemekAdedi;  //Sipariþ verdiði yemeklerden kaç tanesini aldý?
-    [SerializeField] string istenenYemek;
+    [SerializeField] public bool buNpcMusteriMi;
+    [SerializeField] public GameObject selectedParkPoint;
+    [SerializeField] public GameObject selectedWaiterPoint;
+    [SerializeField] public int selectedParkPointIndex;
+    [SerializeField] public int FoodCount; //Müþterinin istediði yemek adedi. (1,2,3)
+    [SerializeField] public int alinanYemekAdedi;  //Sipariþ verdiði yemeklerden kaç tanesini aldý?
+    [SerializeField] public string OrderedFood;
 
 
 
 
-    [SerializeField] bool hedefeVardim;
-    [SerializeField] string durumAciklamasi;
+    [SerializeField] public bool hedefeVardim;
+    [SerializeField] public string durumAciklamasi;
     //Ben Düz NPC'yim
     //Ben Müþteri Olamadým
     //Stand Önüne Doðru Gidiyorum
     //Stand Önündeyim
+    //Garson Bana Geliyor
+    //Sipariþimi Alýyor
+    //Sipariþimi Aldý
+    //Ürünü Hazýrlamaya Gidiyor
     //Sipariþ Verdim
+    //Sipariþimi Getiriyor
     //Sipariþimi Aldým, Ayrýlýyorum
 
-    [SerializeField] bool siparisTamamlandiMi;
-    Vector3 musteriOlunanKonum;
+    [SerializeField] public bool siparisTamamlandiMi;
+    public Vector3 musteriOlunanKonum;
 
-    [SerializeField] bool alinanYemegiBirArttýrSadeceDevMod;    //TEST AMAÇLI KULLANILIR. TAM SÜRÜMDE SÝLÝNEBÝLÝR.
+    //[SerializeField] public bool alinanYemegiBirArttýrSadeceDevMod;    //TEST AMAÇLI KULLANILIR. TAM SÜRÜMDE SÝLÝNEBÝLÝR.
 
     private void Awake()
     {
@@ -54,11 +59,11 @@ public class Customer : MonoBehaviour
 
         SuEkseneDogruBak(); //stand önüne vardýktan sonra çalýþýr
 
-        if (alinanYemegiBirArttýrSadeceDevMod == true)
-        {
-            alinanYemegiBirArttýrSadeceDevMod = false;
-            YemegiAl();
-        }
+        //if (alinanYemegiBirArttýrSadeceDevMod == true)
+        //{
+        //    alinanYemegiBirArttýrSadeceDevMod = false;
+        //    YemegiAl();
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -104,7 +109,7 @@ public class Customer : MonoBehaviour
         selectedParkPoint = customerManager.gameObject.transform.GetChild(selectedParkPointIndex).gameObject;
         selectedWaiterPoint = selectedParkPoint.transform.GetChild(0).gameObject;
         customerManager.musterilerList[selectedParkPointIndex] = this.gameObject;               //YENÝ KOD
-        customerManager.siparisSirasi.Add(this.gameObject);
+        //customerManager.siparisVermeSirasi.Add(this.gameObject);
         //customerManager.musterilerQueue.Enqueue(this.gameObject);                               //YENÝ KOD
         //customerManager.siradakiSiparisinMusterisi = customerManager.musterilerQueue.Peek();    //YENÝ KOD
 
@@ -121,16 +126,14 @@ public class Customer : MonoBehaviour
         //this.gameObject.transform.position = new Vector3(selectedParkPoint.transform.position.x, selectedParkPoint.transform.position.y, selectedParkPoint.transform.position.z);
     }   //NPC müþteri olduðunda çalýþýr.
 
-
-
     private int SelectHowManyFoodYouWant()
     {
         int birYemekSansi = 0;
         int ikiYemekSansi = 0;
         int ucYemekSansi = 0;
         birYemekSansi = customerManager.birYemekSansi;
-        ikiYemekSansi = customerManager.ikiYemekSansi; 
-        ucYemekSansi = customerManager.ucYemekSansi; 
+        ikiYemekSansi = customerManager.ikiYemekSansi;
+        ucYemekSansi = customerManager.ucYemekSansi;
 
         int toplamYemekSansi = birYemekSansi + ikiYemekSansi + ucYemekSansi;
 
@@ -165,7 +168,7 @@ public class Customer : MonoBehaviour
     public void SuEkseneDogruBak()
     {
 
-        if ((durumAciklamasi == "Stand Önündeyim" || durumAciklamasi == "Sipariþ Verdim") && buNpcMusteriMi == true)
+        if ((durumAciklamasi == "Stand Önündeyim" || durumAciklamasi == "Sipariþ Verdim" || durumAciklamasi == "Garson Bana Geliyor") && buNpcMusteriMi == true)
         {
             Quaternion targetRotation;
 
@@ -197,7 +200,6 @@ public class Customer : MonoBehaviour
     }
 
 
-
     void GoForBuy()
     {
         navMeshAgent = this.gameObject.GetComponent<NavMeshAgent>();
@@ -212,34 +214,20 @@ public class Customer : MonoBehaviour
         {
             hedefeVardim = true;
             durumAciklamasi = "Stand Önündeyim";
+            FoodCount = SelectHowManyFoodYouWant();
+            OrderedFood = SelectWhichFoodYouWant();
+            customerManager.siparisVermeSirasi.Add(this.gameObject);
 
-            istenenYemekAdedi = SelectHowManyFoodYouWant();
-            istenenYemek = SelectWhichFoodYouWant();
 
-            Debug.Log("Ben " + istenenYemekAdedi + " tane " + istenenYemek + " alýyým.");
+            Debug.Log("Ben " + FoodCount + " tane " + OrderedFood + " alýyým.");
 
-            durumAciklamasi = "Sipariþ Verdim";
+
         }
     }   //GoForBuy(); dan sonra hedef noktaya eriþtiðinde çalýþýr
-    void GoBack()
+    private void GoBack()
     {
-        if (durumAciklamasi == "Sipariþ Verdim" && siparisTamamlandiMi == true)
+        if (siparisTamamlandiMi == true)
         {
-            customerManager.musterilerList[selectedParkPointIndex] = null;      //YENÝ KOD
-            customerManager.siparisSirasi.Remove(this.gameObject);
-            //customerManager.musterilerQueue.Dequeue();  //YENÝ KOD
-            //customerManager.siradakiSiparisinMusterisi = customerManager.musterilerQueue.Peek();    //YENÝ KOD
-
-
-            durumAciklamasi = "Sipariþimi Aldým, Ayrýlýyorum";
-            hedefeVardim = false;
-            customerManager.parkPointsBusy[selectedParkPointIndex] = false;
-            selectedParkPoint = null;
-            selectedWaiterPoint = null;
-            buNpcMusteriMi = false;
-            npcScript.buNpcMusteriMi = false;
-
-
             switch (npcScript.directionToGo)
             {
                 case "+x":
@@ -257,20 +245,81 @@ public class Customer : MonoBehaviour
                 default:
                     break;
             }
+            customerManager.musterilerList[selectedParkPointIndex] = null;      //YENÝ KOD
+
+            if (customerManager.specialForDevMode)
+            {
+                customerManager.siparisVermeSirasi.Remove(this.gameObject);
+            }
+            //customerManager.siparisVermeSirasi.Remove(this.gameObject);
+            //customerManager.musterilerQueue.Dequeue();  //YENÝ KOD
+            //customerManager.siradakiSiparisinMusterisi = customerManager.musterilerQueue.Peek();    //YENÝ KOD
+
+
+            durumAciklamasi = "Sipariþimi Aldým, Ayrýlýyorum";
+            hedefeVardim = false;
+            customerManager.parkPointsBusy[selectedParkPointIndex] = false;
+            selectedParkPoint = null;
+            selectedWaiterPoint = null;
+            buNpcMusteriMi = false;
+            npcScript.buNpcMusteriMi = false;
+
+
         }
 
-    }   //satýn alma bittikten sonra geri döner
-
-
-    void YemegiAl()
+    }   //satýn alma bittikten sonra geri döner                  //ARTIK KULLANILMIYOR
+    private void YemegiAl()
     {
         alinanYemekAdedi = alinanYemekAdedi + 1;
-        if (alinanYemekAdedi >= istenenYemekAdedi)
+        if (alinanYemekAdedi >= FoodCount)
         {
             siparisTamamlandiMi = true;
-            GoBack();
+            //GoBack();
         }
-    }   //Garsonun verdiði yemeði alýr
+    }   //Garsonun verdiði yemeði alýr                      //ARTIK KULLANILMIYOR
+
+    public void MusteriyeYemekVer()
+    {
+        this.alinanYemekAdedi += 1;
+        if (this.alinanYemekAdedi >= this.FoodCount)
+        {
+            Vector3 leaveTarget = new Vector3();
+            switch (this.npcScript.directionToGo)
+            {
+                case "+x":
+                    leaveTarget = new Vector3(musteriOlunanKonum.x + 60, musteriOlunanKonum.y, musteriOlunanKonum.z);
+                    break;
+                case "-x":
+                    leaveTarget = new Vector3(musteriOlunanKonum.x - 60, musteriOlunanKonum.y, musteriOlunanKonum.z);
+                    break;
+                case "+z":
+                    leaveTarget = new Vector3(musteriOlunanKonum.x, musteriOlunanKonum.y, musteriOlunanKonum.z + 60);
+                    break;
+                case "-z":
+                    leaveTarget = new Vector3(musteriOlunanKonum.x, musteriOlunanKonum.y, musteriOlunanKonum.z - 60);
+                    break;
+                default:
+                    break;
+            }
+            this.navMeshAgent.SetDestination(leaveTarget);
+
+            if (customerManager.specialForDevMode)
+            {
+                customerManager.siparisVermeSirasi.RemoveAt(0);
+            }
+            this.customerManager.musterilerList[selectedParkPointIndex] = null;
+            this.customerManager.parkPointsBusy[selectedParkPointIndex] = false;
+            this.durumAciklamasi = "Sipariþimi Aldým, Ayrýlýyorum";
+            
+            //this.npcScript.buNpcMusteriMi = false; Çalýþýnca tüm kod çalýþmýyor
+            this.hedefeVardim = false;
+            this.selectedParkPoint = null;
+            this.selectedWaiterPoint = null;
+            this.buNpcMusteriMi = false;
+
+
+        }
+    }
 
 
 
