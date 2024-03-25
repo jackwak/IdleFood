@@ -12,6 +12,7 @@ public class TakingOrderState : State
 
     [Header("Variables")]
     private float _passingTime;
+    private bool _isOrderTook;
 
     public override State RunCurrentState()
     {
@@ -23,7 +24,7 @@ public class TakingOrderState : State
         }
         else
         {
-            if (!IsOrderTook)
+            if (!_isOrderTook)
             {
                 //sipari�i sipari� listine ekle
 
@@ -37,7 +38,7 @@ public class TakingOrderState : State
 
                 //sipari�i al
                 //customer managerdan sipari�i al ekle
-                IsOrderTook = true;
+                _isOrderTook = true;
             }
 
             return this;

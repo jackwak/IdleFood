@@ -59,6 +59,8 @@ public class IdleState : State
 
     public void ResetVariables()
     {
+        HasAnyCustomer = false;
+        HasAnyOrder = false;
         _isSleeping = false;
 
         //_waiter.Animator.SetBool("isSleeping", false);
