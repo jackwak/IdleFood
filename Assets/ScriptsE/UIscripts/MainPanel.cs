@@ -8,7 +8,21 @@ public class MainPanel : MonoBehaviour
     {
         this.gameObject.transform.parent.gameObject.transform.Find("SettingsPanel").gameObject.GetComponent<SettingsPanel>().CloseMenu();
         this.gameObject.SetActive(false);
-        this.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        this.gameObject.transform.parent.gameObject.transform.Find("MapPanel").gameObject.SetActive(true);
+        this.gameObject.transform.parent.gameObject.transform.Find("UpgradePanel").gameObject.SetActive(false);
+    }
+
+    public void UpgradeButton()
+    {
+        if (!this.gameObject.transform.parent.gameObject.transform.Find("UpgradePanel").gameObject.activeSelf)
+        {
+            this.gameObject.transform.parent.gameObject.transform.Find("UpgradePanel").gameObject.SetActive(true);
+        }
+        else if (this.gameObject.transform.parent.gameObject.transform.Find("UpgradePanel").gameObject.activeSelf)
+        {
+            this.gameObject.transform.parent.gameObject.transform.Find("UpgradePanel").gameObject.SetActive(false);
+        }
+
     }
 
 }
