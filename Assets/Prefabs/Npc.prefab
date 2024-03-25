@@ -225,7 +225,6 @@ MonoBehaviour:
   durumAciklamasi: 
   siparisTamamlandiMi: 0
   musteriOlunanKonum: {x: 0, y: 0, z: 0}
-  "alinanYemegiBirArtt\u0131rSadeceDevMod": 0
 --- !u!136 &8722362183102396367
 CapsuleCollider:
   m_ObjectHideFlags: 0
