@@ -15,8 +15,8 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] float kacSaniyedeBirSpawnlansin;
     [SerializeField] public float hareketHizi;
     [SerializeField] public WalkingMethod npclerinYurumeMetodu;
-    [SerializeField] bool spawnlamaBaslasinMi;
-    [SerializeField] bool npcleriOldur;
+    [SerializeField] public bool spawnlamaBaslasinMi;
+    [SerializeField] public bool npcleriOldur;
 
     [HideInInspector] public int currentNpcObjectCount;
     public List<GameObject> npcList = new List<GameObject>();
@@ -40,7 +40,6 @@ public class SpawnerManager : MonoBehaviour
     void Update()
     {
         AralikliSpawnlama(kacSaniyedeBirSpawnlansin);
-        TumNpcleriOldur();
     }
 
     private void SpawnNpc()
@@ -83,6 +82,18 @@ public class SpawnerManager : MonoBehaviour
             npcleriOldur = false;
             customerManager.GetComponent<CustomerManager>().ParkPointResetAndRebuild();
         }
+
+    }       //Silebilirsin
+    public void TumNpcleriOldurForDevPanel()
+    {
+        foreach (var npc in npcList)
+        {
+            Destroy(npc);
+        }
+        npcList.Clear();
+        currentNpcObjectCount = 0;
+        npcleriOldur = false;
+        customerManager.GetComponent<CustomerManager>().ParkPointResetAndRebuild();
 
     }
 

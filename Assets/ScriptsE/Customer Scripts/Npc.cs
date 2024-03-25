@@ -25,7 +25,6 @@ public class Npc : MonoBehaviour
     }
     private void Update()
     {
-
         NpcIlerlemeFonksiyonu();
     }
 
