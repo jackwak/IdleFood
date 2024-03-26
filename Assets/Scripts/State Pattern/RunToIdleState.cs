@@ -34,6 +34,7 @@ public class RunToIdleState : State
     {
         if (HasAnyCustomer)
         {
+            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
             //customerý çek ve waiterýn current customerý yap
@@ -46,6 +47,7 @@ public class RunToIdleState : State
         }
         else if (CanTakeOrder)
         {
+            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
 
@@ -73,7 +75,7 @@ public class RunToIdleState : State
                 IsArrivedIdlePosition = true;
             }
 
-            HasAnyCustomer = CustomerManager.Instance.HasAnyCustomer;
+            HasAnyCustomer = _waiter.HasAnyCustomer;
 
             HasAnyOrder = OrderManager.Instance.HasAnyOrder;
             if (HasAnyOrder && !HasAnyCustomer)

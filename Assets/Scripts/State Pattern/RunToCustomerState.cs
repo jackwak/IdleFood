@@ -47,7 +47,6 @@ public class RunToCustomerState : State
             if (!_isRunning)
             {
                 HasFoodOnHand = _waiter.HasFoodOnHand;
-                Debug.Log("HasFoodOnHand: " + HasFoodOnHand);
 
                 if (HasFoodOnHand)
                 {
@@ -57,7 +56,6 @@ public class RunToCustomerState : State
                 }
                 else
                 {
-                    Debug.Log(_waiter.CurrentCustomer);
                     //siparis vericek olan customera git
                     Vector3 position = _waiter.CurrentCustomer.selectedWaiterPoint.transform.position;
                     RunWaiterCommand(position);

@@ -27,7 +27,12 @@ public class IdlePositionManager : MonoBehaviour
         }
 
         _waiters = new Waiter[IdlePositions.Count];
-        //CustomerManager.Instance.OnHasAnyCustomer += SetHasAnyCustomer;
+
+    }
+
+    private void Start()
+    {
+        CustomerManager.Instance.OnHasAnyCustomer += SetHasAnyCustomer;
 
     }
 
@@ -58,14 +63,22 @@ public class IdlePositionManager : MonoBehaviour
         }
     }
 
-    //public void SetHasAnyCustomer()
-    //{
-    //    int waiterCount = _waiters.Length;
-    //    _waiters[waiterCount - 1].HasAnyCustomer = true;
-    //}
+    public void SetHasAnyCustomer()
+    {
+        int waiterCount = _waiters.Length;
+        for (int i = waiterCount - 1; i >= 0; i--)
+        {
+            Debug.Log(i);
+            if (_waiters[i] != null)
+            {
+                _waiters[i].HasAnyCustomer = true;
+                break;
+            }
+        }
+    }
 
     private void OnDisable()
     {
-        //CustomerManager.Instance.OnHasAnyCustomer -= SetHasAnyCustomer;
+        CustomerManager.Instance.OnHasAnyCustomer -= SetHasAnyCustomer;
     }
 }

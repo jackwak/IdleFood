@@ -52,7 +52,7 @@ public class CustomerManager : MonoBehaviour
     {
         if (siparisVermeSirasi.Count > 0)
         {
-            //OnHasAnyCustomer();
+            OnHasAnyCustomer.Invoke();
             HasAnyCustomer = true;
         }
         else
