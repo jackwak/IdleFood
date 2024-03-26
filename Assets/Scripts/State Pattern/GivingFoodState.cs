@@ -7,12 +7,12 @@ public class GivingFoodState : State
     [Header("State Variables")]
     public State RunToIdleState;
     public State RunToCustomerState;
-    public bool HasAnyCustomer;
-    
+
+    [Header("Transitions")]
+    public bool HasFoodOnHand;
 
     [Header("References")]
     private Waiter _waiter;
-    private CommandInvoker _commandInvoker;
 
     [Header("Variables")]
     private bool _isFoodGiving;
@@ -20,20 +20,13 @@ public class GivingFoodState : State
     private void Awake()
     {
         _waiter = transform.root.GetComponent<Waiter>();
-        _commandInvoker = new CommandInvoker();
     }
 
     public override State RunCurrentState()
     {
-        if (HasAnyCustomer)
+        if (!HasFoodOnHand)
         {
-            _isFoodGiving = false;
-
-            return RunToCustomerState;
-        }
-        else if (!_waiter.HasFoodOnHand)
-        {
-            _isFoodGiving = false;
+            ResetVariables();
 
             return RunToIdleState;
         }
@@ -41,20 +34,32 @@ public class GivingFoodState : State
         {
             if (!_isFoodGiving)
             {
-                // command kullanmadan yapýlabilir.
-                GiveFoodCommand();
+                _waiter.CurrentCustomer = _waiter.CurrentOrder.Customer;
+
+                //siparis verme sesi oynat
+
+                //yemegini ver
+                _waiter.CurrentCustomer.MusteriyeYemekVer();
+
+                //yemegi poola yolla
+
+                //waiterin elindeki yemegi sil
+                _waiter.HasFoodOnHand = false;
+                HasFoodOnHand = false;
 
                 _isFoodGiving = true;
             }
+
 
             return this;
         }
     }
 
-    private void GiveFoodCommand()
+    public void ResetVariables()
     {
-        ICommand command = new GiveFoodCommand(_waiter);
-        _commandInvoker.ExecuteCommand(command);
-    }
+        _isFoodGiving = false;
 
+        _waiter.CurrentOrder = null;
+        _waiter.CurrentCustomer = null;
+    }
 }

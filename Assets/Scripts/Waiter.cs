@@ -25,6 +25,4 @@ public class Waiter : MonoBehaviour
     {
         Agent.SetDestination(position);
     }
-
-
 }

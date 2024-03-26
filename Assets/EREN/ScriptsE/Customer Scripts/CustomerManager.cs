@@ -6,12 +6,15 @@ using UnityEngine.AI;
 
 public class CustomerManager : MonoBehaviour
 {
+    public static CustomerManager Instance;
+
     public int musteriOlmaSansii; //NPC'nin müþteri olma þansý. (Yüzdesel Olarak)
     public BakilacakYon bakilacakYon;
     public int sahnedeKacAdetParkPointVar;
     public int birYemekSansi;
     public int ikiYemekSansi;
     public int ucYemekSansi;
+    public bool HasAnyCustomer;
 
     public bool[] parkPointsBusy;
     public List<GameObject> musterilerList = new List<GameObject>();
@@ -31,7 +34,28 @@ public class CustomerManager : MonoBehaviour
 
     void Start()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         ParkPointResetAndRebuild();
+    }
+
+    private void Update()
+    {
+        if (siparisVermeSirasi.Count > 0)
+        {
+            HasAnyCustomer = true;
+        }
+        else
+        {
+            HasAnyCustomer = false;
+        }
     }
 
     public void ParkPointResetAndRebuild()

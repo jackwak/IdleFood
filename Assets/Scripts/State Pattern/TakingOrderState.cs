@@ -11,7 +11,14 @@ public class TakingOrderState : State
     public bool IsOrderTook;
 
     [Header("Variables")]
-    private float _passingTime;
+    //ismi degis
+    private bool _isOrderTook;
+    private Waiter _waiter;
+
+    private void Awake()
+    {
+        _waiter = transform.root.GetComponent<Waiter>();
+    }
 
     public override State RunCurrentState()
     {
@@ -23,21 +30,12 @@ public class TakingOrderState : State
         }
         else
         {
-            if (!IsOrderTook)
+            if (!_isOrderTook)
             {
-                //sipari�i sipari� listine ekle
+                //siparisi al
+                StartCoroutine(TakingOrder());
 
-                //sipari� alma s�resi �ENUMERATORLE YAP
-                while (_passingTime < LevelManager.Instance.TakingOrderTime)
-                {
-                    _passingTime += Time.deltaTime;
-                }
-
-                //sipari� alma sesi
-
-                //sipari�i al
-                //customer managerdan sipari�i al ekle
-                IsOrderTook = true;
+                _isOrderTook = true;
             }
 
             return this;
@@ -46,8 +44,32 @@ public class TakingOrderState : State
 
     public void ResetVariables()
     {
+        _isOrderTook = false;
         IsOrderTook = false;
+    }
 
-        _passingTime = 0f;
+    IEnumerator TakingOrder()
+    {
+        // progress bar yap
+
+        float takingOrderTime = LevelManager.Instance.TakingOrderTime;
+        yield return new WaitForSeconds(takingOrderTime);
+
+        //siparis alma sesi
+
+        //siparisi siparis listine ekle
+        int foodCount = _waiter.CurrentCustomer.FoodCount;
+
+        for (int i = 0; i < foodCount; i++)
+        {
+            OrderManager.Instance.Customers.Add(_waiter.CurrentCustomer);
+            OrderManager.Instance.Foods.Add(_waiter.CurrentCustomer.OrderedFood);
+
+            //OrderManager.Instance.AddOrder(_waiter.CurrentCustomer);
+        }
+
+        _waiter.CurrentCustomer = null;
+
+        IsOrderTook = true;
     }
 }

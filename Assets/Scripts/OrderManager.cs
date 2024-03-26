@@ -51,6 +51,8 @@ public class OrderManager : MonoBehaviour
 
     public Order GetOrder()
     {
+        Debug.Log(Foods.Count);
+
         //if 0.indeksteki yemeðin makinesi boþsa 0. indeksteki orderý gettir
         for (int i = 0; i < Foods.Count; i++)
         {
@@ -62,21 +64,37 @@ public class OrderManager : MonoBehaviour
                 //yemeðin makinesini bul
                 if (Foods[i] == machineName)
                 {
-                    MachinePositionManager machinePositionManager = MachinePositionsManager[i].GetComponent<MachinePositionManager>();
-                    Machine machine = machinePositionManager.GetAvaibleMachine();
-                    
+                    MachinePositionManager machinePositionManager = MachinePositionsManager[j].GetComponent<MachinePositionManager>();
+                    Debug.Log(machinePositionManager);
+                    if (machinePositionManager.CheckAvaibleMachine())
+                    {
+                        Machine machine = machinePositionManager.GetAvaibleMachine();
+                        Debug.Log(machine);
+                        Order order = new Order(Customers[i], Foods[i], machine);
 
-                    Order order = new Order(Customers[i], Foods[i], machine);
+                        Foods.RemoveAt(i);
+                        Customers.RemoveAt(i);
 
-                    Foods.RemoveAt(i);
-                    Customers.RemoveAt(i);
-
-                    return order;
+                        return order;
+                    }
                 }
             }
         }
         return null;
     }
 
-    
+    public void SetMachineToAvailable(Machine machine, string machineName)
+    {
+        for (int i = 0; i < MachinePositionsManager.Length; i++)
+        {
+            string name = MachinePositionsManager[i].name.Split(" ")[0];
+            if (machineName == name)
+            {
+                MachinePositionsManager[i].GetComponent<MachinePositionManager>().SetMachineToAvailable(machine);
+            }
+        }
+    }
+
+
+
 }
