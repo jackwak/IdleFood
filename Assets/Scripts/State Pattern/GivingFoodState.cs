@@ -24,7 +24,7 @@ public class GivingFoodState : State
 
     public override State RunCurrentState()
     {
-        if (!HasFoodOnHand)
+        if (!_waiter.HasFoodOnHand)
         {
             ResetVariables();
 
@@ -32,6 +32,7 @@ public class GivingFoodState : State
         }
         else
         {
+            Debug.Log("giving food state");
             if (!_isFoodGiving)
             {
                 _waiter.CurrentCustomer = _waiter.CurrentOrder.Customer;
@@ -40,6 +41,7 @@ public class GivingFoodState : State
 
                 //yemegini ver
                 _waiter.CurrentCustomer.MusteriyeYemekVer();
+                Debug.Log("Yemek alindi");
 
                 //yemegi poola yolla
 

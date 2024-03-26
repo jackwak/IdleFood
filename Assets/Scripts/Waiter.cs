@@ -11,6 +11,8 @@ public class Waiter : MonoBehaviour
     public Animator Animator;
     public GameObject SleepingGO;
     public bool HasFoodOnHand;
+    //public bool HasAnyCustomer;
+    //public bool HasAnyOrder;
 
     public Customer CurrentCustomer;
     public Order CurrentOrder;

@@ -30,9 +30,12 @@ public class IdleState : State
         {
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-
+            Debug.Log("a");
             //yeni customerdan cikart ve waiterýn current customerýna ekle
+            
             _waiter.CurrentCustomer = CustomerManager.Instance.siparisVermeSirasi[0].GetComponent<Customer>();
+            
+
             CustomerManager.Instance.siparisVermeSirasi.RemoveAt(0);
 
             return RunToCustomerState;
@@ -53,8 +56,9 @@ public class IdleState : State
 
                 _isSleeping = true;
             }
-
             HasAnyCustomer = CustomerManager.Instance.HasAnyCustomer;
+
+            //HasAnyCustomer = _waiter.HasAnyCustomer;
 
             HasAnyOrder = OrderManager.Instance.HasAnyOrder;
             if (HasAnyOrder && !HasAnyCustomer)

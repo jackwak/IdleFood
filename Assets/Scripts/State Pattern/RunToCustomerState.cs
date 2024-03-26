@@ -32,7 +32,6 @@ public class RunToCustomerState : State
         {
             _isRunning = false;
             IsArrivedToCustomer = false;
-            HasFoodOnHand = false;
 
             return GivingFoodState;
         }
@@ -40,7 +39,6 @@ public class RunToCustomerState : State
         {
             _isRunning = false;
             IsArrivedToCustomer = false;
-            HasFoodOnHand = false;
 
             return TakingOrderState;
         }
@@ -49,8 +47,9 @@ public class RunToCustomerState : State
             if (!_isRunning)
             {
                 HasFoodOnHand = _waiter.HasFoodOnHand;
+                Debug.Log("HasFoodOnHand: " + HasFoodOnHand);
 
-                if (_waiter.CurrentOrder != null)
+                if (HasFoodOnHand)
                 {
                     // siparis isteyen customera git
                     Vector3 position = _waiter.CurrentOrder.Customer.selectedWaiterPoint.transform.position;
@@ -58,6 +57,7 @@ public class RunToCustomerState : State
                 }
                 else
                 {
+                    Debug.Log(_waiter.CurrentCustomer);
                     //siparis vericek olan customera git
                     Vector3 position = _waiter.CurrentCustomer.selectedWaiterPoint.transform.position;
                     RunWaiterCommand(position);

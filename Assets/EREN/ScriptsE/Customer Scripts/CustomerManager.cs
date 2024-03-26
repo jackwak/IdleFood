@@ -8,6 +8,8 @@ public class CustomerManager : MonoBehaviour
 {
     public static CustomerManager Instance;
 
+    public event Action OnHasAnyCustomer;
+
     public int musteriOlmaSansii; //NPC'nin müþteri olma þansý. (Yüzdesel Olarak)
     public BakilacakYon bakilacakYon;
     public int sahnedeKacAdetParkPointVar;
@@ -50,6 +52,7 @@ public class CustomerManager : MonoBehaviour
     {
         if (siparisVermeSirasi.Count > 0)
         {
+            //OnHasAnyCustomer();
             HasAnyCustomer = true;
         }
         else
