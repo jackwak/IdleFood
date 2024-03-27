@@ -11,6 +11,7 @@ public class IdleState : State
     [Header("Transitions")]
     public bool HasAnyCustomer;
     public bool HasAnyOrder;
+    public bool CanTakeOrder;
 
     [Header("References")]
     private Waiter _waiter;
@@ -27,17 +28,23 @@ public class IdleState : State
     {
         if (HasAnyCustomer)
         {
+            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
             //yeni customerdan cikart ve waiterýn current customerýna ekle
+            
+            _waiter.CurrentCustomer = CustomerManager.Instance.siparisVermeSirasi[0].GetComponent<Customer>();
+            
+
+            CustomerManager.Instance.siparisVermeSirasi.RemoveAt(0);
 
             return RunToCustomerState;
         }
-        else if (HasAnyOrder)
+        else if (CanTakeOrder)
         {
+            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-            _waiter.CurrentOrder = OrderManager.Instance.GetOrder();
 
             return RunToMachineState;
         }
@@ -51,7 +58,17 @@ public class IdleState : State
                 _isSleeping = true;
             }
 
+            HasAnyCustomer = _waiter.HasAnyCustomer;
+
             HasAnyOrder = OrderManager.Instance.HasAnyOrder;
+            if (HasAnyOrder && !HasAnyCustomer)
+            {
+                _waiter.CurrentOrder = OrderManager.Instance.GetOrder();
+                if (_waiter.CurrentOrder != null)
+                {
+                    CanTakeOrder = true;
+                }
+            }
 
             return this;
         }
@@ -59,6 +76,9 @@ public class IdleState : State
 
     public void ResetVariables()
     {
+        CanTakeOrder = false;
+        HasAnyCustomer = false;
+        HasAnyOrder = false;
         _isSleeping = false;
 
         //_waiter.Animator.SetBool("isSleeping", false);

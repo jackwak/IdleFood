@@ -46,24 +46,28 @@ public class RunToCustomerState : State
         {
             if (!_isRunning)
             {
-                if (_waiter.CurrentOrder != null)
-                {
-                    HasFoodOnHand = _waiter.HasFoodOnHand;
+                HasFoodOnHand = _waiter.HasFoodOnHand;
 
-                    // sipari� isteyen customera git
+                if (HasFoodOnHand)
+                {
+                    // siparis isteyen customera git
+                    Vector3 position = _waiter.CurrentOrder.Customer.selectedWaiterPoint.transform.position;
+                    RunWaiterCommand(position);
                 }
                 else
                 {
-                    //sipari� vericek olan customera git
+                    //siparis vericek olan customera git
+                    Vector3 position = _waiter.CurrentCustomer.selectedWaiterPoint.transform.position;
+                    RunWaiterCommand(position);
                 }
 
                 _isRunning = true;
             }
 
-            /*if (IsWaiterReached())
+            if (IsWaiterReached())
             {
                 IsArrivedToCustomer = true;
-            }*/
+            }
 
             return this;
         }

@@ -15,6 +15,7 @@ public class RunToIdleState : State
     public bool IsArrivedIdlePosition;
     public bool HasAnyCustomer;
     public bool HasAnyOrder;
+    public bool CanTakeOrder;
 
     [Header("References")]
     private CommandInvoker _commandInvoker;
@@ -33,18 +34,24 @@ public class RunToIdleState : State
     {
         if (HasAnyCustomer)
         {
+            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
             //customerý çek ve waiterýn current customerý yap
             //yeni müþteriyi listten çýkart
+            _waiter.CurrentCustomer = CustomerManager.Instance.siparisVermeSirasi[0].GetComponent<Customer>();
+            CustomerManager.Instance.siparisVermeSirasi.RemoveAt(0);
+            
 
             return RunToCustomerState;
         }
-        else if (HasAnyOrder)
+        else if (CanTakeOrder)
         {
+            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-            _waiter.CurrentOrder = OrderManager.Instance.GetOrder();
+
+            //_waiter.CurrentOrder = OrderManager.Instance.GetOrder();
 
             return RunToMachineState;
         }
@@ -68,7 +75,17 @@ public class RunToIdleState : State
                 IsArrivedIdlePosition = true;
             }
 
+            HasAnyCustomer = _waiter.HasAnyCustomer;
+
             HasAnyOrder = OrderManager.Instance.HasAnyOrder;
+            if (HasAnyOrder && !HasAnyCustomer)
+            {
+                _waiter.CurrentOrder = OrderManager.Instance.GetOrder();
+                if (_waiter.CurrentOrder != null)
+                {
+                    CanTakeOrder = true;
+                }
+            }
 
             return this;
         }
@@ -101,6 +118,7 @@ public class RunToIdleState : State
         HasAnyCustomer = false;
         HasAnyOrder = false;
         IsArrivedIdlePosition = false;
+        CanTakeOrder = false;
 
         _isRunning = false;
         _waiter.Agent.ResetPath();

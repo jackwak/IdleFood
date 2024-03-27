@@ -38,6 +38,12 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        SetWaitersToLevelManager();
+        SetToStartWaitersPosition();
+    }
+
+    public void SetWaitersToLevelManager()
+    {
         //set waiters
         GameObject[] gameObjects = GameObject.FindObjectsOfType<GameObject>();
 
@@ -52,7 +58,10 @@ public class LevelManager : MonoBehaviour
                 Waiters.Add(waiter);
             }
         }
+    }
 
+    public void SetToStartWaitersPosition()
+    {
         //set start waiters position
         for (int i = 0; i < Waiters.Count; i++)
         {

@@ -5,27 +5,40 @@ using UnityEngine;
 
 public class MachinePositionManager : MonoBehaviour
 {
-    public static MachinePositionManager Instance;
-
     [Header("References")]
     public List<Machine> Machines = new List<Machine>();
 
     [Header("Variables")]
     private Waiter[] _waiters;
-    private bool[] _isPositionAvailable;
+    [SerializeField]private bool[] _isPositionAvailable;
 
     private void Awake()
     {
-        if (Instance == null)
+        SetMachinePositions();
+        InitializeMachines();
+    }
+
+    public void InitializeMachines()
+    {
+        for (int i = 0; i < _isPositionAvailable.Length; i++)
         {
-            Instance = this;
+            _isPositionAvailable[i] = true;
         }
-        else
+    }
+
+    public bool CheckAvaibleMachine()
+    {
+        int machinePositionCount = Machines.Count;
+
+        for (int i = 0; i < machinePositionCount; i++)
         {
-            Destroy(gameObject);
+            if (_isPositionAvailable[i])
+            {
+                return true;
+            }
         }
 
-        _isPositionAvailable = new bool[Machines.Count];
+        return false;
     }
 
     public Machine GetAvaibleMachine()
@@ -45,10 +58,15 @@ public class MachinePositionManager : MonoBehaviour
         return null;
     }
 
-    public void RemoveWaiterFromMachinePosition(Waiter waiter)
+    public void SetMachineToAvailable(Machine machine)
     {
-        int indexOfWaiter = Array.IndexOf(_waiters, waiter);
+        int index = Machines.IndexOf(machine);
 
-        _waiters[indexOfWaiter] = null;
+        _isPositionAvailable[index] = true;
+    }
+
+    public void SetMachinePositions()
+    {
+        _isPositionAvailable = new bool[Machines.Count];
     }
 }

@@ -13,6 +13,9 @@ public class PrepareState : State
     [Header("References")]
     private Waiter _waiter;
 
+    [Header("Variables")]
+    private bool _isPreparing;
+
     private void Awake()
     {
         _waiter = transform.root.GetComponent<Waiter>();
@@ -23,12 +26,17 @@ public class PrepareState : State
         if (IsFoodCompleted)
         {
             ResetVariables();
+            OrderManager.Instance.SetMachineToAvailable(_waiter.CurrentOrder.Machine, _waiter.CurrentOrder.Food);
 
             return RunToCustomerState;
         }
         else
         {
-            StartCoroutine(Prepare());
+            if (!_isPreparing)
+            {
+                StartCoroutine(Prepare());
+                _isPreparing = true;
+            }
 
             return this;
         }
@@ -37,15 +45,25 @@ public class PrepareState : State
     private void ResetVariables()
     {
         IsFoodCompleted = false;
+        _isPreparing = false;
     }
 
     private IEnumerator Prepare()
     {
+        // progress bar
+
+        //waiter anim
+
         float dispenceTime = _waiter.CurrentOrder.Machine.DispenseTime;
         yield return new WaitForSeconds(dispenceTime);
 
+        Debug.Log("prepared");
+
+        //yemegi alma sesi
+
+        //yemegi waiterin eline ver (makineden cek yemegi) yemegin pozisyonunu karakterimin eline esitle
+
         IsFoodCompleted = true;
         _waiter.HasFoodOnHand = true;
-
     }
 }

@@ -222,7 +222,7 @@ public class Customer : MonoBehaviour
             customerManager.siparisVermeSirasi.Add(this.gameObject);
 
 
-            Debug.Log("Ben " + FoodCount + " tane " + OrderedFood + " alýyým.");
+            //Debug.Log("Ben " + FoodCount + " tane " + OrderedFood + " alýyým.");
 
             if(runWhenYouArriveDelegate != null)
             {

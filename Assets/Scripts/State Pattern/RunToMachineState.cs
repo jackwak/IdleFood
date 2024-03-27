@@ -34,17 +34,20 @@ public class RunToMachineState : State
         }
         else
         {
-            if (!_isRunning)
+            if (_waiter.CurrentOrder.Machine != null) // bu if gereksiz olabilir
             {
-                Transform machinePosition = _waiter.CurrentOrder.Machine.FoodPrepareTransfrom;
-                RunWaiterCommand(machinePosition.position);
-                _isRunning = true;
-            }
+                if (!_isRunning)
+                {
+                    Transform machinePosition = _waiter.CurrentOrder.Machine.FoodPrepareTransfrom;
+                    RunWaiterCommand(machinePosition.position);
+                    _isRunning = true;
+                }
 
-            // is arrived to machine?
-            if ((_waiter.transform.position - _waiter.CurrentOrder.Machine.FoodPrepareTransfrom.position).magnitude < 0.1)
-            {
-                IsArrivedToMachine = true;
+                // is arrived to machine?
+                if ((_waiter.transform.position - _waiter.CurrentOrder.Machine.FoodPrepareTransfrom.position).magnitude < 1)
+                {
+                    IsArrivedToMachine = true;
+                }
             }
 
             return this;

@@ -41,7 +41,7 @@ public class DeveloperPanel : MonoBehaviour
                 this.gameObject.transform.GetChild(i).gameObject.SetActive(true);
             }
 
-            customerManager.specialForDevMode = true;   //GARSONLAR EKLENÝNCE KALDIR
+            //customerManager.specialForDevMode = true;   //GARSONLAR EKLENÝNCE KALDIR
         }
         else
         {
@@ -52,7 +52,7 @@ public class DeveloperPanel : MonoBehaviour
                 this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
             }
 
-            customerManager.specialForDevMode = false;   //GARSONLAR EKLENÝNCE KALDIR
+            //customerManager.specialForDevMode = false;   //GARSONLAR EKLENÝNCE KALDIR
 
         }
     }

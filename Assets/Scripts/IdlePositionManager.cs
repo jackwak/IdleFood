@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class IdlePositionManager : MonoBehaviour
 {
     public static IdlePositionManager Instance;
@@ -26,7 +27,15 @@ public class IdlePositionManager : MonoBehaviour
         }
 
         _waiters = new Waiter[IdlePositions.Count];
+
     }
+
+    private void Start()
+    {
+        CustomerManager.Instance.OnHasAnyCustomer += SetHasAnyCustomer;
+
+    }
+
 
     public Transform GetAvaibleIdlePosition(Waiter waiter)
     {
@@ -52,5 +61,24 @@ public class IdlePositionManager : MonoBehaviour
         {
             _waiters[indexOfWaiter] = null;
         }
+    }
+
+    public void SetHasAnyCustomer()
+    {
+        int waiterCount = _waiters.Length;
+        for (int i = waiterCount - 1; i >= 0; i--)
+        {
+            Debug.Log(i);
+            if (_waiters[i] != null)
+            {
+                _waiters[i].HasAnyCustomer = true;
+                break;
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        CustomerManager.Instance.OnHasAnyCustomer -= SetHasAnyCustomer;
     }
 }
