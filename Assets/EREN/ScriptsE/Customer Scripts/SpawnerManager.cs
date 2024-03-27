@@ -8,6 +8,10 @@ public class SpawnerManager : MonoBehaviour
 {
     //Maximum npc sayýsý ekle (önce hareket etme ve yok olmalarýný ekle)
 
+    [Header("Npc GameObjects")]
+    [SerializeField] List<GameObject> customerGameObjects;
+
+    [Header("Other Part")]
     [SerializeField] GameObject npcObject;
     [SerializeField] public bool varyantKonumlarAcilsinMi;
     [SerializeField] int kacSpawnNoktasiKullanilsin;
@@ -46,7 +50,7 @@ public class SpawnerManager : MonoBehaviour
     {
         int range = UnityEngine.Random.Range(1, kacSpawnNoktasiKullanilsin + 1);
         Vector3 spawnerVector3 = new Vector3(this.gameObject.transform.GetChild(range - 1).gameObject.transform.position.x, this.gameObject.transform.GetChild(range - 1).gameObject.transform.position.y, this.gameObject.transform.GetChild(range - 1).gameObject.transform.position.z);
-        Instantiate(npcObject, spawnerVector3, Quaternion.identity);
+        Instantiate(customerGameObjects[SelectRandomNpcGameObject()], spawnerVector3, Quaternion.identity);
         currentNpcObjectCount = currentNpcObjectCount + 1;
     }
     public void AralikliSpawnlama(float x)
@@ -95,6 +99,11 @@ public class SpawnerManager : MonoBehaviour
         npcleriOldur = false;
         customerManager.GetComponent<CustomerManager>().ParkPointResetAndRebuild();
 
+    }
+
+    int SelectRandomNpcGameObject()
+    {
+        return Random.Range(0, customerGameObjects.Count);
     }
 
 

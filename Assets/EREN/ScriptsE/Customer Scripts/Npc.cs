@@ -14,6 +14,8 @@ public class Npc : MonoBehaviour
     public bool buNpcMusteriMi;
     bool varyantKonumlarAcilsinMi;
 
+    Animator animator;
+
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
