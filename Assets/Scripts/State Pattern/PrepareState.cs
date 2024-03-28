@@ -50,11 +50,15 @@ public class PrepareState : State
 
     private IEnumerator Prepare()
     {
-        // progress bar
+
 
         //waiter anim
 
         float dispenceTime = _waiter.CurrentOrder.Machine.DispenseTime;
+
+        // progress bar
+        _waiter.ProgressBarController.StartProgressBar(dispenceTime);
+
         yield return new WaitForSeconds(dispenceTime);
 
         Debug.Log("prepared");
