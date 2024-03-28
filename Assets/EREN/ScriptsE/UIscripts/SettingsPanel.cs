@@ -53,15 +53,17 @@ public class SettingsPanel : MonoBehaviour
     {
         if (IsSoundTurnedOn)
         {
-            Debug.Log("ses kapandý");
+            //Debug.Log("ses kapandý");
             this.gameObject.transform.GetChild(2).gameObject.GetComponent<Image>().sprite = _OffSound;
             IsSoundTurnedOn = false;
+            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = false;
         }
         else
         {
-            Debug.Log("ses açýldý");
+            //Debug.Log("ses açýldý");
             this.gameObject.transform.GetChild(2).gameObject.GetComponent<Image>().sprite = _OnSound;
             IsSoundTurnedOn = true;
+            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = true;
         }
     }
     public void UnMute()

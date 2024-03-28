@@ -226,6 +226,10 @@ public class Customer : MonoBehaviour
             customerManager.siparisVermeSirasi.Add(this.gameObject);
             animator.SetBool("isWalking", false);
 
+            
+            this.transform.Find("Bubble").gameObject.SetActive(true);
+
+
             //Debug.Log("Ben " + FoodCount + " tane " + OrderedFood + " alýyým.");
 
 
@@ -293,8 +297,10 @@ public class Customer : MonoBehaviour
     public void MusteriyeYemekVer()
     {
         this.alinanYemekAdedi += 1;
+        transform.Find("Bubble").GetComponent<FoodBubble>().SetCountText();
         if (this.alinanYemekAdedi >= this.FoodCount)
         {
+            transform.Find("Bubble").gameObject.SetActive(false);
             Vector3 leaveTarget = new Vector3();
             switch (this.npcScript.directionToGo)
             {
