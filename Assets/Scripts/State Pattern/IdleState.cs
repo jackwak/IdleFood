@@ -52,8 +52,13 @@ public class IdleState : State
         {
             if (!_isSleeping)
             {
-                //_waiter.Animator.SetBool("isSleeping", true);
+                //sleep anim
+
                 _waiter.SleepingGO.SetActive(true);
+
+                Vector3 directionToTarget = _waiter.SleepingGO.transform.position - Camera.main.transform.position;
+                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+                _waiter.SleepingGO.transform.rotation = targetRotation;
 
                 _isSleeping = true;
             }

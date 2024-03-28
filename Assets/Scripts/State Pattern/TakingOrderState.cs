@@ -53,6 +53,9 @@ public class TakingOrderState : State
         // progress bar yap
 
         float takingOrderTime = LevelManager.Instance.TakingOrderTime;
+
+        _waiter.ProgressBarController.StartProgressBar(takingOrderTime);
+
         yield return new WaitForSeconds(takingOrderTime);
 
         //siparis alma sesi
