@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6611f0f22686042a24ade3a3fab885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Lemonade
+  Price: 100
