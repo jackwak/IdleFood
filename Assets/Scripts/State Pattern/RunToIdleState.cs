@@ -38,8 +38,8 @@ public class RunToIdleState : State
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
             //customerý çek ve waiterýn current customerý yap
-            //yeni müþteriyi listten çýkart
             _waiter.CurrentCustomer = CustomerManager.Instance.siparisVermeSirasi[0].GetComponent<Customer>();
+            //yeni müþteriyi listten çýkart
             CustomerManager.Instance.siparisVermeSirasi.RemoveAt(0);
             
 
@@ -50,8 +50,6 @@ public class RunToIdleState : State
             _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
-
-            //_waiter.CurrentOrder = OrderManager.Instance.GetOrder();
 
             return RunToMachineState;
         }
@@ -76,6 +74,7 @@ public class RunToIdleState : State
             }
 
             HasAnyCustomer = _waiter.HasAnyCustomer;
+            Debug.Log(HasAnyCustomer);
 
             HasAnyOrder = OrderManager.Instance.HasAnyOrder;
             if (HasAnyOrder && !HasAnyCustomer)
