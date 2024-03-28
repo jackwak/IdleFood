@@ -61,6 +61,23 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
+    /*public bool IsThereAnyCustomer(Waiter waiter)
+    {
+        if (siparisVermeSirasi.Count > 0)
+        {
+            OnHasAnyCustomer.Invoke();
+            HasAnyCustomer = true;
+            waiter.HasAnyCustomer = true;
+            return true;
+        }
+        else
+        {
+            HasAnyCustomer = false;
+            waiter.HasAnyCustomer = false;
+            return false;
+        }
+    }*/
+
     public void ParkPointResetAndRebuild()
     {
         musterilerList.Clear();

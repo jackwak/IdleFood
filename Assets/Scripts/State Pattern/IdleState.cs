@@ -28,7 +28,6 @@ public class IdleState : State
     {
         if (HasAnyCustomer)
         {
-            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
             //yeni customerdan cikart ve waiterýn current customerýna ekle
@@ -42,7 +41,6 @@ public class IdleState : State
         }
         else if (CanTakeOrder)
         {
-            _waiter.HasAnyCustomer = false;
             ResetVariables();
             IdlePositionManager.Instance.RemoveWaiterFromIdlePosition(_waiter);
 
@@ -85,6 +83,7 @@ public class IdleState : State
         HasAnyCustomer = false;
         HasAnyOrder = false;
         _isSleeping = false;
+        _waiter.HasAnyCustomer = false;
 
         //_waiter.Animator.SetBool("isSleeping", false);
         _waiter.SleepingGO.SetActive(false);

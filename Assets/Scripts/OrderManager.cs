@@ -37,7 +37,7 @@ public class OrderManager : MonoBehaviour
         }
     }
 
-    public bool AddOrder(Customer customer)
+    /*public bool AddOrder(Customer customer)
     {
         for (int i = 0; i < customer.FoodCount; i++)
         {
@@ -47,12 +47,10 @@ public class OrderManager : MonoBehaviour
         }
 
         return false;
-    }
+    }*/
 
     public Order GetOrder()
     {
-        Debug.Log(Foods.Count);
-
         //if 0.indeksteki yemeðin makinesi boþsa 0. indeksteki orderý gettir
         for (int i = 0; i < Foods.Count; i++)
         {
@@ -65,11 +63,9 @@ public class OrderManager : MonoBehaviour
                 if (Foods[i] == machineName)
                 {
                     MachinePositionManager machinePositionManager = MachinePositionsManager[j].GetComponent<MachinePositionManager>();
-                    Debug.Log(machinePositionManager);
                     if (machinePositionManager.CheckAvaibleMachine())
                     {
                         Machine machine = machinePositionManager.GetAvaibleMachine();
-                        Debug.Log(machine);
                         Order order = new Order(Customers[i], Foods[i], machine);
 
                         Foods.RemoveAt(i);

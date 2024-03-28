@@ -61,8 +61,6 @@ public class PrepareState : State
 
         yield return new WaitForSeconds(dispenceTime);
 
-        Debug.Log("prepared");
-
         //yemegi alma sesi
 
         //yemegi waiterin eline ver (makineden cek yemegi) yemegin pozisyonunu karakterimin eline esitle

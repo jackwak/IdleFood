@@ -68,7 +68,6 @@ public class IdlePositionManager : MonoBehaviour
         int waiterCount = _waiters.Length;
         for (int i = waiterCount - 1; i >= 0; i--)
         {
-            Debug.Log(i);
             if (_waiters[i] != null)
             {
                 _waiters[i].HasAnyCustomer = true;
