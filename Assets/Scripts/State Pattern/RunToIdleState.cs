@@ -75,10 +75,10 @@ public class RunToIdleState : State
 
             HasAnyCustomer = _waiter.HasAnyCustomer;
 
-            /*if (HasAnyCustomer == false)
+            if (HasAnyCustomer == false)
             {
                 HasAnyCustomer = CustomerManager.Instance.IsThereAnyCustomer(_waiter);
-            }*/
+            }
 
             HasAnyOrder = OrderManager.Instance.HasAnyOrder;
             if (HasAnyOrder && !HasAnyCustomer)

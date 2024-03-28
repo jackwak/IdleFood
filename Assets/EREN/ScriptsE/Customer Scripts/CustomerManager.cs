@@ -61,7 +61,7 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    /*public bool IsThereAnyCustomer(Waiter waiter)
+    public bool IsThereAnyCustomer(Waiter waiter)
     {
         if (siparisVermeSirasi.Count > 0)
         {
@@ -76,7 +76,7 @@ public class CustomerManager : MonoBehaviour
             waiter.HasAnyCustomer = false;
             return false;
         }
-    }*/
+    }
 
     public void ParkPointResetAndRebuild()
     {
