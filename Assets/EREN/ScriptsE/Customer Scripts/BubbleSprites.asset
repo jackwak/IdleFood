@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092ac9ee49a58dc408e8551e29ffe378, type: 3}
   m_Name: BubbleSprites
   m_EditorClassIdentifier: 
-  bubble: {fileID: 0}
-  lemonade: {fileID: 21300000, guid: 5e02d87dc5c0d494b923dc93886687b2, type: 3}
+  Bubble: {fileID: 0}
+  Lemonade: {fileID: 21300000, guid: 5e02d87dc5c0d494b923dc93886687b2, type: 3}

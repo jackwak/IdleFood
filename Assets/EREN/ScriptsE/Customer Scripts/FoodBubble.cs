@@ -21,7 +21,7 @@ public class FoodBubble : MonoBehaviour
         switch (foodName)
         {
             case "Lemonade":
-                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = foodBubbleSO.lemonade;
+                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = foodBubbleSO.Lemonade;
                 break;
             default:
                 break;

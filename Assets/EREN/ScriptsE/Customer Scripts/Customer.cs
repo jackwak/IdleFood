@@ -16,7 +16,7 @@ public class Customer : MonoBehaviour
     CustomerManager customerManager;
     NavMeshAgent navMeshAgent;
 
-    [SerializeField] public int musteriOlmaSansi;
+    [SerializeField] public float musteriOlmaSansi;
     [SerializeField] public bool buNpcMusteriMi;
     [SerializeField] public GameObject selectedParkPoint;
     [SerializeField] public GameObject selectedWaiterPoint;
@@ -233,10 +233,6 @@ public class Customer : MonoBehaviour
             //Debug.Log("Ben " + FoodCount + " tane " + OrderedFood + " alýyým.");
 
 
-            if (runWhenYouArriveDelegate != null)
-            {
-                runWhenYouArriveDelegate();
-            }
 
         }
     }   //GoForBuy(); dan sonra hedef noktaya eriþtiðinde çalýþýr
@@ -341,8 +337,6 @@ public class Customer : MonoBehaviour
         }
     }
 
-    public delegate void RunWhenYouArriveDelegate();
-    public static RunWhenYouArriveDelegate runWhenYouArriveDelegate;
 
 
 
