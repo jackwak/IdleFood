@@ -12,11 +12,11 @@ public class Waiter : MonoBehaviour
     public GameObject SleepingGO;
 
 
-    public bool HasFoodOnHand;
-    public bool HasAnyCustomer;
-    public bool HasAnyOrder;
+    [HideInInspector] public bool HasFoodOnHand;
+    [HideInInspector] public bool HasAnyCustomer;
+    [HideInInspector] public bool HasAnyOrder;
 
-    public Customer CurrentCustomer;
+    [HideInInspector] public Customer CurrentCustomer;
     public Order CurrentOrder;
 
 

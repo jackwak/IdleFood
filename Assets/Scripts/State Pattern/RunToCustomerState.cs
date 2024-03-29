@@ -23,7 +23,7 @@ public class RunToCustomerState : State
     private void Awake()
     {
         _commandInvoker = new CommandInvoker();
-        _waiter = transform.root.GetComponent<Waiter>();
+        _waiter = transform.parent.parent.GetComponent<Waiter>();
     }
 
     public override State RunCurrentState()

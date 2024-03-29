@@ -17,7 +17,7 @@ public class TakingOrderState : State
 
     private void Awake()
     {
-        _waiter = transform.root.GetComponent<Waiter>();
+        _waiter = transform.parent.parent.GetComponent<Waiter>();
     }
 
     public override State RunCurrentState()

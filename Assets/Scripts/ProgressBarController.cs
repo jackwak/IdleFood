@@ -14,10 +14,6 @@ public class ProgressBarController : MonoBehaviour
     private float _passingTime;
     private float _targetTime;
 
-    private void Start()
-    {
-    }
-
     private void Update()
     {
         if (_startProgressBar)
