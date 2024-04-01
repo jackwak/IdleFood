@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class RunToIdleState : State
 {
@@ -23,6 +24,7 @@ public class RunToIdleState : State
 
     [Header("Variables")]
     private bool _isRunning;
+    private Transform _availableTransform;
 
     private void Awake()
     {
@@ -63,13 +65,15 @@ public class RunToIdleState : State
         {
             if (!_isRunning)
             {
-                Transform avaibleTransform = IdlePositionManager.Instance.GetAvaibleIdlePosition(_waiter);
-                RunWaiterCommand(avaibleTransform.position);
+                _availableTransform = IdlePositionManager.Instance.GetAvaibleIdlePosition(_waiter);
+                RunWaiterCommand(_availableTransform.position);
                 _isRunning = true;
+                _waiter.Animator.SetBool("IsRunning", true);
             }
 
             if (IsWaiterReached())
             {
+                _waiter.transform.DORotateQuaternion(_availableTransform.rotation, _waiter.RotationSpeed);
                 IsArrivedIdlePosition = true;
             }
 
@@ -122,6 +126,7 @@ public class RunToIdleState : State
         HasAnyOrder = false;
         IsArrivedIdlePosition = false;
         CanTakeOrder = false;
+        _waiter.Animator.SetBool("IsRunning", false);
 
         _isRunning = false;
         _waiter.Agent.ResetPath();

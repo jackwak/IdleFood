@@ -13,7 +13,7 @@ public class IdlePositionManager : MonoBehaviour
     public List<Transform> IdlePositions = new List<Transform>();
 
     [Header("Variables")]
-    [SerializeField] private Waiter[] _waiters;
+    private Waiter[] _waiters;
 
     private void Awake()
     {

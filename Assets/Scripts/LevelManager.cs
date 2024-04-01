@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
 
     [SerializeField] private float _takingOrderTime;
-    public List<Waiter> Waiters = new List<Waiter>();
+    [HideInInspector] public List<Waiter> Waiters = new List<Waiter>();
 
     public float TakingOrderTime
     {

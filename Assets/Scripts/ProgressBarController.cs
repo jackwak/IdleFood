@@ -18,11 +18,11 @@ public class ProgressBarController : MonoBehaviour
     {
         if (_startProgressBar)
         {
+            _progressBarPanel.transform.LookAt(Camera.main.transform);
             _passingTime += Time.deltaTime;
             _progressBarImage.fillAmount = _passingTime / _targetTime;
             if (_passingTime > _targetTime)
             {
-
                 //add audio (start progress bara sesi eklersin ref olarak)
 
                 _startProgressBar = false;
@@ -36,7 +36,6 @@ public class ProgressBarController : MonoBehaviour
     {
         _targetTime = targetTime;
         _progressBarPanel.gameObject.SetActive(true);
-        _progressBarPanel.transform.LookAt(Camera.main.transform);
         _passingTime = 0;   
         
         _startProgressBar = true;

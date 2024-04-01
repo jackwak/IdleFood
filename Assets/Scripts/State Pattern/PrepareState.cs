@@ -50,20 +50,29 @@ public class PrepareState : State
 
     private IEnumerator Prepare()
     {
+        // start machine anim
+        Order order = _waiter.CurrentOrder;
+        Machine machine = order.Machine;
+        machine.Animator.SetBool("IsPreparing", true);
 
+        // show preparing food
+        StartCoroutine(machine.ShowPreparingFood());
 
         //waiter anim
 
-        float dispenceTime = _waiter.CurrentOrder.Machine.DispenseTime;
+        float dispenceTime = machine.DispenseTime;
 
         // progress bar
         _waiter.ProgressBarController.StartProgressBar(dispenceTime);
 
         yield return new WaitForSeconds(dispenceTime);
 
+        // finish machine anim
+        machine.Animator.SetBool("IsPreparing", false);
+
         //yemegi alma sesi
 
-        //yemegi waiterin eline ver (makineden cek yemegi) yemegin pozisyonunu karakterimin eline esitle
+        //yemegi waiterin eline ver (makineden cek yemegi) yemegin pozisyonunu karakterimin eline esitle (getfood yap ve posizyonunu waiterýn food posa ekle
 
         IsFoodCompleted = true;
         _waiter.HasFoodOnHand = true;

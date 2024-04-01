@@ -10,11 +10,11 @@ public class OrderManager : MonoBehaviour
     public GameObject[] MachinePositionsManager;
 
     [Header("Variables")]
-    public List<Customer> Customers;
-    public List<string> Foods;
+    [HideInInspector] public List<Customer> Customers;
+    [HideInInspector] public List<string> Foods;
 
     [Header("Transitions")]
-    public bool HasAnyOrder;
+    [HideInInspector] public bool HasAnyOrder;
 
 
     private void Awake()

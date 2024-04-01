@@ -10,6 +10,7 @@ public class Waiter : MonoBehaviour
     [HideInInspector] public Animator Animator;
     [HideInInspector] public ProgressBarController ProgressBarController;
     public GameObject SleepingGO;
+    public float RotationSpeed = .3f;
 
 
     [HideInInspector] public bool HasFoodOnHand;

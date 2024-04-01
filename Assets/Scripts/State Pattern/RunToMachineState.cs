@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class RunToMachineState : State
 
     [Header("Variables")]
     private bool _isRunning;
+    private Transform _machinePosition;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class RunToMachineState : State
     {
         if (IsArrivedToMachine)
         {
+            _waiter.Animator.SetBool("IsRunning", false);
             _isRunning = false;
             IsArrivedToMachine = false;
 
@@ -38,8 +41,9 @@ public class RunToMachineState : State
             {
                 if (!_isRunning)
                 {
-                    Transform machinePosition = _waiter.CurrentOrder.Machine.FoodPrepareTransfrom;
-                    RunWaiterCommand(machinePosition.position);
+                    _waiter.Animator.SetBool("IsRunning", true);
+                    _machinePosition = _waiter.CurrentOrder.Machine.FoodPrepareTransfrom;
+                    RunWaiterCommand(_machinePosition.position);
                     _isRunning = true;
                 }
 
@@ -47,6 +51,7 @@ public class RunToMachineState : State
                 if ((_waiter.transform.position - _waiter.CurrentOrder.Machine.FoodPrepareTransfrom.position).magnitude < 1)
                 {
                     IsArrivedToMachine = true;
+                    _waiter.transform.DORotateQuaternion(_machinePosition.rotation, _waiter.RotationSpeed);
                 }
             }
 

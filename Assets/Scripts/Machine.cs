@@ -7,12 +7,19 @@ public abstract class Machine : MonoBehaviour
     private const int POOL_SIZE = 10;
     public float DispenseTime;
     public Queue<GameObject> FoodPool;
+
+    [Header("References")]
     public GameObject FoodPrefab;
     public Transform FoodPrepareTransfrom;
     public GameObject FoodPreparingPrefab;
+    [HideInInspector] public Animator Animator;
+
 
     private void Start()
     {
+        Animator = GetComponent<Animator>();
+
+
         FoodPool = new Queue<GameObject>();
 
         for (int i = 0; i < POOL_SIZE; ++i)
@@ -38,6 +45,7 @@ public abstract class Machine : MonoBehaviour
         FoodPool.Enqueue(food);
     }
 
-    public abstract GameObject PrepareFood();
+    public abstract GameObject GetFood();
+    public abstract IEnumerator ShowPreparingFood();
 
 }

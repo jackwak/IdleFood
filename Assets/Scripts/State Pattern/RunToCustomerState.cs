@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class RunToCustomerState : State
 
     [Header("Variables")]
     private bool _isRunning;
+    private Transform _selectedWaiterTransform;
 
     private void Awake()
     {
@@ -47,19 +49,23 @@ public class RunToCustomerState : State
             if (!_isRunning)
             {
                 HasFoodOnHand = _waiter.HasFoodOnHand;
+                _waiter.Animator.SetBool("IsRunning", true);
 
                 if (HasFoodOnHand)
                 {
                     // siparis isteyen customera git
                     Vector3 position = _waiter.CurrentOrder.Customer.selectedWaiterPoint.transform.position;
+                    _selectedWaiterTransform = _waiter.CurrentOrder.Customer.selectedWaiterPoint.transform;
                     RunWaiterCommand(position);
                 }
                 else
                 {
                     //siparis vericek olan customera git
                     Vector3 position = _waiter.CurrentCustomer.selectedWaiterPoint.transform.position;
+                    _selectedWaiterTransform = _waiter.CurrentCustomer.selectedWaiterPoint.transform;
                     RunWaiterCommand(position);
                 }
+
 
                 _isRunning = true;
             }
@@ -67,6 +73,8 @@ public class RunToCustomerState : State
             if (IsWaiterReached())
             {
                 IsArrivedToCustomer = true;
+                _waiter.Animator.SetBool("IsRunning", false);
+                _waiter.transform.DORotateQuaternion(_selectedWaiterTransform.rotation, _waiter.RotationSpeed);
             }
 
             return this;

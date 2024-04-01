@@ -10,7 +10,7 @@ public class MachinePositionManager : MonoBehaviour
 
     [Header("Variables")]
     private Waiter[] _waiters;
-    [SerializeField]private bool[] _isPositionAvailable;
+    private bool[] _isPositionAvailable;
 
     private void Awake()
     {
