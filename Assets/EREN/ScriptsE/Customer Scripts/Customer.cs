@@ -16,7 +16,7 @@ public class Customer : MonoBehaviour
     CustomerManager customerManager;
     NavMeshAgent navMeshAgent;
 
-    [SerializeField] public int musteriOlmaSansi;
+    [SerializeField] public float musteriOlmaSansi;
     [SerializeField] public bool buNpcMusteriMi;
     [SerializeField] public GameObject selectedParkPoint;
     [SerializeField] public GameObject selectedWaiterPoint;
@@ -45,10 +45,13 @@ public class Customer : MonoBehaviour
     [SerializeField] public bool siparisTamamlandiMi;
     public Vector3 musteriOlunanKonum;
 
+    Animator animator;
+
     //[SerializeField] public bool alinanYemegiBirArttýrSadeceDevMod;    //TEST AMAÇLI KULLANILIR. TAM SÜRÜMDE SÝLÝNEBÝLÝR.
 
     private void Awake()
     {
+        //animator = this.gameObject.transform.GetChild(0).GetComponent<Animator>();
         npcScript = this.gameObject.GetComponent<Npc>();
         musteriOlmaSansi = 0;
         buNpcMusteriMi = false;
@@ -123,6 +126,7 @@ public class Customer : MonoBehaviour
         npcScript.buNpcMusteriMi = true;
 
         alinanYemekAdedi = 0;
+        animator = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
 
         GoForBuy();
 
@@ -220,14 +224,15 @@ public class Customer : MonoBehaviour
             FoodCount = SelectHowManyFoodYouWant();
             OrderedFood = SelectWhichFoodYouWant();
             customerManager.siparisVermeSirasi.Add(this.gameObject);
+            animator.SetBool("isWalking", false);
+
+            
+            this.transform.Find("Bubble").gameObject.SetActive(true);
 
 
             //Debug.Log("Ben " + FoodCount + " tane " + OrderedFood + " alýyým.");
 
-            if(runWhenYouArriveDelegate != null)
-            {
-                runWhenYouArriveDelegate();
-            }
+
 
         }
     }   //GoForBuy(); dan sonra hedef noktaya eriþtiðinde çalýþýr
@@ -288,8 +293,10 @@ public class Customer : MonoBehaviour
     public void MusteriyeYemekVer()
     {
         this.alinanYemekAdedi += 1;
+        transform.Find("Bubble").GetComponent<FoodBubble>().SetCountText();
         if (this.alinanYemekAdedi >= this.FoodCount)
         {
+            transform.Find("Bubble").gameObject.SetActive(false);
             Vector3 leaveTarget = new Vector3();
             switch (this.npcScript.directionToGo)
             {
@@ -317,19 +324,19 @@ public class Customer : MonoBehaviour
             this.customerManager.musterilerList[selectedParkPointIndex] = null;
             this.customerManager.parkPointsBusy[selectedParkPointIndex] = false;
             this.durumAciklamasi = "Sipariþimi Aldým, Ayrýlýyorum";
-            
+
             //this.npcScript.buNpcMusteriMi = false; Çalýþýnca tüm kod çalýþmýyor
             this.hedefeVardim = false;
             this.selectedParkPoint = null;
             this.selectedWaiterPoint = null;
             this.buNpcMusteriMi = false;
 
+            animator.SetBool("isWalking", true);
+
 
         }
     }
 
-    public delegate void RunWhenYouArriveDelegate();
-    public static RunWhenYouArriveDelegate runWhenYouArriveDelegate;
 
 
 
