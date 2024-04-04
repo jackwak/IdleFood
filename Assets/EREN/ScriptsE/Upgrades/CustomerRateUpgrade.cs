@@ -4,89 +4,82 @@ using UnityEngine;
 
 public class CustomerRateUpgrade : MonoBehaviour
 {
-    [Header("Rate")]
-    [SerializeField] public float _startRate = 10f;
-    [SerializeField] private float _currentRate;
+    [Header("Texts")]
+    public string upgradeTitle;
+    public string upgradeDescription;
 
-    [Header("Level")]
-    [SerializeField] private int _startLevel = 1;
-    [SerializeField] private int _currentLevel;
-    [SerializeField] private int _maxLevel = 10;
+    [Header("________________________________________________________________________________________________________________________________________________")]
 
-    [Header("Multiply")]
-    [SerializeField] private float _multiplyRate = 1.2f;
+    [Header("Main Stats")]
+    [SerializeField] public int currentLevel;
+    [SerializeField] public int maxLevel = 5;
+    [Space(10)]
+    [SerializeField] public float currentRate;
+    [SerializeField] public int currentRequiredMoney;
 
-    [Header("Money")]
-    [SerializeField] public int currentWantedMoney;
-    [SerializeField] private int _level2Money;
-    [SerializeField] private int _level3Money;
-    [SerializeField] private int _level4Money;
-    [SerializeField] private int _level5Money;
-    [SerializeField] private int _level6Money;
-    [SerializeField] private int _level7Money;
-    [SerializeField] private int _level8Money;
-    [SerializeField] private int _level9Money;
-    [SerializeField] private int _level10Money;
+    [Header("________________________________________________________________________________________________________________________________________________")]
+
+    [Header("Level 1")]
+    [Range(0,100)]
+    [SerializeField] private float _level1Rate = 10f;
+    [SerializeField] private int _level1RequiredMoney;
+
+    [Header("Level 2")]
+    [Range(0, 100)]
+    [SerializeField] private float _level2Rate = 15f;
+    [SerializeField] private int _level2RequiredMoney;
+
+    [Header("Level 3")]
+    [Range(0, 100)]
+    [SerializeField] private float _level3Rate = 25f;
+    [SerializeField] private int _level3RequiredMoney;
+
+    [Header("Level 4")]
+    [Range(0, 100)]
+    [SerializeField] private float _level4Rate = 40f;
+    [SerializeField] private int _level4RequiredMoney;
+
+    [Header("Level 5")]
+    [Range(0, 100)]
+    [SerializeField] private float _level5Rate = 50f;
+    [SerializeField] private int _level5RequiredMoney;
 
     public float MakeUpgrade()
     {
-        if(_currentLevel < _maxLevel)
+        if(currentLevel < maxLevel)
         {
-            switch (_currentLevel)
+            switch (currentLevel)
             {
                 case 1:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level3Money;
-                    return _currentRate;
+                    currentLevel++;
+                    currentRate = _level2Rate;
+                    currentRequiredMoney = _level3RequiredMoney;
+                    return currentRate;
                 case 2:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level4Money;
-                    return _currentRate;
+                    currentLevel++;
+                    currentRate = _level3Rate;
+                    currentRequiredMoney = _level4RequiredMoney;
+                    return currentRate;
                 case 3:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level5Money;
-                    return _currentRate;
+                    currentLevel++;
+                    currentRate = _level4Rate;
+                    currentRequiredMoney = _level5RequiredMoney;
+                    return currentRate;
                 case 4:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level6Money;
-                    return _currentRate;
-                case 5:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level7Money;
-                    return _currentRate;
-                case 6:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level8Money;
-                    return _currentRate;
-                case 7:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level9Money;
-                    return _currentRate;
-                case 8:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    currentWantedMoney = _level10Money;
-                    return _currentRate;
-                case 9:
-                    _currentLevel++;
-                    _currentRate *= _multiplyRate;
-                    return _currentRate;
+                    currentLevel++;
+                    currentRate = _level5Rate;
+                    //currentRequiredMoney = _level6RequiredMoney;
+                    return currentRate;
+
             }
         }
-        return _currentRate;
+        return currentRate;
     }
 
     public void ResetUpgrade()
     {
-        _currentRate = _startRate;
-        _currentLevel = _startLevel;
-        currentWantedMoney = _level2Money;
+        currentRate = _level1Rate;
+        currentLevel = 1;
+        currentRequiredMoney = _level2RequiredMoney;
     }
 }

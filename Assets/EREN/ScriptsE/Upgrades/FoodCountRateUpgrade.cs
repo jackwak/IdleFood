@@ -4,104 +4,97 @@ using UnityEngine;
 
 public class FoodCountRateUpgrade : MonoBehaviour
 {
-    [Header("Start Rates")]
-    [SerializeField] private int _startOneFoodRate = 20;
-    [SerializeField] private int _startTwoFoodRate = 8;
-    [SerializeField] private int _startThreeFoodRate = 1;
+    [Header("Texts")]
+    public string upgradeTitle;
+    public string upgradeDescription;
 
-    [Header("Current Rates")]
-    [SerializeField] private int _currentOneFoodRate;
-    [SerializeField] private int _currentTwoFoodRate;
-    [SerializeField] private int _currentThreeFoodRate;
+    [Header("________________________________________________________________________________________________________________________________________________")]
 
-    [Header("Level")]
-    [SerializeField] private int _startLevel = 1;
-    [SerializeField] private int _currentLevel;
-    [SerializeField] private int _maxLevel = 10;
+    [Header("Main Stats")]
+    [SerializeField] public int currentLevel;
+    [SerializeField] public int maxLevel = 5;
+    [Space(10)]
+    [SerializeField] public int currentOneFoodRate;
+    [SerializeField] public int currentTwoFoodRate;
+    [SerializeField] public int currentThreeFoodRate;
+    [SerializeField] public int currentRequiredMoney;
 
+    [Header("________________________________________________________________________________________________________________________________________________")]
+
+    [Header("Level 1")]
+    [SerializeField] private int _level1OneFoodRate;
+    [SerializeField] private int _level1TwoFoodRate;
+    [SerializeField] private int _level1ThreeFoodRate;
+    [SerializeField] private int _level1RequiredMoney;
+
+    [Header("Level 2")]
+    [SerializeField] private int _level2OneFoodRate;
+    [SerializeField] private int _level2TwoFoodRate;
+    [SerializeField] private int _level2ThreeFoodRate;
+    [SerializeField] private int _level2RequiredMoney;
+
+    [Header("Level 3")]
+    [SerializeField] private int _level3OneFoodRate;
+    [SerializeField] private int _level3TwoFoodRate;
+    [SerializeField] private int _level3ThreeFoodRate;
+    [SerializeField] private int _level3RequiredMoney;
+
+    [Header("Level 4")]
+    [SerializeField] private int _level4OneFoodRate;
+    [SerializeField] private int _level4TwoFoodRate;
+    [SerializeField] private int _level4ThreeFoodRate;
+    [SerializeField] private int _level4RequiredMoney;
+
+    [Header("Level 5")]
+    [SerializeField] private int _level5OneFoodRate;
+    [SerializeField] private int _level5TwoFoodRate;
+    [SerializeField] private int _level5ThreeFoodRate;
+    [SerializeField] private int _level5RequiredMoney;
 
     public void MakeUpgrade()
     {
-        if(_currentLevel < _maxLevel)
+        if(currentLevel < maxLevel)
         {
-            switch (_currentLevel)
+            switch (currentLevel)
             {
                 case 1:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 8;
-                    _currentThreeFoodRate = 1;
+                    currentLevel++;
+                    currentOneFoodRate = _level2OneFoodRate;
+                    currentTwoFoodRate = _level2TwoFoodRate;
+                    currentThreeFoodRate = _level2ThreeFoodRate;
+                    currentRequiredMoney = _level3RequiredMoney;
                     break;
                 case 2:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 10;
-                    _currentThreeFoodRate = 2;
+                    currentLevel++;
+                    currentOneFoodRate = _level3OneFoodRate;
+                    currentTwoFoodRate = _level3TwoFoodRate;
+                    currentThreeFoodRate = _level3ThreeFoodRate;
+                    currentRequiredMoney = _level4RequiredMoney;
                     break;
                 case 3:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 11;
-                    _currentThreeFoodRate = 3;
+                    currentLevel++;
+                    currentOneFoodRate = _level4OneFoodRate;
+                    currentTwoFoodRate = _level4TwoFoodRate;
+                    currentThreeFoodRate = _level4ThreeFoodRate;
+                    currentRequiredMoney = _level5RequiredMoney;
                     break;
                 case 4:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 12;
-                    _currentThreeFoodRate = 4;
-                    break;
-                case 5:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 13;
-                    _currentThreeFoodRate = 6;
-                    break;
-                case 6:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 14;
-                    _currentThreeFoodRate = 8;
-                    break;
-                case 7:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 15;
-                    _currentThreeFoodRate = 10;
-                    break;
-                case 8:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 16;
-                    _currentThreeFoodRate = 12;
-                    break;
-                case 9:
-                    _currentLevel++;
-                    _currentOneFoodRate = 20;
-                    _currentTwoFoodRate = 18;
-                    _currentThreeFoodRate = 15;
+                    currentLevel++;
+                    currentOneFoodRate = _level5OneFoodRate;
+                    currentTwoFoodRate = _level5TwoFoodRate;
+                    currentThreeFoodRate = _level5ThreeFoodRate;
+                    //currentRequiredMoney = _level6RequiredMoney;
                     break;
             }
         }
     }
 
-    public int OneFood()
-    {
-        return _currentOneFoodRate;
-    }
-    public int TwoFood()
-    {
-        return _currentTwoFoodRate;
-    }
-    public int ThreeFood()
-    {
-        return _currentThreeFoodRate;
-    }
-
     public void ResetUpgrade()
     {
-        _currentLevel = _startLevel;
-        _currentOneFoodRate = _startOneFoodRate;
-        _currentTwoFoodRate = _startTwoFoodRate;
-        _currentThreeFoodRate = _startThreeFoodRate;
+        currentLevel = 1;
+        currentOneFoodRate = _level1OneFoodRate;
+        currentTwoFoodRate = _level1TwoFoodRate;
+        currentThreeFoodRate = _level1ThreeFoodRate;
+        currentRequiredMoney = _level2RequiredMoney;
     }
 }

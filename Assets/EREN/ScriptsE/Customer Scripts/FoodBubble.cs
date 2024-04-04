@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodBubble : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class FoodBubble : MonoBehaviour
         switch (foodName)
         {
             case "Lemonade":
-                transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = foodBubbleSO.Lemonade;
+                //transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = foodBubbleSO.Lemonade;
+                transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = foodBubbleSO.Lemonade;
                 break;
             default:
                 break;
@@ -36,7 +38,8 @@ public class FoodBubble : MonoBehaviour
 
     public void SetCountText()
     {
-        this.gameObject.transform.Find("Canvas").gameObject.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = (this.transform.root.gameObject.GetComponent<Customer>().FoodCount - this.transform.root.gameObject.GetComponent<Customer>().alinanYemekAdedi).ToString();
+        //this.gameObject.transform.Find("Canvas").gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = (this.transform.root.gameObject.GetComponent<Customer>().FoodCount - this.transform.root.gameObject.GetComponent<Customer>().alinanYemekAdedi).ToString();
+        this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = (this.transform.root.gameObject.GetComponent<Customer>().FoodCount - this.transform.root.gameObject.GetComponent<Customer>().alinanYemekAdedi).ToString();
     }
 
 

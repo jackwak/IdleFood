@@ -697,15 +697,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f745a3cccefbac94a8354b31b67e5948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startOneFoodRate: 20
-  _startTwoFoodRate: 7
-  _startThreeFoodRate: 1
-  _currentOneFoodRate: 0
-  _currentTwoFoodRate: 0
-  _currentThreeFoodRate: 0
-  _startLevel: 1
-  _currentLevel: 0
-  _maxLevel: 10
+  upgradeTitle: 
+  upgradeDescription: 
+  currentLevel: 0
+  maxLevel: 5
+  currentOneFoodRate: 0
+  currentTwoFoodRate: 0
+  currentThreeFoodRate: 0
+  currentRequiredMoney: 0
+  _level1OneFoodRate: 20
+  _level1TwoFoodRate: 5
+  _level1ThreeFoodRate: 1
+  _level1RequiredMoney: 0
+  _level2OneFoodRate: 20
+  _level2TwoFoodRate: 8
+  _level2ThreeFoodRate: 3
+  _level2RequiredMoney: 0
+  _level3OneFoodRate: 20
+  _level3TwoFoodRate: 12
+  _level3ThreeFoodRate: 5
+  _level3RequiredMoney: 0
+  _level4OneFoodRate: 20
+  _level4TwoFoodRate: 16
+  _level4ThreeFoodRate: 10
+  _level4RequiredMoney: 0
+  _level5OneFoodRate: 20
+  _level5TwoFoodRate: 16
+  _level5ThreeFoodRate: 15
+  _level5RequiredMoney: 0
 --- !u!1 &96667901
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +891,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 116150172}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 680165207}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: CustomerRateUpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &119805761
 GameObject:
   m_ObjectHideFlags: 0
@@ -5929,6 +5960,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CustomerManagerObj: {fileID: 740247652}
+  UpgradesObj: {fileID: 1969534120}
+  grayButton: {fileID: 21300000, guid: c5e74c292d55b0543b3b7b4e09e610dc, type: 3}
+  greenButton: {fileID: 21300000, guid: 335ebbcd033547844a0891bdabb51f1e, type: 3}
   CustomerRateUpgradeObj: {fileID: 1201246012}
   FoodCountRateUpgradeObj: {fileID: 92401028}
 --- !u!4 &680165208
@@ -6236,6 +6270,141 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709829873}
+  m_CullTransparentMesh: 1
+--- !u!1 &711945667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 711945668}
+  - component: {fileID: 711945670}
+  - component: {fileID: 711945669}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &711945668
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711945667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1852264822}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 5}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &711945669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711945667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: LEVEL 1
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 45
+  m_fontSizeBase: 45
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &711945670
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711945667}
   m_CullTransparentMesh: 1
 --- !u!1 &714609060
 GameObject:
@@ -7981,6 +8150,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 680165207}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: SetGrayOrGreenButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &915420024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8819,7 +9000,7 @@ GameObject:
   - component: {fileID: 996786991}
   - component: {fileID: 996786990}
   m_Layer: 5
-  m_Name: Upgrade (1)
+  m_Name: Upgrade (1) (FoodCountRateUpgrade)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10772,22 +10953,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9bc4f44ebf6124ea5894eb79023f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startRate: 10
-  _currentRate: 0
-  _startLevel: 1
-  _currentLevel: 0
-  _maxLevel: 10
-  _multiplyRate: 1.2
-  currentWantedMoney: 0
-  _level2Money: 10
-  _level3Money: 50
-  _level4Money: 125
-  _level5Money: 200
-  _level6Money: 1000
-  _level7Money: 5000
-  _level8Money: 12500
-  _level9Money: 20000
-  _level10Money: 50000
+  upgradeTitle: Reklam Ver
+  upgradeDescription: "Tan\u0131tl\u0131\u011F\u0131n\u0131 artt\u0131rman\u0131n
+    en iyi yolu."
+  currentLevel: 0
+  maxLevel: 5
+  currentRate: 0
+  currentRequiredMoney: 0
+  _level1Rate: 10
+  _level1RequiredMoney: 0
+  _level2Rate: 15
+  _level2RequiredMoney: 0
+  _level3Rate: 25
+  _level3RequiredMoney: 0
+  _level4Rate: 40
+  _level4RequiredMoney: 0
+  _level5Rate: 50
+  _level5RequiredMoney: 0
 --- !u!4 &1201246014
 Transform:
   m_ObjectHideFlags: 0
@@ -14450,7 +14632,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.92855203, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.92941177, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -14667,7 +14849,7 @@ GameObject:
   - component: {fileID: 1622364678}
   - component: {fileID: 1622364677}
   m_Layer: 5
-  m_Name: Upgrade (0)
+  m_Name: Upgrade (0) (CustomerRateUpgrade)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16008,7 +16190,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.92855203, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.92941177, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -16676,7 +16858,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.00018801374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 711945668}
   m_Father: {fileID: 238591803}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
