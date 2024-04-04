@@ -33,7 +33,7 @@ public class FoodBubble : MonoBehaviour
     }
     public void LookCamera()
     {
-        transform.eulerAngles = new Vector3(GameObject.Find("Main Camera").transform.eulerAngles.x * -1, transform.eulerAngles.y + 180, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(GameObject.Find("Main Camera").transform.eulerAngles.x * -1, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     public void SetCountText()
