@@ -60,7 +60,7 @@ public class PrepareState : State
 
         //waiter anim
 
-        float dispenceTime = machine.DispenseTime;
+        float dispenceTime = machine.MachineData.DispenseTime;
 
         // progress bar
         _waiter.ProgressBarController.StartProgressBar(dispenceTime);

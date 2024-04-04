@@ -5,14 +5,15 @@ using UnityEngine;
 public abstract class Machine : MonoBehaviour
 {
     private const int POOL_SIZE = 10;
-    public float DispenseTime;
     public Queue<GameObject> FoodPool;
 
     [Header("References")]
-    public GameObject FoodPrefab;
     public Transform FoodPrepareTransfrom;
-    public GameObject FoodPreparingPrefab;
+    public GameObject FoodPreparingGameobject;
     [HideInInspector] public Animator Animator;
+
+    [Header("Data")]
+    public MachineData MachineData;
 
 
     private void Start()
@@ -24,12 +25,12 @@ public abstract class Machine : MonoBehaviour
 
         for (int i = 0; i < POOL_SIZE; ++i)
         {
-            GameObject lemonade = Instantiate(FoodPrefab, Vector3.zero, Quaternion.identity);
+            GameObject lemonade = Instantiate(MachineData.FoodPrefab, Vector3.zero, Quaternion.identity);
             lemonade.SetActive(false);
             FoodPool.Enqueue(lemonade);
         }
 
-        FoodPreparingPrefab.SetActive(false);
+        FoodPreparingGameobject.SetActive(false);
     }
 
     public GameObject GetFoodFromPool()
@@ -45,7 +46,6 @@ public abstract class Machine : MonoBehaviour
         FoodPool.Enqueue(food);
     }
 
-    public abstract GameObject GetFood();
     public abstract IEnumerator ShowPreparingFood();
 
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbfbebd693de4d641b48cc4b958ba06b, type: 3}
+  m_Name: MachineData_Lemonade
+  m_EditorClassIdentifier: 
+  FoodPrefab: {fileID: 8986036963834045151, guid: 876c899b70957994594a8f61236a5d0a, type: 3}
+  FoodPreparingPrefab: {fileID: 8739523605599266778, guid: 5bf4499cf335fe840968f92fba690d00, type: 3}
+  DispenseTime: 3

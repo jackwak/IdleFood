@@ -32,8 +32,7 @@ public class IdlePositionManager : MonoBehaviour
 
     private void Start()
     {
-        CustomerManager.Instance.OnHasAnyCustomer += SetHasAnyCustomer;
-
+        StartCoroutine(DelayAssign());
     }
 
 
@@ -79,5 +78,11 @@ public class IdlePositionManager : MonoBehaviour
     private void OnDisable()
     {
         CustomerManager.Instance.OnHasAnyCustomer -= SetHasAnyCustomer;
+    }
+
+    IEnumerator DelayAssign()
+    {
+        yield return null;
+        CustomerManager.Instance.OnHasAnyCustomer += SetHasAnyCustomer;
     }
 }
