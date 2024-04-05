@@ -95,7 +95,7 @@ public class UpgradeManager : MonoBehaviour
             {
                 Image moneyImage = childObj.transform.GetChild(1).gameObject.GetComponent<Image>();
 
-                //if (player.money < customerRateUpgrade.currentWantedMoney)
+                //if (player.money < foodCountRateUpgrade.currentWantedMoney)
                 //{
                 //    moneyImage.sprite = grayButton;
                 //}

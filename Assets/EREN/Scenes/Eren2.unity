@@ -6788,7 +6788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6861a407f39fc48b378eefad56598b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musteriOlmaSansii: 30
+  musteriOlmaSansii: 0
   bakilacakYon: 3
   sahnedeKacAdetParkPointVar: 5
   birYemekSansi: 40
