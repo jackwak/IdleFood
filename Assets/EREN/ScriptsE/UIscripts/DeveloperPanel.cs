@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -26,6 +27,14 @@ public class DeveloperPanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             OpenDeveloperMenu();
+        }
+
+        if (startTimer)
+        {
+            moneyAmountEnd = 2000;     //moneyAmountEnd = Player.money;            OYUNCU PARASI EKLENDÝÐÝNDE AÇ
+            timer += Time.deltaTime;
+            MoneyAvarageCalculator();
+            resultText.GetComponent<TextMeshProUGUI>().text = "Result: \n " + moneyPerSecond.ToString("F2") + " money/s";
         }
     }
 
@@ -77,5 +86,39 @@ public class DeveloperPanel : MonoBehaviour
     public void SiradakiMusterininIsteginiBirArttýr()
     {
         customerManager.siparisVermeSirasi[0].GetComponent<Customer>().MusteriyeYemekVer();
+    }
+
+
+    [Header("Avarage Money")]
+    public float timer = 0;
+    private bool startTimer = false;
+    public GameObject resultText;
+    [TextArea] public List<string> avarageMoneyRecord; 
+
+    private float moneyAmountStart;
+    private float moneyAmountEnd;
+
+    private float moneyPerMinute;
+    private float moneyPerSecond;
+
+    public void MoneyAvarageCalculator()  //dakika ve saniye baþýna geliri gösterir.
+    {
+        moneyPerSecond = (moneyAmountEnd - moneyAmountStart) / timer;
+        moneyPerMinute = (moneyAmountEnd - moneyAmountStart) / (timer/60f);
+    }
+    public void MoneyAddRecord()
+    {
+        avarageMoneyRecord.Add("StartMoney: " + moneyAmountStart + " | EndMoney: " + moneyAmountEnd + " | Time: " + timer + " \nMoneyPerSec: " + moneyPerSecond + " \nMoneyPerMin: " + moneyPerMinute);
+    }
+    public void MoneyTimerReset()
+    {
+        startTimer = false;
+        timer = 0;
+        resultText.GetComponent<TextMeshProUGUI>().text = "Result: \n " + "0" + " money/s";
+    }
+    public void MoneyTimerStart()
+    {
+        moneyAmountStart = 100; //moneyAmountStart = Player.money;          OYUNCU PARASI EKLENDÝÐÝNDE AÇ
+        startTimer = true;
     }
 }
