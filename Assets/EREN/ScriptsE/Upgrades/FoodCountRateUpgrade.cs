@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FoodCountRateUpgrade : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI descriptionText;
+    [SerializeField] TextMeshProUGUI moneyText;
+
     [Header("Texts")]
     public string upgradeTitle;
     public string upgradeDescription;
@@ -63,6 +68,7 @@ public class FoodCountRateUpgrade : MonoBehaviour
                     currentTwoFoodRate = _level2TwoFoodRate;
                     currentThreeFoodRate = _level2ThreeFoodRate;
                     currentRequiredMoney = _level3RequiredMoney;
+                    moneyText.text = currentRequiredMoney.ToString();
                     break;
                 case 2:
                     currentLevel++;
@@ -70,6 +76,7 @@ public class FoodCountRateUpgrade : MonoBehaviour
                     currentTwoFoodRate = _level3TwoFoodRate;
                     currentThreeFoodRate = _level3ThreeFoodRate;
                     currentRequiredMoney = _level4RequiredMoney;
+                    moneyText.text = currentRequiredMoney.ToString();
                     break;
                 case 3:
                     currentLevel++;
@@ -77,13 +84,15 @@ public class FoodCountRateUpgrade : MonoBehaviour
                     currentTwoFoodRate = _level4TwoFoodRate;
                     currentThreeFoodRate = _level4ThreeFoodRate;
                     currentRequiredMoney = _level5RequiredMoney;
+                    moneyText.text = currentRequiredMoney.ToString();
                     break;
                 case 4:
                     currentLevel++;
                     currentOneFoodRate = _level5OneFoodRate;
                     currentTwoFoodRate = _level5TwoFoodRate;
                     currentThreeFoodRate = _level5ThreeFoodRate;
-                    //currentRequiredMoney = _level6RequiredMoney;
+                    currentRequiredMoney = 0;
+                    moneyText.text = "MAX";
                     break;
             }
         }
@@ -96,5 +105,9 @@ public class FoodCountRateUpgrade : MonoBehaviour
         currentTwoFoodRate = _level1TwoFoodRate;
         currentThreeFoodRate = _level1ThreeFoodRate;
         currentRequiredMoney = _level2RequiredMoney;
+
+        titleText.text = upgradeTitle;
+        descriptionText.text = upgradeDescription;
+        moneyText.text = currentRequiredMoney.ToString();
     }
 }

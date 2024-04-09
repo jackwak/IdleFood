@@ -17,6 +17,7 @@ public class DeveloperPanel : MonoBehaviour
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
         }
+        
 
         IsMenuOpen = false;
         customerManager = GameObject.FindGameObjectWithTag("CustomerManager").GetComponent<CustomerManager>();
@@ -31,7 +32,7 @@ public class DeveloperPanel : MonoBehaviour
 
         if (startTimer)
         {
-            moneyAmountEnd = 2000;     //moneyAmountEnd = Player.money;            OYUNCU PARASI EKLENDÝÐÝNDE AÇ
+            moneyAmountEnd = MoneyManager.Instance.playerMoney;
             timer += Time.deltaTime;
             MoneyAvarageCalculator();
             resultText.GetComponent<TextMeshProUGUI>().text = "Result: \n " + moneyPerSecond.ToString("F2") + " money/s";
@@ -89,6 +90,8 @@ public class DeveloperPanel : MonoBehaviour
     }
 
 
+
+
     [Header("Avarage Money")]
     public float timer = 0;
     private bool startTimer = false;
@@ -118,7 +121,7 @@ public class DeveloperPanel : MonoBehaviour
     }
     public void MoneyTimerStart()
     {
-        moneyAmountStart = 100; //moneyAmountStart = Player.money;          OYUNCU PARASI EKLENDÝÐÝNDE AÇ
+        moneyAmountStart = MoneyManager.Instance.playerMoney;
         startTimer = true;
     }
 }

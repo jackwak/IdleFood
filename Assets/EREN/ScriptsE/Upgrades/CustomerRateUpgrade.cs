@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CustomerRateUpgrade : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI descriptionText;
+    [SerializeField] TextMeshProUGUI moneyText;
+
     [Header("Texts")]
     public string upgradeTitle;
     public string upgradeDescription;
@@ -54,21 +59,25 @@ public class CustomerRateUpgrade : MonoBehaviour
                     currentLevel++;
                     currentRate = _level2Rate;
                     currentRequiredMoney = _level3RequiredMoney;
+                    moneyText.text = currentRequiredMoney.ToString();
                     return currentRate;
                 case 2:
                     currentLevel++;
                     currentRate = _level3Rate;
                     currentRequiredMoney = _level4RequiredMoney;
+                    moneyText.text = currentRequiredMoney.ToString();
                     return currentRate;
                 case 3:
                     currentLevel++;
                     currentRate = _level4Rate;
                     currentRequiredMoney = _level5RequiredMoney;
+                    moneyText.text = currentRequiredMoney.ToString();
                     return currentRate;
                 case 4:
                     currentLevel++;
                     currentRate = _level5Rate;
-                    //currentRequiredMoney = _level6RequiredMoney;
+                    currentRequiredMoney = 0;
+                    moneyText.text = "MAX";
                     return currentRate;
 
             }
@@ -81,5 +90,9 @@ public class CustomerRateUpgrade : MonoBehaviour
         currentRate = _level1Rate;
         currentLevel = 1;
         currentRequiredMoney = _level2RequiredMoney;
+
+        titleText.text = upgradeTitle;
+        descriptionText.text = upgradeDescription;
+        moneyText.text = currentRequiredMoney.ToString();
     }
 }

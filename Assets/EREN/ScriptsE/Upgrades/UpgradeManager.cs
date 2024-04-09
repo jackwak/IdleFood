@@ -15,20 +15,17 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private Sprite greenButton;
 
     [Header("All Upgrade Objects")]
-    [SerializeField] private GameObject CustomerRateUpgradeObj;
-    [SerializeField] private GameObject FoodCountRateUpgradeObj;
-
+    [SerializeField] private CustomerRateUpgrade customerRateUpgrade;
+    [SerializeField] private FoodCountRateUpgrade foodCountRateUpgrade;
 
 
     private CustomerManager customerManager;
-    private CustomerRateUpgrade customerRateUpgrade;
-    private FoodCountRateUpgrade foodCountRateUpgrade;
+    //private CustomerRateUpgrade customerRateUpgrade;
+    //private FoodCountRateUpgrade foodCountRateUpgrade;
 
     private void Start()
     {
         customerManager = CustomerManagerObj.GetComponent<CustomerManager>();
-        customerRateUpgrade = CustomerRateUpgradeObj.GetComponent<CustomerRateUpgrade>();
-        foodCountRateUpgrade = FoodCountRateUpgradeObj.GetComponent<FoodCountRateUpgrade>();
 
         ResetAllUpgrades();
 
@@ -40,25 +37,23 @@ public class UpgradeManager : MonoBehaviour
     public void CustomerRateUpgradeButton()
     {
         //Önce ne kadar parasý var kontrol et yeterlisye çalýþtýr ve parayý azalt
-        //if(Player.money >= customerRateUpgrade.currentWantedMoney)
-        //{
-                
-        //}
-
-        customerManager.musteriOlmaSansii = customerRateUpgrade.MakeUpgrade();
+        if (MoneyManager.Instance.playerMoney >= customerRateUpgrade.currentRequiredMoney)
+        {
+            MoneyManager.Instance.playerMoney -= customerRateUpgrade.currentRequiredMoney;
+            customerManager.musteriOlmaSansii = customerRateUpgrade.MakeUpgrade();
+        }    
     }
     public void FoodCountRateUpgradeButton()
     {
         //Önce ne kadar parasý var kontrol et yeterlisye çalýþtýr ve parayý azalt
-        //if(Player.money >= foodCountRateUpgrade.currentWantedMoney)
-        //{
-
-        //}
-
-        foodCountRateUpgrade.MakeUpgrade();
-        customerManager.birYemekSansi = foodCountRateUpgrade.currentOneFoodRate;
-        customerManager.ikiYemekSansi = foodCountRateUpgrade.currentTwoFoodRate;
-        customerManager.ucYemekSansi = foodCountRateUpgrade.currentThreeFoodRate;
+        if (MoneyManager.Instance.playerMoney >= foodCountRateUpgrade.currentRequiredMoney)
+        {
+            MoneyManager.Instance.playerMoney -= foodCountRateUpgrade.currentRequiredMoney;
+            foodCountRateUpgrade.MakeUpgrade();
+            customerManager.birYemekSansi = foodCountRateUpgrade.currentOneFoodRate;
+            customerManager.ikiYemekSansi = foodCountRateUpgrade.currentTwoFoodRate;
+            customerManager.ucYemekSansi = foodCountRateUpgrade.currentThreeFoodRate;
+        }
     }
 
 
@@ -82,27 +77,19 @@ public class UpgradeManager : MonoBehaviour
             {
                 Image moneyImage = childObj.transform.GetChild(1).gameObject.GetComponent<Image>();
 
-                //if (player.money < customerRateUpgrade.currentWantedMoney)
-                //{
-                //    moneyImage.sprite = grayButton;
-                //}
-                //else
-                //{
-                //    moneyImage.sprite = greenButton;
-                //}
+                if (MoneyManager.Instance.playerMoney < customerRateUpgrade.currentRequiredMoney)
+                    moneyImage.sprite = grayButton;
+                else
+                    moneyImage.sprite = greenButton;
             }
             else if (childObj.name.Contains("FoodCountRateUpgrade"))
             {
                 Image moneyImage = childObj.transform.GetChild(1).gameObject.GetComponent<Image>();
 
-                //if (player.money < foodCountRateUpgrade.currentWantedMoney)
-                //{
-                //    moneyImage.sprite = grayButton;
-                //}
-                //else
-                //{
-                //    moneyImage.sprite = greenButton;
-                //}
+                if (MoneyManager.Instance.playerMoney < foodCountRateUpgrade.currentRequiredMoney)
+                    moneyImage.sprite = grayButton;
+                else
+                    moneyImage.sprite = greenButton;
             }
 
         }
