@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class CustomerRateUpgrade : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI titleText;
-    [SerializeField] TextMeshProUGUI descriptionText;
+    //[SerializeField] TextMeshProUGUI titleText;
+    //[SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] TextMeshProUGUI moneyText;
+    [SerializeField] TextMeshProUGUI levelText;
 
-    [Header("Texts")]
-    public string upgradeTitle;
-    public string upgradeDescription;
+    //[Header("Texts")]
+    //public string upgradeTitle;
+    //public string upgradeDescription;
 
     [Header("________________________________________________________________________________________________________________________________________________")]
 
@@ -60,27 +61,37 @@ public class CustomerRateUpgrade : MonoBehaviour
                     currentRate = _level2Rate;
                     currentRequiredMoney = _level3RequiredMoney;
                     moneyText.text = currentRequiredMoney.ToString();
-                    return currentRate;
+                    levelText.text = currentLevel.ToString();
+                    break;
                 case 2:
                     currentLevel++;
                     currentRate = _level3Rate;
                     currentRequiredMoney = _level4RequiredMoney;
                     moneyText.text = currentRequiredMoney.ToString();
-                    return currentRate;
+                    levelText.text = currentLevel.ToString();
+                    break;
                 case 3:
                     currentLevel++;
                     currentRate = _level4Rate;
                     currentRequiredMoney = _level5RequiredMoney;
                     moneyText.text = currentRequiredMoney.ToString();
-                    return currentRate;
+                    levelText.text = currentLevel.ToString();
+                    break;
                 case 4:
                     currentLevel++;
                     currentRate = _level5Rate;
-                    currentRequiredMoney = 0;
-                    moneyText.text = "MAX";
-                    return currentRate;
+                    //currentRequiredMoney = _level6RequiredMoney;
+                    moneyText.text = currentRequiredMoney.ToString();
+                    levelText.text = currentLevel.ToString();
+                    break;
 
             }
+        }
+        if(currentLevel == maxLevel)
+        {
+            currentRequiredMoney = 0;
+            moneyText.text = "MAX";
+            levelText.text = currentLevel.ToString();
         }
         return currentRate;
     }
@@ -91,8 +102,9 @@ public class CustomerRateUpgrade : MonoBehaviour
         currentLevel = 1;
         currentRequiredMoney = _level2RequiredMoney;
 
-        titleText.text = upgradeTitle;
-        descriptionText.text = upgradeDescription;
+        //titleText.text = upgradeTitle;
+        //descriptionText.text = upgradeDescription;
         moneyText.text = currentRequiredMoney.ToString();
+        levelText.text = currentLevel.ToString();
     }
 }

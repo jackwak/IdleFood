@@ -13,6 +13,7 @@ public class CustomerManager : MonoBehaviour
     public float musteriOlmaSansii; //NPC'nin müþteri olma þansý. (Yüzdesel Olarak)
     public BakilacakYon bakilacakYon;
     public int sahnedeKacAdetParkPointVar;
+    public int kacParkPointKullanilabilir;
     public int birYemekSansi;
     public int ikiYemekSansi;
     public int ucYemekSansi;

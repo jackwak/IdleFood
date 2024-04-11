@@ -24,6 +24,7 @@ public class Customer : MonoBehaviour
     [SerializeField] public int FoodCount; //Müþterinin istediði yemek adedi. (1,2,3)
     [SerializeField] public int alinanYemekAdedi;  //Sipariþ verdiði yemeklerden kaç tanesini aldý?
     [SerializeField] public string OrderedFood;
+    
 
 
 
@@ -63,7 +64,8 @@ public class Customer : MonoBehaviour
     {
         RunWhenYouArrive(); //stand önüne varýnca çalýþýr
 
-        SuEkseneDogruBak(); //stand önüne vardýktan sonra çalýþýr
+        //SuEkseneDogruBak(); //stand önüne vardýktan sonra çalýþýr
+        SuEkseneDogruBakYeni();
 
         //if (alinanYemegiBirArttýrSadeceDevMod == true)
         //{
@@ -84,12 +86,21 @@ public class Customer : MonoBehaviour
 
 
 
-
+    int howManyPointIsUsingRightNow;
     private void ChooseCustomerOrNot()
     {
+        howManyPointIsUsingRightNow = 0;
         for (int i = 0; i < customerManager.parkPointsBusy.Length; i++)
         {
-            if (customerManager.parkPointsBusy[i] == false)
+            if (customerManager.parkPointsBusy[i] == true)
+            {
+                howManyPointIsUsingRightNow++;
+            }
+        }
+
+        for (int i = 0; i < customerManager.parkPointsBusy.Length; i++)
+        {
+            if (customerManager.parkPointsBusy[i] == false && howManyPointIsUsingRightNow < customerManager.kacParkPointKullanilabilir)
             {
                 int range = UnityEngine.Random.Range(1, 101);
 
@@ -205,6 +216,16 @@ public class Customer : MonoBehaviour
         }
 
     }
+    public void SuEkseneDogruBakYeni()
+    {
+        if ((durumAciklamasi == "Stand Önündeyim" || durumAciklamasi == "Sipariþ Verdim" || durumAciklamasi == "Garson Bana Geliyor") && buNpcMusteriMi == true)
+        {
+            Quaternion targetRotation = selectedParkPoint.transform.rotation;
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+
+        }
+    }
 
 
     void GoForBuy()
@@ -226,8 +247,9 @@ public class Customer : MonoBehaviour
             customerManager.siparisVermeSirasi.Add(this.gameObject);
             animator.SetBool("isWalking", false);
 
-            
+
             this.transform.Find("Bubble").gameObject.SetActive(true);
+            //this.transform.GetChild(1).gameObject.SetActive(true);
 
 
             //Debug.Log("Ben " + FoodCount + " tane " + OrderedFood + " alýyým.");

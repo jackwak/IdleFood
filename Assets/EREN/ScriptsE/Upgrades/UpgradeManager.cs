@@ -14,9 +14,10 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private Sprite grayButton;
     [SerializeField] private Sprite greenButton;
 
-    [Header("All Upgrade Objects")]
+    [Header("Level 1 Upgrade Objects")]
     [SerializeField] private CustomerRateUpgrade customerRateUpgrade;
     [SerializeField] private FoodCountRateUpgrade foodCountRateUpgrade;
+    [SerializeField] private FoodPrepareSpeedUpgrade foodPrepareSpeedUpgrade;
 
 
     private CustomerManager customerManager;
@@ -36,23 +37,30 @@ public class UpgradeManager : MonoBehaviour
     //====================================UPGRADE DÜÐMELERÝ FONKSÝYONLARI
     public void CustomerRateUpgradeButton()
     {
-        //Önce ne kadar parasý var kontrol et yeterlisye çalýþtýr ve parayý azalt
         if (MoneyManager.Instance.playerMoney >= customerRateUpgrade.currentRequiredMoney)
         {
-            MoneyManager.Instance.playerMoney -= customerRateUpgrade.currentRequiredMoney;
+            MoneyManager.Instance.RemoveMoney(customerRateUpgrade.currentRequiredMoney);
             customerManager.musteriOlmaSansii = customerRateUpgrade.MakeUpgrade();
         }    
     }
     public void FoodCountRateUpgradeButton()
     {
-        //Önce ne kadar parasý var kontrol et yeterlisye çalýþtýr ve parayý azalt
         if (MoneyManager.Instance.playerMoney >= foodCountRateUpgrade.currentRequiredMoney)
         {
-            MoneyManager.Instance.playerMoney -= foodCountRateUpgrade.currentRequiredMoney;
+            MoneyManager.Instance.RemoveMoney(foodCountRateUpgrade.currentRequiredMoney);
             foodCountRateUpgrade.MakeUpgrade();
             customerManager.birYemekSansi = foodCountRateUpgrade.currentOneFoodRate;
             customerManager.ikiYemekSansi = foodCountRateUpgrade.currentTwoFoodRate;
             customerManager.ucYemekSansi = foodCountRateUpgrade.currentThreeFoodRate;
+        }
+    }
+    public void FoodPrepareSpeedUpgradeButton()
+    {
+        if (MoneyManager.Instance.playerMoney >= foodPrepareSpeedUpgrade.currentRequiredMoney)
+        {
+            MoneyManager.Instance.RemoveMoney(foodPrepareSpeedUpgrade.currentRequiredMoney);
+            foodPrepareSpeedUpgrade.MakeUpgrade();
+            //waiter.prepareSpeed = foodPrepareSpeedUpgrade.currentPrepareSpeed;
         }
     }
 
@@ -67,6 +75,9 @@ public class UpgradeManager : MonoBehaviour
         customerManager.birYemekSansi = foodCountRateUpgrade.currentOneFoodRate;
         customerManager.ikiYemekSansi = foodCountRateUpgrade.currentTwoFoodRate;
         customerManager.ucYemekSansi = foodCountRateUpgrade.currentThreeFoodRate;
+
+        foodPrepareSpeedUpgrade.ResetUpgrade();
+        //Oyun baþlangýcý deðerlerini atama
     }
     public void SetGrayOrGreenButton()    //Gri buton yada yeþil buton.
     {
