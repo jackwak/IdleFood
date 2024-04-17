@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4519157356888507376}
   - component: {fileID: 4519157356888507379}
+  - component: {fileID: 5979091223149260212}
   m_Layer: 0
   m_Name: Lemonade Machine Positions Manager
   m_TagString: Untagged
@@ -46,3 +47,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Machines:
   - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &5979091223149260212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4519157356888507377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e9761b7695b03428e5a14aabd13b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _machineData: {fileID: 11400000, guid: a8bb92c544ae74445b77ba40eb795472, type: 2}
+  _food: {fileID: 8792895086530844858, guid: 876c899b70957994594a8f61236a5d0a, type: 3}
+  _percentIncrease: 4
+  _levelUpPercentIncrease: 40
+  _maxLevelCount: 10

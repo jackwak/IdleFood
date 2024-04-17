@@ -6585,10 +6585,6 @@ PrefabInstance:
       value: Lemonade Machine Positions Manager
       objectReference: {fileID: 0}
     - target: {fileID: 4519157356888507379, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: Machines.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519157356888507379, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
       propertyPath: Machines.Array.data[0]
       value: 
       objectReference: {fileID: 1963565257}

@@ -5,5 +5,5 @@ using UnityEngine;
 public abstract class Food : MonoBehaviour
 {
     public string Name;
-    public string Price;
+    public float Price;
 }
