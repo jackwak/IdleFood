@@ -1,15 +1,18 @@
+using EditorAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
+using Unity.Collections;
+
 
 public class LanguageManager : MonoBehaviour
 {
-    public Languages languages;
-    public bool applyLanguageForDeveloperMode;
-    [ReadOnly]public Languages applyedLanguage;
+
+    [SerializeField, InlineButton(nameof(Apply))] public Languages currentLanguage;
+    [EditorAttributes.ReadOnly] public Languages applyedLanguage;
 
     [Header("All Languages SO")]
     [SerializeField] private LanguageSO enSO;
@@ -23,28 +26,29 @@ public class LanguageManager : MonoBehaviour
     [SerializeField] private TMP_Text level2Title;
     [SerializeField] private TMP_Text level3Title;
 
-    [Header("Upgrade Texts For Level 1")]
+    [Header("Level 1 Upgrade Texts")]
+    [SerializeField] private TMP_Text upgradesTitle;
     [SerializeField] private TMP_Text customerRateUpgradeTitle;
     [SerializeField] private TMP_Text customerRateUpgradeDescription;
     [SerializeField] private TMP_Text foodCountRateUpgradeTitle;
     [SerializeField] private TMP_Text foodCountRateUpgradeDescription;
 
-    private void Update()
+    private void Start()
     {
-        if (applyLanguageForDeveloperMode)
-        {
-            applyLanguageForDeveloperMode = false;
-            ChangeSelectedLanguageForDeveloperMode();
-            ApplySelectedLanguage();
-        }
+        Apply();
     }
-    void ChangeSelectedLanguageForDeveloperMode()
+    void Apply()
     {
-        switch (languages)
+        ChangeSelectedLanguage();
+        ApplySelectedLanguage();
+    }
+    void ChangeSelectedLanguage()
+    {
+        switch (currentLanguage)
         {
             case Languages.english:
                 selectedSO = enSO;
-                applyedLanguage =  Languages.english;
+                applyedLanguage = Languages.english;
                 break;
             case Languages.turkish:
                 selectedSO = trSO;
@@ -62,6 +66,7 @@ public class LanguageManager : MonoBehaviour
         switch (currentSceneName)
         {
             case "Level1":
+                upgradesTitle.text = selectedSO.upgradesTitle;
                 customerRateUpgradeTitle.text = selectedSO.customerRateUpgradeTitle;
                 customerRateUpgradeDescription.text = selectedSO.customerRateUpgradeDescription;
                 foodCountRateUpgradeTitle.text = selectedSO.foodCountRateUpgradeTitle;
@@ -73,10 +78,8 @@ public class LanguageManager : MonoBehaviour
     }
 
 
-    
-
-
 }
+
 public enum Languages
 {
     english,

@@ -15,6 +15,7 @@ MonoBehaviour:
   level1Title: Lemonade Stand
   level2Title: title2
   level3Title: title3
+  upgradesTitle: Upgrades
   customerRateUpgradeTitle: Advertise
   customerRateUpgradeDescription: Best way to attract customers.
   foodCountRateUpgradeTitle: Add Flavor

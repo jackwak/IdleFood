@@ -84,7 +84,7 @@ public class DeveloperPanel : MonoBehaviour
     {
         spawnerManager.TumNpcleriOldurForDevPanel();
     }
-    public void SiradakiMusterininIsteginiBirArttýr()
+    public void SiradakiMusterininIsteginiBirArttir()
     {
         customerManager.siparisVermeSirasi[0].GetComponent<Customer>().MusteriyeYemekVer();
     }

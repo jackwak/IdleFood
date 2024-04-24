@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "M\xFC\u015Fteriler \xFCr\xFCnlerini daha \xE7ok almak isteyecek."
+  m_text: Customers will want to buy more of your products.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3224,7 +3224,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1697449621}
         m_TargetAssemblyTypeName: DeveloperPanel, Assembly-CSharp
-        m_MethodName: "SiradakiMusterininIsteginiBirArtt\u0131r"
+        m_MethodName: SiradakiMusterininIsteginiBirArttir
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4122,7 +4122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Limonata Stand\u0131"
+  m_text: Lemonade Stand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4636,7 +4636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Limonata Stand\u0131"
+  m_text: title2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6162,14 +6162,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b5e91b3f67df14491dd0a907f585b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  languages: 0
-  applyLanguageForDeveloperMode: 0
+  currentLanguage: 0
   applyedLanguage: 0
   enSO: {fileID: 11400000, guid: b8b16ac244cc91140abac070d507768a, type: 2}
   trSO: {fileID: 11400000, guid: e463d9a3c650c3e4497aea46b98cd2ac, type: 2}
   level1Title: {fileID: 501620574}
   level2Title: {fileID: 563846655}
   level3Title: {fileID: 1748723537}
+  upgradesTitle: {fileID: 1100682589}
   customerRateUpgradeTitle: {fileID: 1075876555}
   customerRateUpgradeDescription: {fileID: 971053894}
   foodCountRateUpgradeTitle: {fileID: 1459859111}
@@ -6993,7 +6993,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7105786165471969766}
-  m_RootOrder: 24
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &905247397
 MeshRenderer:
@@ -7656,7 +7656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "M\xFC\u015Fteri \xE7ekmenin en iyi yolu."
+  m_text: Best way to attract customers.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7683,7 +7683,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.65
+  m_fontSize: 30.2
   m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9012,7 +9012,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reklam Ver
+  m_text: Advertise
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9244,7 +9244,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 33
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -11483,7 +11483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lezzet Kat
+  m_text: Add Flavor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13315,7 +13315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Limonata Stand\u0131"
+  m_text: title3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17080,11 +17080,11 @@ Transform:
   - {fileID: 1137982260}
   - {fileID: 735875005}
   - {fileID: 1777379145}
+  - {fileID: 905247396}
   - {fileID: 1145230487}
   - {fileID: 1048862397}
   - {fileID: 1875649069}
   - {fileID: 194317031}
-  - {fileID: 905247396}
   - {fileID: 1498598439}
   - {fileID: 1502583699}
   - {fileID: 1292094478}

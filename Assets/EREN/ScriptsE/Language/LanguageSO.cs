@@ -11,9 +11,9 @@ public class LanguageSO : ScriptableObject
     public string level3Title;
 
     [Header("Upgrade Texts For Level 1")]
+    public string upgradesTitle;
     public string customerRateUpgradeTitle;
     public string customerRateUpgradeDescription;
-
     public string foodCountRateUpgradeTitle;
     public string foodCountRateUpgradeDescription;
 

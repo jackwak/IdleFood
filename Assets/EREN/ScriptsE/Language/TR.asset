@@ -15,6 +15,7 @@ MonoBehaviour:
   level1Title: "Limonata Stand\u0131"
   level2Title: "ba\u015Fl\u0131k2"
   level3Title: "ba\u015Fl\u0131k3"
+  upgradesTitle: "Geli\u015Ftirmeler"
   customerRateUpgradeTitle: Reklam Ver
   customerRateUpgradeDescription: "M\xFC\u015Fteri \xE7ekmenin en iyi yolu."
   foodCountRateUpgradeTitle: Lezzet Kat
