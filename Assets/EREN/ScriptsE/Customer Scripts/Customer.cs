@@ -247,8 +247,8 @@ public class Customer : MonoBehaviour
             customerManager.siparisVermeSirasi.Add(this.gameObject);
             animator.SetBool("isWalking", false);
 
-
-            this.transform.Find("Bubble").gameObject.SetActive(true);
+            //ShowBubble();
+            //this.transform.Find("Bubble").gameObject.SetActive(true);
             //this.transform.GetChild(1).gameObject.SetActive(true);
 
 
@@ -311,6 +311,11 @@ public class Customer : MonoBehaviour
             //GoBack();
         }
     }   //Garsonun verdiði yemeði alýr                      //ARTIK KULLANILMIYOR
+    public void ShowBubble()
+    {
+        this.transform.Find("Bubble").gameObject.SetActive(true);
+    }
+
 
     public void MusteriyeYemekVer()
     {
