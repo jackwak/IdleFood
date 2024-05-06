@@ -63,6 +63,8 @@ public class TakingOrderState : State
         //siparisi siparis listine ekle
         int foodCount = _waiter.CurrentCustomer.FoodCount;
 
+        _waiter.CurrentCustomer.ShowBubble();
+
         for (int i = 0; i < foodCount; i++)
         {
             OrderManager.Instance.Customers.Add(_waiter.CurrentCustomer);

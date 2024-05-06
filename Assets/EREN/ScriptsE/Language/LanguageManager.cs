@@ -11,7 +11,7 @@ using Unity.Collections;
 public class LanguageManager : MonoBehaviour
 {
 
-    [SerializeField, InlineButton(nameof(Apply))] public Languages currentLanguage;
+    [SerializeField, InlineButton(nameof(ApplyAll))] public Languages currentLanguage;
     [EditorAttributes.ReadOnly] public Languages applyedLanguage;
 
     [Header("All Languages SO")]
@@ -35,9 +35,27 @@ public class LanguageManager : MonoBehaviour
 
     private void Start()
     {
-        Apply();
+        ApplyAll();
     }
-    void Apply()
+
+
+    public void InGameSwitchLanguageButton()
+    {
+        switch (applyedLanguage) 
+        {
+            case Languages.english:
+                currentLanguage = Languages.turkish;
+                break;
+            case Languages.turkish:
+                currentLanguage = Languages.english;
+                break;
+        }
+
+        ApplyAll();
+    }
+
+
+    void ApplyAll()
     {
         ChangeSelectedLanguage();
         ApplySelectedLanguage();
