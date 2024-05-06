@@ -19,5 +19,10 @@ MonoBehaviour:
   customerRateUpgradeTitle: Reklam Ver
   customerRateUpgradeDescription: "M\xFC\u015Fteri \xE7ekmenin en iyi yolu."
   foodCountRateUpgradeTitle: Lezzet Kat
-  foodCountRateUpgradeDescription: "M\xFC\u015Fteriler \xFCr\xFCnlerini daha \xE7ok
+  foodCountRateUpgradeDescription: "M\xFC\u015Fteriler \xFCr\xFCnlerinden daha \xE7ok
     almak isteyecek."
+  foodPrepareSpeedUpgradeTitle: 
+  foodPrepareSpeedUpgradeDescription: 
+  takingOrderTimeUpgradeTitle: Diksiyon Dersi
+  takingOrderTimeUpgradeDescription: "M\xFC\u015Fterilerle iyi ileti\u015Fim kurars\u0131n.
+    Daha h\u0131zl\u0131 sipari\u015F al\u0131rs\u0131n."

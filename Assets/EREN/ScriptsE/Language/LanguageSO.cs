@@ -12,9 +12,17 @@ public class LanguageSO : ScriptableObject
 
     [Header("Upgrade Texts For Level 1")]
     public string upgradesTitle;
+    [Space]
     public string customerRateUpgradeTitle;
     public string customerRateUpgradeDescription;
+    [Space]
     public string foodCountRateUpgradeTitle;
     public string foodCountRateUpgradeDescription;
+    [Space]
+    public string foodPrepareSpeedUpgradeTitle;
+    public string foodPrepareSpeedUpgradeDescription;
+    [Space]
+    public string takingOrderTimeUpgradeTitle;
+    public string takingOrderTimeUpgradeDescription;
 
 }

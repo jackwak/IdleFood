@@ -33,6 +33,9 @@ public class LanguageManager : MonoBehaviour
     [SerializeField] private TMP_Text foodCountRateUpgradeTitle;
     [SerializeField] private TMP_Text foodCountRateUpgradeDescription;
 
+    [SerializeField] private TMP_Text takingOrderTimeUpgradeTitle;
+    [SerializeField] private TMP_Text takingOrderTimeUpgradeDescription;
+
     private void Start()
     {
         ApplyAll();
@@ -89,6 +92,9 @@ public class LanguageManager : MonoBehaviour
                 customerRateUpgradeDescription.text = selectedSO.customerRateUpgradeDescription;
                 foodCountRateUpgradeTitle.text = selectedSO.foodCountRateUpgradeTitle;
                 foodCountRateUpgradeDescription.text = selectedSO.foodCountRateUpgradeDescription;
+
+                takingOrderTimeUpgradeTitle.text = selectedSO.takingOrderTimeUpgradeTitle;
+                takingOrderTimeUpgradeDescription.text = selectedSO.takingOrderTimeUpgradeDescription;
                 break;
             case "Level2":
                 break;

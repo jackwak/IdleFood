@@ -23,7 +23,7 @@ public class MoneyManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateMoney();
+        UpdateMoneyText();
     }
 
     public void AddMoney(float money)
@@ -34,7 +34,7 @@ public class MoneyManager : MonoBehaviour
     {
         playerMoney -= money;
     }
-    public void UpdateMoney()
+    public void UpdateMoneyText()
     {
         moneyText.text = playerMoney.ToString();
     }
