@@ -23,12 +23,13 @@ public class MoneyManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateMoneyText();
+        UpdateMoneyText(); //Oyunun son halinde kaldýrýlabilir.
     }
 
     public void AddMoney(float money)
     {
         playerMoney += money;
+        UpdateMoneyText();
     }
     public void RemoveMoney(float money)
     {

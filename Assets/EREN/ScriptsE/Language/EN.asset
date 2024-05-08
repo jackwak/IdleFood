@@ -20,8 +20,9 @@ MonoBehaviour:
   customerRateUpgradeDescription: Best way to attract customers.
   foodCountRateUpgradeTitle: Add Flavor
   foodCountRateUpgradeDescription: Customers will want to buy more of your products.
-  foodPrepareSpeedUpgradeTitle: 
-  foodPrepareSpeedUpgradeDescription: 
+  foodPrepareSpeedUpgradeTitle: Quick Hands
+  foodPrepareSpeedUpgradeDescription: Don't keep customers waiting, you'll get orders
+    ready faster.
   takingOrderTimeUpgradeTitle: Diction Course
   takingOrderTimeUpgradeDescription: You communicate well with customers. You get
     orders faster.

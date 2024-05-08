@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Customers will want to buy more of your products.
+  m_text: "M\xFC\u015Fteriler \xFCr\xFCnlerinden daha \xE7ok almak isteyecek."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2479,7 +2479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Description Text
+  m_text: "M\xFC\u015Fterileri bekletme, sipari\u015Fleri daha h\u0131zl\u0131 haz\u0131rlars\u0131n."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2506,7 +2506,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 26.35
   m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286307585}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
@@ -4122,7 +4122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lemonade Stand
+  m_text: "Limonata Stand\u0131"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4211,7 +4211,7 @@ GameObject:
   - component: {fileID: 506794808}
   - component: {fileID: 506794807}
   m_Layer: 5
-  m_Name: Upgrade (2)
+  m_Name: Upgrade (2) (FoodPrepareSpeedUpgrade)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4235,10 +4235,10 @@ RectTransform:
   m_Father: {fileID: 1969534121}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -462.5}
-  m_SizeDelta: {x: 750, y: 185}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506794807
 MonoBehaviour:
@@ -4508,7 +4508,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 680165207}
         m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: FoodPrepareSpeedUpgradeButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4636,7 +4636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: title2
+  m_text: "ba\u015Fl\u0131k2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5335,7 +5335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Diction Course
+  m_text: Diksiyon Dersi
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5827,15 +5827,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyText: {fileID: 5040871}
   levelText: {fileID: 231235513}
+  machineData:
+  - {fileID: 11400000, guid: a8bb92c544ae74445b77ba40eb795472, type: 2}
   currentLevel: 0
-  maxLevel: 5
+  maxLevel: 3
   currentPrepareSpeed: 0
   currentRequiredMoney: 0
-  _level1PrepareSpeed: 0
+  _level1PrepareSpeed: 5
   _level1RequiredMoney: 0
-  _level2PrepareSpeed: 0
+  _level2PrepareSpeed: 2.5
   _level2RequiredMoney: 0
-  _level3PrepareSpeed: 0
+  _level3PrepareSpeed: 1
   _level3RequiredMoney: 0
   _level4PrepareSpeed: 0
   _level4RequiredMoney: 0
@@ -6295,8 +6297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b5e91b3f67df14491dd0a907f585b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: 0
-  applyedLanguage: 0
+  currentLanguage: 1
+  applyedLanguage: 1
   enSO: {fileID: 11400000, guid: b8b16ac244cc91140abac070d507768a, type: 2}
   trSO: {fileID: 11400000, guid: e463d9a3c650c3e4497aea46b98cd2ac, type: 2}
   level1Title: {fileID: 501620574}
@@ -6307,6 +6309,8 @@ MonoBehaviour:
   customerRateUpgradeDescription: {fileID: 971053894}
   foodCountRateUpgradeTitle: {fileID: 1459859111}
   foodCountRateUpgradeDescription: {fileID: 245478890}
+  foodPrepareSpeedUpgradeTitle: {fileID: 1957786816}
+  foodPrepareSpeedUpgradeDescription: {fileID: 273705263}
   takingOrderTimeUpgradeTitle: {fileID: 651188235}
   takingOrderTimeUpgradeDescription: {fileID: 1464653006}
 --- !u!4 &732394906
@@ -7791,7 +7795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Best way to attract customers.
+  m_text: "M\xFC\u015Fteri \xE7ekmenin en iyi yolu."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8124,10 +8128,10 @@ RectTransform:
   m_Father: {fileID: 1969534121}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -277.5}
-  m_SizeDelta: {x: 750, y: 185}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &996786990
 MonoBehaviour:
@@ -9293,7 +9297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Advertise
+  m_text: Reklam Ver
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9492,7 +9496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrades
+  m_text: "Geli\u015Ftirmeler"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11764,7 +11768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Add Flavor
+  m_text: Lezzet Kat
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11899,7 +11903,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You communicate well with customers. You get orders faster.
+  m_text: "M\xFC\u015Fterilerle iyi ileti\u015Fim kurars\u0131n. Daha h\u0131zl\u0131
+    sipari\u015F al\u0131rs\u0131n."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12823,10 +12828,10 @@ RectTransform:
   m_Father: {fileID: 1969534121}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -647.5}
-  m_SizeDelta: {x: 750, y: 185}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602193714
 MonoBehaviour:
@@ -13036,10 +13041,10 @@ RectTransform:
   m_Father: {fileID: 1969534121}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 375, y: -92.5}
-  m_SizeDelta: {x: 750, y: 185}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622364677
 MonoBehaviour:
@@ -14216,7 +14221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: title3
+  m_text: "ba\u015Fl\u0131k3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15330,7 +15335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1865217996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16503,7 +16508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title Text
+  m_text: "H\u0131zl\u0131 Eller"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

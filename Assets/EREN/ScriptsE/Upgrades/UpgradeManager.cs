@@ -29,7 +29,7 @@ public class UpgradeManager : MonoBehaviour
     {
         customerManager = CustomerManagerObj.GetComponent<CustomerManager>();
 
-        ResetAllUpgrades();
+        SetAllUpgradesForStart();
 
     }
 
@@ -61,7 +61,11 @@ public class UpgradeManager : MonoBehaviour
         {
             MoneyManager.Instance.RemoveMoney(foodPrepareSpeedUpgrade.currentRequiredMoney);
             foodPrepareSpeedUpgrade.MakeUpgrade();
-            //waiter.prepareSpeed = foodPrepareSpeedUpgrade.currentPrepareSpeed;
+            foreach (var item in foodPrepareSpeedUpgrade.machineData)
+            {
+                item.DispenseTime = foodPrepareSpeedUpgrade.currentPrepareSpeed;
+            }
+            //foodPrepareSpeedUpgrade.machineData.DispenseTime = foodPrepareSpeedUpgrade.currentPrepareSpeed;
         }
     }
     public void TakingOrderTimeUpgradeButton()
@@ -76,7 +80,7 @@ public class UpgradeManager : MonoBehaviour
 
 
     //====================================DÝÐER
-    public void ResetAllUpgrades()  //Hem Customer Manager'ý sýfýrlar, hem tüm upgrade objelerini.
+    public void SetAllUpgradesForStart()  //Oyun baþlangýcý deðerlerini atar, hem tüm upgrade objelerini. Yalnýzca oyun baþlarken sýfýrlayabilir.
     {
         customerRateUpgrade.ResetUpgrade();
         customerManager.musteriOlmaSansii = customerRateUpgrade.currentRate;
@@ -86,12 +90,15 @@ public class UpgradeManager : MonoBehaviour
         customerManager.ikiYemekSansi = foodCountRateUpgrade.currentTwoFoodRate;
         customerManager.ucYemekSansi = foodCountRateUpgrade.currentThreeFoodRate;
 
-        foodPrepareSpeedUpgrade.ResetUpgrade();//EKSÝK
+        foodPrepareSpeedUpgrade.ResetUpgrade();
+        foreach (var item in foodPrepareSpeedUpgrade.machineData)
+        {
+            item.DispenseTime = foodPrepareSpeedUpgrade.currentPrepareSpeed;
+        }
 
         takingOrderTimeUpgrade.ResetUpgrade();
         LevelManager.Instance._takingOrderTime = takingOrderTimeUpgrade.currentTakingOrderTime;
 
-        //Oyun baþlangýcý deðerlerini atama
     }
     public void SetGrayOrGreenButton()    //Gri buton yada yeþil buton.
     {
@@ -112,6 +119,15 @@ public class UpgradeManager : MonoBehaviour
                 Image moneyImage = childObj.transform.GetChild(1).gameObject.GetComponent<Image>();
 
                 if (MoneyManager.Instance.playerMoney < foodCountRateUpgrade.currentRequiredMoney)
+                    moneyImage.sprite = grayButton;
+                else
+                    moneyImage.sprite = greenButton;
+            }
+            else if (childObj.name.Contains("FoodPrepareSpeedUpgrade"))
+            {
+                Image moneyImage = childObj.transform.GetChild(1).gameObject.GetComponent<Image>();
+
+                if (MoneyManager.Instance.playerMoney < foodPrepareSpeedUpgrade.currentRequiredMoney)
                     moneyImage.sprite = grayButton;
                 else
                     moneyImage.sprite = greenButton;

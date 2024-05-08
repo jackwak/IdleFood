@@ -9,6 +9,8 @@ public class FoodPrepareSpeedUpgrade : MonoBehaviour
     //[SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI levelText;
+    [Space]
+    [SerializeField] public List<MachineData> machineData;
 
     //[Header("Texts")]
     //public string upgradeTitle;
