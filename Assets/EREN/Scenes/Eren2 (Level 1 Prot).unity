@@ -4737,6 +4737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LemonadeMachine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4773684322064613250, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -6585,6 +6589,10 @@ PrefabInstance:
       value: Lemonade Machine Positions Manager
       objectReference: {fileID: 0}
     - target: {fileID: 4519157356888507379, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
+      propertyPath: Machines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4519157356888507379, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
       propertyPath: Machines.Array.data[0]
       value: 
       objectReference: {fileID: 1963565257}
@@ -6592,6 +6600,14 @@ PrefabInstance:
       propertyPath: Machines.Array.data[1]
       value: 
       objectReference: {fileID: 607448960}
+    - target: {fileID: 5979091223149260212, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
+      propertyPath: _secondMachineGO
+      value: 
+      objectReference: {fileID: 607448959}
+    - target: {fileID: 5979091223149260212, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
+      propertyPath: _machinePositionManager
+      value: 
+      objectReference: {fileID: 597858776}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
 --- !u!1 &597858773 stripped
@@ -6604,6 +6620,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4519157356888507376, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
   m_PrefabInstance: {fileID: 597858772}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &597858776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4519157356888507379, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
+  m_PrefabInstance: {fileID: 597858772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597858773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563d5e54c82777e4bac85fac85f448d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &607448959 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4773684322064613250, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
@@ -14950,6 +14977,14 @@ PrefabInstance:
     - target: {fileID: 3481378959518683860, guid: de5e04955f5e0b348919ee15e6d02aed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481378959518683861, guid: de5e04955f5e0b348919ee15e6d02aed, type: 3}
+      propertyPath: IdlePositions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481378959518683861, guid: de5e04955f5e0b348919ee15e6d02aed, type: 3}
+      propertyPath: IdlePositions.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3481378959518683863, guid: de5e04955f5e0b348919ee15e6d02aed, type: 3}
       propertyPath: m_Name

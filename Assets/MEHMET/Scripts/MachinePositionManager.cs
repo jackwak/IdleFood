@@ -69,4 +69,24 @@ public class MachinePositionManager : MonoBehaviour
     {
         _isPositionAvailable = new bool[Machines.Count];
     }
+
+    public void AddMachine(Machine machine)
+    {
+        Machines.Add(machine);
+
+        // Yeni elemaný eklemek için dizinin boyutunu bir artýrarak geçici bir dizi oluþturun
+        bool[] geciciDizi = new bool[_isPositionAvailable.Length + 1];
+
+        // Eski elemanlarý geçici diziye kopyalayýn
+        for (int i = 0; i < _isPositionAvailable.Length; i++)
+        {
+            geciciDizi[i] = _isPositionAvailable[i];
+        }
+
+        // Yeni elemaný ekleyin
+        geciciDizi[geciciDizi.Length - 1] = true;
+
+        // Geçici diziyi orijinal diziye atayýn
+        _isPositionAvailable = geciciDizi;
+    }
 }

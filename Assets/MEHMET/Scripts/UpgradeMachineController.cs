@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class UpgradeMachineController : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private MachinePositionManager _machinePositionManager;
     [SerializeField] private MachineData _machineData;
     [SerializeField] private Food _food;
+    [SerializeField] private GameObject _secondMachineGO;
     //[SerializeField] private GameObject _machineUpgradePanel;
 
     [Header("Variables")]
@@ -52,9 +54,11 @@ public class UpgradeMachineController : MonoBehaviour
         }
         else
         {
-            if (_levelCount == 10)
+            if (_levelCount == 10) // bu ife gerek olmayabilir
             {
                 //spawn new machine
+                _secondMachineGO.SetActive(true);
+                _machinePositionManager.AddMachine(_secondMachineGO.GetComponent<Machine>());
             }
 
             float foodPrice = _food.Price;
