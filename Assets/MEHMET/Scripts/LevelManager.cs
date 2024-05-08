@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] public float _takingOrderTime;
     [HideInInspector] public List<Waiter> Waiters = new List<Waiter>();
 
+    [SerializeField] private GameObject _waiterBox;
+
     public float TakingOrderTime
     {
         get { return _takingOrderTime; }
@@ -67,5 +69,10 @@ public class LevelManager : MonoBehaviour
         {
             Waiters[i].transform.position = IdlePositionManager.Instance.IdlePositions[i].position;
         }
+    }
+
+    public void AddWaiter()
+    {
+        _waiterBox.SetActive(true);
     }
 }
