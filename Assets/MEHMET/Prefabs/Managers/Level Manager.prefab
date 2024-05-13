@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _takingOrderTime: 0.5
   Waiters: []
+  _waiterBox: {fileID: 0}

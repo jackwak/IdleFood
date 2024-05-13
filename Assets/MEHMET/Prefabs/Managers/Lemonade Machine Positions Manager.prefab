@@ -47,7 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Machines:
   - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &5979091223149260212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +61,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _machineData: {fileID: 11400000, guid: a8bb92c544ae74445b77ba40eb795472, type: 2}
   _food: {fileID: 8792895086530844858, guid: 876c899b70957994594a8f61236a5d0a, type: 3}
-  _percentIncrease: 4
-  _levelUpPercentIncrease: 40
+  _machineBoxGO: {fileID: 0}
+  _foodPricePercentIncrease: 4
+  _foodLevelUpPercentIncrease: 40
+  _upgradePricePercentIncrease: 4
+  _upgradeLevelUpPercentIncrease: 40
   _maxLevelCount: 10

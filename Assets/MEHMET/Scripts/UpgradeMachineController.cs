@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class UpgradeMachineController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private MachinePositionManager _machinePositionManager;
     [SerializeField] private MachineData _machineData;
     [SerializeField] private Food _food;
-    [SerializeField] private GameObject _secondMachineGO;
+    [SerializeField] private GameObject _machineBoxGO;
     //[SerializeField] private GameObject _machineUpgradePanel;
 
     [Header("Variables")]
@@ -18,7 +17,7 @@ public class UpgradeMachineController : MonoBehaviour
     [SerializeField] private int _upgradePricePercentIncrease = 4;
     [SerializeField] private int _upgradeLevelUpPercentIncrease = 40;
     [SerializeField] private int _maxLevelCount = 10;
-    private int _levelCount = 0;
+    private int _levelCounter = 0;
 
 
     public void DecreaseDispenceTime(float percent)
@@ -32,10 +31,10 @@ public class UpgradeMachineController : MonoBehaviour
 
     public void LevelUpMachine()
     {
-        if (_levelCount > 50) return;
+        if (_levelCounter > 50) return;
 
-        _levelCount++;
-        if (_maxLevelCount % _levelCount != 0)
+        _levelCounter++;
+        if (_maxLevelCount % _levelCounter != 0)
         {
             //update food price
             float foodPrice = _food.Price;
@@ -54,11 +53,10 @@ public class UpgradeMachineController : MonoBehaviour
         }
         else
         {
-            if (_levelCount == 10) // bu ife gerek olmayabilir
+            if (_levelCounter == 10) // bu ife gerek olmayabilir
             {
-                //spawn new machine
-                _secondMachineGO.SetActive(true);
-                _machinePositionManager.AddMachine(_secondMachineGO.GetComponent<Machine>());
+                //Show machine box
+                _machineBoxGO.SetActive(true);
             }
 
             float foodPrice = _food.Price;
