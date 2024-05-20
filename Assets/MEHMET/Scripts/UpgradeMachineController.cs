@@ -43,14 +43,12 @@ public class UpgradeMachineController : MonoBehaviour
         {
 
             _levelCounter++;
-            Debug.Log(_levelCounter % _maxLevelCount);
 
-            if (_levelCounter % _maxLevelCount != 1)
+            if (_levelCounter % _maxLevelCount != 0)
             {
                 //update food price
                 float foodPrice = _food.Price;
                 float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100;
-
                 _food.Price = newFoodPrice;
 
                 //update upgrade price
@@ -61,14 +59,15 @@ public class UpgradeMachineController : MonoBehaviour
                 _machineData.UpgradePrice = newUpgradePrice;
 
                 //update ui
-                _foodPriceText.text = newFoodPrice.ToString();
-                _upgradePriceText.text = newUpgradePrice.ToString();
+                _foodPriceText.text = ((int)newFoodPrice).ToString();
+                _upgradePriceText.text = ((int)newUpgradePrice).ToString();
+
                 float number = _levelCounter;
-                if (_levelCounter > 10)
+                if(_levelCounter > 10) 
                 {
-                   number = _levelCounter % _maxLevelCount;
-                    if (number == 0) number = 10;
+                    number = _levelCounter % _maxLevelCount;
                 }
+
                 _filledImage.fillAmount = number / _maxLevelCount;
                 _levelText.text = _levelCounter.ToString();
 
@@ -76,7 +75,7 @@ public class UpgradeMachineController : MonoBehaviour
             }
             else
             {
-                if (_levelCounter == 11)
+                if (_levelCounter == 10)
                 {
                     //Show machine box
                     _machineBoxGO.SetActive(true);
@@ -95,16 +94,21 @@ public class UpgradeMachineController : MonoBehaviour
                 _machineData.UpgradePrice = newUpgradePrice;
 
                 //update ui
-                _foodPriceText.text = newFoodPrice.ToString();
-                _upgradePriceText.text = newUpgradePrice.ToString();
-                _filledImage.fillAmount = 1 / _maxLevelCount;
+                _foodPriceText.text = ((int)newFoodPrice).ToString();
+                _upgradePriceText.text = ((int)newUpgradePrice).ToString();
+                _filledImage.fillAmount = 0;
                 _levelText.text = _levelCounter.ToString();
+
+                if(_levelCounter == 50)
+                {
+                    _maxLevelImage.SetActive(true);
+                    _upgradeButtonGO.SetActive(false);
+                }
             }
         }
         else 
         {
-            _maxLevelImage.SetActive(true);
-            _upgradeButtonGO.SetActive(false);
+            
         }
     }
 }
