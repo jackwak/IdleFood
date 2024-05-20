@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,14 +12,21 @@ public class UpgradeMachineController : MonoBehaviour
     [SerializeField] private GameObject _machineBoxGO;
     //[SerializeField] private GameObject _machineUpgradePanel;
 
+    [SerializeField] private TextMeshProUGUI _timeText;
+    [SerializeField] private TextMeshProUGUI _upgradePriceText;
+    [SerializeField] private TextMeshProUGUI _foodPriceText;
+    [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private Image _filledImage;
+    [SerializeField] private GameObject _maxLevelImage;
+    [SerializeField] private GameObject _upgradeButtonGO;
+
     [Header("Variables")]
     [SerializeField] private int _foodPricePercentIncrease = 4;
     [SerializeField] private int _foodLevelUpPercentIncrease = 40;
     [SerializeField] private int _upgradePricePercentIncrease = 4;
     [SerializeField] private int _upgradeLevelUpPercentIncrease = 40;
-    [SerializeField] private int _maxLevelCount = 10;
-    private int _levelCounter = 0;
-
+    [SerializeField] private float _maxLevelCount = 10;
+    private float _levelCounter = 1;
 
     public void DecreaseDispenceTime(float percent)
     {
@@ -31,47 +39,72 @@ public class UpgradeMachineController : MonoBehaviour
 
     public void LevelUpMachine()
     {
-        if (_levelCounter > 50) return;
-
-        _levelCounter++;
-        if (_maxLevelCount % _levelCounter != 0)
+        if (_levelCounter < 50)
         {
-            //update food price
-            float foodPrice = _food.Price;
-            float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100; 
 
-            _food.Price = newFoodPrice;
+            _levelCounter++;
+            Debug.Log(_levelCounter % _maxLevelCount);
 
-            //update upgrade price
-
-            float upgradePrice = _machineData.UpgradePrice;
-            float newUpgradePrice = upgradePrice * (100 + _upgradePricePercentIncrease) / 100;
-
-            _machineData.UpgradePrice = newUpgradePrice;
-
-            //update ui
-        }
-        else
-        {
-            if (_levelCounter == 10) // bu ife gerek olmayabilir
+            if (_levelCounter % _maxLevelCount != 1)
             {
-                //Show machine box
-                _machineBoxGO.SetActive(true);
+                //update food price
+                float foodPrice = _food.Price;
+                float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100;
+
+                _food.Price = newFoodPrice;
+
+                //update upgrade price
+
+                float upgradePrice = _machineData.UpgradePrice;
+                float newUpgradePrice = upgradePrice * (100 + _upgradePricePercentIncrease) / 100;
+
+                _machineData.UpgradePrice = newUpgradePrice;
+
+                //update ui
+                _foodPriceText.text = newFoodPrice.ToString();
+                _upgradePriceText.text = newUpgradePrice.ToString();
+                float number = _levelCounter;
+                if (_levelCounter > 10)
+                {
+                   number = _levelCounter % _maxLevelCount;
+                    if (number == 0) number = 10;
+                }
+                _filledImage.fillAmount = number / _maxLevelCount;
+                _levelText.text = _levelCounter.ToString();
+
+                
             }
+            else
+            {
+                if (_levelCounter == 11)
+                {
+                    //Show machine box
+                    _machineBoxGO.SetActive(true);
+                }
 
-            float foodPrice = _food.Price;
-            float newFoodPrice = foodPrice * (100 + _foodLevelUpPercentIncrease) / 100;
+                float foodPrice = _food.Price;
+                float newFoodPrice = foodPrice * (100 + _foodLevelUpPercentIncrease) / 100;
 
-            _food.Price = newFoodPrice;
+                _food.Price = newFoodPrice;
 
-            //update upgrade price
+                //update upgrade price
 
-            float upgradePrice = _machineData.UpgradePrice;
-            float newUpgradePrice = upgradePrice * (100 + _upgradeLevelUpPercentIncrease) / 100;
+                float upgradePrice = _machineData.UpgradePrice;
+                float newUpgradePrice = upgradePrice * (100 + _upgradeLevelUpPercentIncrease) / 100;
 
-            _machineData.UpgradePrice = newUpgradePrice;
+                _machineData.UpgradePrice = newUpgradePrice;
 
-            //update ui
+                //update ui
+                _foodPriceText.text = newFoodPrice.ToString();
+                _upgradePriceText.text = newUpgradePrice.ToString();
+                _filledImage.fillAmount = 1 / _maxLevelCount;
+                _levelText.text = _levelCounter.ToString();
+            }
+        }
+        else 
+        {
+            _maxLevelImage.SetActive(true);
+            _upgradeButtonGO.SetActive(false);
         }
     }
 }
