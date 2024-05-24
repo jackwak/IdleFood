@@ -61,9 +61,13 @@ public class MoneyManager : MonoBehaviour
     {
         for (int i = 0; i < upgradeMachineControllerList.Count; i++)
         {
-            if (upgradeMachineControllerList[i].MachineData_UpgradePriceProp >= playerMoney)
+            if (playerMoney >= upgradeMachineControllerList[i].MachineData_UpgradePriceProp)
             {
-                //Para yetiyorsa burasý çalýþýr ve UI dan yeþil butonu aktifleþtirir.
+                upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
             }
         }
     }
