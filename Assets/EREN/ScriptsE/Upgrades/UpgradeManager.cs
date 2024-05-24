@@ -38,26 +38,38 @@ public class UpgradeManager : MonoBehaviour
     //====================================UPGRADE DÜÐMELERÝ FONKSÝYONLARI
     public void CustomerRateUpgradeButton()
     {
-        if (MoneyManager.Instance.playerMoney >= customerRateUpgrade.currentRequiredMoney)
+        if (MoneyManager.Instance.playerMoney >= customerRateUpgrade.currentRequiredMoney && customerRateUpgrade.currentLevel != customerRateUpgrade.maxLevel)
         {
             MoneyManager.Instance.RemoveMoney(customerRateUpgrade.currentRequiredMoney);
             customerManager.musteriOlmaSansii = customerRateUpgrade.MakeUpgrade();
-        }    
+
+            UISounds.Instance.PlayAcceptedPurchaseSound();
+        }
+        else
+        {
+            UISounds.Instance.PlayDeclinedPurchaseSound();
+        }
     }
     public void FoodCountRateUpgradeButton()
     {
-        if (MoneyManager.Instance.playerMoney >= foodCountRateUpgrade.currentRequiredMoney)
+        if (MoneyManager.Instance.playerMoney >= foodCountRateUpgrade.currentRequiredMoney && foodCountRateUpgrade.currentLevel != foodCountRateUpgrade.maxLevel)
         {
             MoneyManager.Instance.RemoveMoney(foodCountRateUpgrade.currentRequiredMoney);
             foodCountRateUpgrade.MakeUpgrade();
             customerManager.birYemekSansi = foodCountRateUpgrade.currentOneFoodRate;
             customerManager.ikiYemekSansi = foodCountRateUpgrade.currentTwoFoodRate;
             customerManager.ucYemekSansi = foodCountRateUpgrade.currentThreeFoodRate;
+
+            UISounds.Instance.PlayAcceptedPurchaseSound();
+        }
+        else
+        {
+            UISounds.Instance.PlayDeclinedPurchaseSound();
         }
     }
     public void FoodPrepareSpeedUpgradeButton()
     {
-        if (MoneyManager.Instance.playerMoney >= foodPrepareSpeedUpgrade.currentRequiredMoney)
+        if (MoneyManager.Instance.playerMoney >= foodPrepareSpeedUpgrade.currentRequiredMoney && foodPrepareSpeedUpgrade.currentLevel != foodPrepareSpeedUpgrade.maxLevel)
         {
             MoneyManager.Instance.RemoveMoney(foodPrepareSpeedUpgrade.currentRequiredMoney);
             foodPrepareSpeedUpgrade.MakeUpgrade();
@@ -66,15 +78,27 @@ public class UpgradeManager : MonoBehaviour
                 item.DispenseTime = foodPrepareSpeedUpgrade.currentPrepareSpeed;
             }
             //foodPrepareSpeedUpgrade.machineData.DispenseTime = foodPrepareSpeedUpgrade.currentPrepareSpeed;
+
+            UISounds.Instance.PlayAcceptedPurchaseSound();
+        }
+        else
+        {
+            UISounds.Instance.PlayDeclinedPurchaseSound();
         }
     }
     public void TakingOrderTimeUpgradeButton()
     {
-        if (MoneyManager.Instance.playerMoney >= takingOrderTimeUpgrade.currentRequiredMoney)
+        if (MoneyManager.Instance.playerMoney >= takingOrderTimeUpgrade.currentRequiredMoney && takingOrderTimeUpgrade.currentLevel != takingOrderTimeUpgrade.maxLevel)
         {
             MoneyManager.Instance.RemoveMoney(takingOrderTimeUpgrade.currentRequiredMoney);
             takingOrderTimeUpgrade.MakeUpgrade();
             LevelManager.Instance._takingOrderTime = takingOrderTimeUpgrade.currentTakingOrderTime;
+
+            UISounds.Instance.PlayAcceptedPurchaseSound();
+        }
+        else
+        {
+            UISounds.Instance.PlayDeclinedPurchaseSound();
         }
     }
 

@@ -20,6 +20,7 @@ public class UpgradeMachineController : MonoBehaviour
     [SerializeField] private int _maxLevelCount = 10;
     private int _levelCount = 0;
 
+    public float MachineData_UpgradePriceProp { get { return _machineData.UpgradePrice; } }
 
     public void DecreaseDispenceTime(float percent)
     {
@@ -39,7 +40,7 @@ public class UpgradeMachineController : MonoBehaviour
         {
             //update food price
             float foodPrice = _food.Price;
-            float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100; 
+            float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100;
 
             _food.Price = newFoodPrice;
 

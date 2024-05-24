@@ -6,30 +6,41 @@ using TMPro;
 
 public class MoneyManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text moneyText;
     public static MoneyManager Instance;
+
+
+    [SerializeField] private TMP_Text moneyText;
+    [SerializeField] public float playerMoney;
+
+    [Header("Other")]
+    [SerializeField] private UpgradeManager upgradeManager;
+    [SerializeField] private GameObject upgradePanelObj;
+    [SerializeField] private List<UpgradeMachineController> upgradeMachineControllerList;
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
-        else if(Instance != this)
+        else if (Instance != this)
             Destroy(this);
 
-        DontDestroyOnLoad(Instance);
+        //DontDestroyOnLoad(Instance);
     }
 
 
-    [SerializeField] public float playerMoney;
+
 
     private void Update()
     {
         UpdateMoneyText(); //Oyunun son halinde kaldýrýlabilir.
+        CheckMoneyForUpgradeButtonGreenOrGray();
+        CheckMoneyForFoodMachineUpgradeButton();
     }
 
     public void AddMoney(float money)
     {
         playerMoney += money;
         UpdateMoneyText();
+        CheckMoneyForUpgradeButtonGreenOrGray();
     }
     public void RemoveMoney(float money)
     {
@@ -38,6 +49,23 @@ public class MoneyManager : MonoBehaviour
     public void UpdateMoneyText()
     {
         moneyText.text = playerMoney.ToString();
+    }
+    public void CheckMoneyForUpgradeButtonGreenOrGray()
+    {
+        if (upgradePanelObj.activeSelf)
+        {
+            upgradeManager.SetGrayOrGreenButton();
+        }
+    }
+    public void CheckMoneyForFoodMachineUpgradeButton()
+    {
+        for (int i = 0; i < upgradeMachineControllerList.Count; i++)
+        {
+            if (upgradeMachineControllerList[i].MachineData_UpgradePriceProp >= playerMoney)
+            {
+                //Para yetiyorsa burasý çalýþýr ve UI dan yeþil butonu aktifleþtirir.
+            }
+        }
     }
 
 }
