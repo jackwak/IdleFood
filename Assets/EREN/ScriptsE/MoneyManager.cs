@@ -28,7 +28,6 @@ public class MoneyManager : MonoBehaviour
 
 
 
-
     private void Update()
     {
         UpdateMoneyText(); //Oyunun son halinde kaldýrýlabilir.
