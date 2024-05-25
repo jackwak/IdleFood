@@ -4636,6 +4636,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516352816}
   m_CullTransparentMesh: 1
+--- !u!1 &526705997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526705998}
+  - component: {fileID: 526705999}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &526705998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526705997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141716447}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &526705999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526705997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732d14150b56263469456e2f58aa2d25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - AudioClip: {fileID: 8300000, guid: 5d66fd014cae8a345badb8f776362e8a, type: 3}
+    Name: Coin
+    Volume: 0.3
+    Pitch: 1
+    AudioSource: {fileID: 0}
+    IsLoop: 0
+  - AudioClip: {fileID: 8300000, guid: ca93f4833e462f5479dd89b687feba71, type: 3}
+    Name: OrderTook
+    Volume: 0.3
+    Pitch: 1
+    AudioSource: {fileID: 0}
+    IsLoop: 0
 --- !u!1 &529543055
 GameObject:
   m_ObjectHideFlags: 0
@@ -11069,6 +11126,7 @@ Transform:
   - {fileID: 597858774}
   - {fileID: 2006340366}
   - {fileID: 615714561}
+  - {fileID: 526705998}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

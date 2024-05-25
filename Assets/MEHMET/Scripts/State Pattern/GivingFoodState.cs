@@ -37,6 +37,7 @@ public class GivingFoodState : State
                 _waiter.CurrentCustomer = _waiter.CurrentOrder.Customer;
 
                 //siparis verme sesi oynat
+                AudioManager.Instance.Play("Coin");
 
                 //yemegini ver
                 _waiter.CurrentCustomer.MusteriyeYemekVer();
