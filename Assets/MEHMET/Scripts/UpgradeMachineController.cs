@@ -35,6 +35,8 @@ public class UpgradeMachineController : MonoBehaviour
     {
         if (_levelCount > 50) return;
 
+        if (MoneyManager.Instance.playerMoney < _machineData.UpgradePrice) return;
+
         _levelCount++;
         if (_maxLevelCount % _levelCount != 0)
         {

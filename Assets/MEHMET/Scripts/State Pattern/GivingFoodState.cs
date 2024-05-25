@@ -48,6 +48,8 @@ public class GivingFoodState : State
                 HasFoodOnHand = false;
 
                 _isFoodGiving = true;
+
+                MoneyManager.Instance.AddMoney(_waiter.CurrentOrder.Machine.MachineData.FoodPrefab.GetComponent<Food>().Price);
             }
 
 
