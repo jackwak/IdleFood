@@ -1,24 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeMachineController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private MachinePositionManager _machinePositionManager;
     [SerializeField] private MachineData _machineData;
     [SerializeField] private Food _food;
-    [SerializeField] private GameObject _secondMachineGO;
+    [SerializeField] private GameObject _machineBoxGO;
     //[SerializeField] private GameObject _machineUpgradePanel;
+
+    [SerializeField] private TextMeshProUGUI _timeText;
+    [SerializeField] private TextMeshProUGUI _upgradePriceText;
+    [SerializeField] private TextMeshProUGUI _foodPriceText;
+    [SerializeField] private TextMeshProUGUI _levelText;
+    [SerializeField] private Image _filledImage;
+    [SerializeField] private GameObject _maxLevelImage;
+    [SerializeField] private GameObject _upgradeButtonGO;
 
     [Header("Variables")]
     [SerializeField] private int _foodPricePercentIncrease = 4;
     [SerializeField] private int _foodLevelUpPercentIncrease = 40;
     [SerializeField] private int _upgradePricePercentIncrease = 4;
     [SerializeField] private int _upgradeLevelUpPercentIncrease = 40;
-    [SerializeField] private int _maxLevelCount = 10;
-    private int _levelCount = 0;
+    [SerializeField] private float _maxLevelCount = 10;
+    private float _levelCounter = 1;
 
     public float MachineData_UpgradePriceProp { get { return _machineData.UpgradePrice; } }
 
@@ -33,50 +41,76 @@ public class UpgradeMachineController : MonoBehaviour
 
     public void LevelUpMachine()
     {
-        if (_levelCount > 50) return;
-
-        if (MoneyManager.Instance.playerMoney < _machineData.UpgradePrice) return;
-
-        _levelCount++;
-        if (_maxLevelCount % _levelCount != 0)
+        if (_levelCounter < 50)
         {
-            //update food price
-            float foodPrice = _food.Price;
-            float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100;
+            if (MoneyManager.Instance.playerMoney < _machineData.UpgradePrice) return;
+            _levelCounter++;
 
-            _food.Price = newFoodPrice;
+            if (_levelCounter % _maxLevelCount != 0)
+            {
+                //update food price
+                float foodPrice = _food.Price;
+                float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100;
+                _food.Price = newFoodPrice;
 
-            //update upgrade price
+                //update upgrade price
 
-            float upgradePrice = _machineData.UpgradePrice;
-            float newUpgradePrice = upgradePrice * (100 + _upgradePricePercentIncrease) / 100;
+                float upgradePrice = _machineData.UpgradePrice;
+                float newUpgradePrice = upgradePrice * (100 + _upgradePricePercentIncrease) / 100;
 
-            _machineData.UpgradePrice = newUpgradePrice;
+                _machineData.UpgradePrice = newUpgradePrice;
 
-            //update ui
+                //update ui
+                _foodPriceText.text = ((int)newFoodPrice).ToString();
+                _upgradePriceText.text = ((int)newUpgradePrice).ToString();
+
+                float number = _levelCounter;
+                if (_levelCounter > 10)
+                {
+                    number = _levelCounter % _maxLevelCount;
+                }
+
+                _filledImage.fillAmount = number / _maxLevelCount;
+                _levelText.text = _levelCounter.ToString();
+
+
+            }
+            else
+            {
+                if (_levelCounter == 10)
+                {
+                    //Show machine box
+                    _machineBoxGO.SetActive(true);
+                }
+
+                float foodPrice = _food.Price;
+                float newFoodPrice = foodPrice * (100 + _foodLevelUpPercentIncrease) / 100;
+
+                _food.Price = newFoodPrice;
+
+                //update upgrade price
+
+                float upgradePrice = _machineData.UpgradePrice;
+                float newUpgradePrice = upgradePrice * (100 + _upgradeLevelUpPercentIncrease) / 100;
+
+                _machineData.UpgradePrice = newUpgradePrice;
+
+                //update ui
+                _foodPriceText.text = ((int)newFoodPrice).ToString();
+                _upgradePriceText.text = ((int)newUpgradePrice).ToString();
+                _filledImage.fillAmount = 0;
+                _levelText.text = _levelCounter.ToString();
+
+                if (_levelCounter == 50)
+                {
+                    _maxLevelImage.SetActive(true);
+                    _upgradeButtonGO.SetActive(false);
+                }
+            }
         }
         else
         {
-            if (_levelCount == 10) // bu ife gerek olmayabilir
-            {
-                //spawn new machine
-                _secondMachineGO.SetActive(true);
-                _machinePositionManager.AddMachine(_secondMachineGO.GetComponent<Machine>());
-            }
 
-            float foodPrice = _food.Price;
-            float newFoodPrice = foodPrice * (100 + _foodLevelUpPercentIncrease) / 100;
-
-            _food.Price = newFoodPrice;
-
-            //update upgrade price
-
-            float upgradePrice = _machineData.UpgradePrice;
-            float newUpgradePrice = upgradePrice * (100 + _upgradeLevelUpPercentIncrease) / 100;
-
-            _machineData.UpgradePrice = newUpgradePrice;
-
-            //update ui
         }
     }
 }

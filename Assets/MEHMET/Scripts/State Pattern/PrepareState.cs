@@ -46,6 +46,7 @@ public class PrepareState : State
     {
         IsFoodCompleted = false;
         _isPreparing = false;
+        _waiter.Animator.SetBool("IsPreparing", false);
     }
 
     private IEnumerator Prepare()
@@ -59,6 +60,7 @@ public class PrepareState : State
         StartCoroutine(machine.ShowPreparingFood());
 
         //waiter anim
+        _waiter.Animator.SetBool("IsPreparing", true);
 
         float dispenceTime = machine.MachineData.DispenseTime;
 

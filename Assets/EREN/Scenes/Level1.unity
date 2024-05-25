@@ -5183,6 +5183,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 607448960}
     - target: {fileID: 5979091223149260212, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
+      propertyPath: _machineBoxGO
+      value: 
+      objectReference: {fileID: 1251667369}
+    - target: {fileID: 5979091223149260212, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
       propertyPath: _secondMachineGO
       value: 
       objectReference: {fileID: 607448959}
@@ -12239,6 +12243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579ef17cc01d33f419198943aee96b65, type: 3}
+--- !u!1 &1251667369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4962952292005134451, guid: 1f2ec6ec5d389034c80daae2dabe1f71, type: 3}
+  m_PrefabInstance: {fileID: 1711110173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1290918502
 GameObject:
   m_ObjectHideFlags: 0
