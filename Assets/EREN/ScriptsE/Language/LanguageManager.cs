@@ -10,6 +10,15 @@ using Unity.Collections;
 
 public class LanguageManager : MonoBehaviour
 {
+    public static LanguageManager Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+    }
+
 
     [SerializeField, InlineButton(nameof(ApplyAll))] public Languages currentLanguage;
     [EditorAttributes.ReadOnly] public Languages applyedLanguage;
@@ -17,7 +26,7 @@ public class LanguageManager : MonoBehaviour
     [Header("All Languages SO")]
     [SerializeField] private LanguageSO enSO;
     [SerializeField] private LanguageSO trSO;
-    [HideInInspector] private LanguageSO selectedSO;
+    [HideInInspector] public LanguageSO selectedSO;
 
 
 
@@ -116,6 +125,27 @@ public class LanguageManager : MonoBehaviour
                 addWaiterUpgradeDescription.text = selectedSO.addWaiterUpgradeDescription;
                 break;
             case "Level2":
+                break;
+        }
+    }
+
+    public void CheckSavedLanguageInitialForLoadGame()
+    {
+        switch (PlayerPrefs.GetString("languageInitial"))
+        {
+            case "EN":
+                Debug.Log("en");
+                selectedSO = enSO;
+                currentLanguage = Languages.english;
+                applyedLanguage = Languages.english;
+                ApplyAll();
+                break;
+            case "TR":
+                Debug.Log("tr");
+                selectedSO = trSO;
+                currentLanguage = Languages.turkish;
+                applyedLanguage = Languages.turkish;
+                ApplyAll();
                 break;
         }
     }

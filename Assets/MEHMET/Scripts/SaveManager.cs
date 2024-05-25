@@ -37,6 +37,7 @@ public class SaveManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("playerMoney", MoneyManager.Instance.playerMoney);
         PlayerPrefs.SetInt("currentLevelId", GameManager.Instance.currentLevelId);
+        PlayerPrefs.SetString("languageInitial", LanguageManager.Instance.selectedSO.initial);
 
         PlayerPrefs.SetInt("customerRateUpgradeCurrentLevel", CustomerRateUpgrade.Instance.currentLevel);
         PlayerPrefs.SetInt("foodCountRateUpgradeCurrentLevel", FoodCountRateUpgrade.Instance.currentLevel);
@@ -45,7 +46,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("addWaiterUpgradeCurrentLevel", AddWaiterUpgrade.Instance.currentLevel);
     }
 
-    public void LoadGame() 
+    public void LoadGame()
     {
         MoneyManager.Instance.playerMoney = PlayerPrefs.GetFloat("playerMoney");
         GameManager.Instance.currentLevelId = PlayerPrefs.GetInt("currentLevelId");
@@ -57,6 +58,7 @@ public class SaveManager : MonoBehaviour
         AddWaiterUpgrade.Instance.currentLevel = PlayerPrefs.GetInt("addWaiterUpgradeCurrentLevel");
 
         UpgradeManager.Instance.SetAllUpgradesForStart(); //Tüm upgradelerin seviyesine göre ayarlamalarý baþlatýr.
+        LanguageManager.Instance.CheckSavedLanguageInitialForLoadGame(); //En son seçilen dilde oyunu açar.
     }
 
     public void ResetGame()
@@ -69,7 +71,10 @@ public class SaveManager : MonoBehaviour
         //PlayerPrefs.SetInt("foodPrepareSpeedUpgradeCurrentLevel", 1);
         //PlayerPrefs.SetInt("takingOrderTimeUpgradeCurrentLevel", 1);
         //PlayerPrefs.SetInt("addWaiterUpgradeCurrentLevel", 1);
+
+
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("currentLevelId", 1);
         LoadGame();
     }
 
