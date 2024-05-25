@@ -17,7 +17,7 @@ public class DeveloperPanel : MonoBehaviour
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
         }
-        
+
 
         IsMenuOpen = false;
         customerManager = GameObject.FindGameObjectWithTag("CustomerManager").GetComponent<CustomerManager>();
@@ -96,7 +96,7 @@ public class DeveloperPanel : MonoBehaviour
     public float timer = 0;
     private bool startTimer = false;
     public GameObject resultText;
-    [TextArea] public List<string> avarageMoneyRecord; 
+    [TextArea] public List<string> avarageMoneyRecord;
 
     private float moneyAmountStart;
     private float moneyAmountEnd;
@@ -107,11 +107,11 @@ public class DeveloperPanel : MonoBehaviour
     public void MoneyAvarageCalculator()  //dakika ve saniye baþýna geliri gösterir.
     {
         moneyPerSecond = (moneyAmountEnd - moneyAmountStart) / timer;
-        moneyPerMinute = (moneyAmountEnd - moneyAmountStart) / (timer/60f);
+        moneyPerMinute = (moneyAmountEnd - moneyAmountStart) / (timer / 60f);
     }
     public void MoneyAddRecord()
     {
-        avarageMoneyRecord.Add("StartMoney: " + moneyAmountStart + " | EndMoney: " + moneyAmountEnd + " | Time: " + timer + " \nMoneyPerSec: " + moneyPerSecond + " \nMoneyPerMin: " + moneyPerMinute);
+        avarageMoneyRecord.Add("StartMoney: " + moneyAmountStart + " | EndMoney: " + moneyAmountEnd + " | EarnedMoney: " + (moneyAmountEnd - moneyAmountStart) + " | Time: " + timer + " \nMoneyPerSec: " + moneyPerSecond + " \nMoneyPerMin: " + moneyPerMinute);
     }
     public void MoneyTimerReset()
     {

@@ -28,9 +28,9 @@ public class MoneyManager : MonoBehaviour
 
 
 
-    private void Update()
+    private void Update() //Oyunun son halinde kaldýr
     {
-        UpdateMoneyText(); //Oyunun son halinde kaldýrýlabilir.
+        UpdateMoneyText(); 
         CheckMoneyForUpgradeButtonGreenOrGray();
         CheckMoneyForFoodMachineUpgradeButton();
     }
@@ -40,6 +40,7 @@ public class MoneyManager : MonoBehaviour
         playerMoney += money;
         UpdateMoneyText();
         CheckMoneyForUpgradeButtonGreenOrGray();
+        CheckMoneyForFoodMachineUpgradeButton();
     }
     public void RemoveMoney(float money)
     {
@@ -60,7 +61,7 @@ public class MoneyManager : MonoBehaviour
     {
         for (int i = 0; i < upgradeMachineControllerList.Count; i++)
         {
-            if (playerMoney >= upgradeMachineControllerList[i].MachineData_UpgradePriceProp)
+            if (playerMoney >= upgradeMachineControllerList[i].MachineData_UpgradePriceProp && !upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(0).gameObject.activeSelf)
             {
                 upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
             }

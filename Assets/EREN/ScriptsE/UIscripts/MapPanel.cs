@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class MapPanel : MonoBehaviour
 {
-    [SerializeField] private int currentActiveLevel;
+
+    [SerializeField] public int currentActiveLevel;
     [SerializeField] private Sprite whiteCloud;
     [SerializeField] private Sprite grayCloud;
 

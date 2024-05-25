@@ -5,6 +5,17 @@ using UnityEngine;
 
 public class CustomerRateUpgrade : MonoBehaviour
 {
+    public static CustomerRateUpgrade Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+    }
+
+
+
     //[SerializeField] TextMeshProUGUI titleText;
     //[SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] TextMeshProUGUI moneyText;
@@ -96,15 +107,71 @@ public class CustomerRateUpgrade : MonoBehaviour
         return currentRate;
     }
 
+    //public void ResetUpgrade()
+    //{
+    //    currentRate = _level1Rate;
+    //    currentLevel = 1;
+    //    currentRequiredMoney = _level2RequiredMoney;
+
+    //    //titleText.text = upgradeTitle;
+    //    //descriptionText.text = upgradeDescription;
+    //    moneyText.text = currentRequiredMoney.ToString();
+    //    levelText.text = currentLevel.ToString();
+    //}
+
     public void ResetUpgrade()
     {
-        currentRate = _level1Rate;
-        currentLevel = 1;
-        currentRequiredMoney = _level2RequiredMoney;
+        switch (currentLevel)
+        {
+            case 0:
+                currentLevel = 1;
+                currentRate = _level1Rate;
+                currentRequiredMoney = _level2RequiredMoney;
 
-        //titleText.text = upgradeTitle;
-        //descriptionText.text = upgradeDescription;
-        moneyText.text = currentRequiredMoney.ToString();
-        levelText.text = currentLevel.ToString();
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 1:
+                currentRate = _level1Rate;
+                currentRequiredMoney = _level2RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 2:
+                currentRate = _level2Rate;
+                currentRequiredMoney = _level3RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 3:
+                currentRate = _level3Rate;
+                currentRequiredMoney = _level4RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 4:
+                currentRate = _level4Rate;
+                currentRequiredMoney = _level5RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 5:
+                currentRate = _level5Rate;
+                //currentRequiredMoney = _level6RequiredMoney;
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+        }
+
+        if(currentLevel == maxLevel)
+        {
+            currentRequiredMoney = 0;
+            moneyText.text = "MAX";
+            levelText.text = currentLevel.ToString();
+        }
     }
 }

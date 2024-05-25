@@ -19,9 +19,15 @@ public class LanguageManager : MonoBehaviour
     [SerializeField] private LanguageSO trSO;
     [HideInInspector] private LanguageSO selectedSO;
 
+
+
     [Header("_________________________________________________________________________________________________________________________________________________________________")]
 
+    [Header("Other")]
+    [SerializeField] private TMP_Text initial;
+
     [Header("Map Texts")]
+    [SerializeField] private TMP_Text levelTitle;
     [SerializeField] private TMP_Text level1Title;
     [SerializeField] private TMP_Text level2Title;
     [SerializeField] private TMP_Text level3Title;
@@ -36,6 +42,9 @@ public class LanguageManager : MonoBehaviour
     [SerializeField] private TMP_Text foodPrepareSpeedUpgradeDescription;
     [SerializeField] private TMP_Text takingOrderTimeUpgradeTitle;
     [SerializeField] private TMP_Text takingOrderTimeUpgradeDescription;
+    [SerializeField] private TMP_Text addWaiterUpgradeTitle;
+    [SerializeField] private TMP_Text addWaiterUpgradeDescription;
+
 
     private void Start()
     {
@@ -45,7 +54,7 @@ public class LanguageManager : MonoBehaviour
 
     public void InGameSwitchLanguageButton()
     {
-        switch (applyedLanguage) 
+        switch (applyedLanguage)
         {
             case Languages.english:
                 currentLanguage = Languages.turkish;
@@ -80,6 +89,9 @@ public class LanguageManager : MonoBehaviour
     }
     void ApplySelectedLanguage()
     {
+        //initial.text = selectedSO.initial;
+
+        levelTitle.text = selectedSO.levelTitle + " " + GameManager.Instance.currentLevelId;
         level1Title.text = selectedSO.level1Title;
         level2Title.text = selectedSO.level2Title;
         level3Title.text = selectedSO.level3Title;
@@ -99,6 +111,9 @@ public class LanguageManager : MonoBehaviour
 
                 takingOrderTimeUpgradeTitle.text = selectedSO.takingOrderTimeUpgradeTitle;
                 takingOrderTimeUpgradeDescription.text = selectedSO.takingOrderTimeUpgradeDescription;
+
+                addWaiterUpgradeTitle.text = selectedSO.addWaiterUpgradeTitle;
+                addWaiterUpgradeDescription.text = selectedSO.addWaiterUpgradeDescription;
                 break;
             case "Level2":
                 break;

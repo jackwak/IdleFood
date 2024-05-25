@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76939782648344845bcd91950073a0ac, type: 3}
   m_Name: TR 2
   m_EditorClassIdentifier: 
+  initial: TR
+  levelTitle: "SEV\u0130YE"
   level1Title: "Limonata Stand\u0131"
   level2Title: "Yak\u0131nda..."
   level3Title: "Yak\u0131nda..."
   upgradesTitle: "Geli\u015Ftirmeler"
   customerRateUpgradeTitle: Reklam Ver
-  customerRateUpgradeDescription: "Daha fazla m\xFC\u015Fteri \xE7ekersin."
+  customerRateUpgradeDescription: "M\xFC\u015Fteri \xE7ekmenin en iyi yolu."
   foodCountRateUpgradeTitle: Lezzet Kat
   foodCountRateUpgradeDescription: "\xDCr\xFCnlerinden daha \xE7ok almak isteyecekler."
   foodPrepareSpeedUpgradeTitle: "H\u0131zl\u0131 Eller"
@@ -25,3 +27,5 @@ MonoBehaviour:
   takingOrderTimeUpgradeTitle: Diksiyon Dersi
   takingOrderTimeUpgradeDescription: "M\xFC\u015Fteriden daha h\u0131zl\u0131 sipari\u015F
     al\u0131rs\u0131n."
+  addWaiterUpgradeTitle: Garson Al
+  addWaiterUpgradeDescription: Bir elin nesi var, iki elin sesi var.

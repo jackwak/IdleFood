@@ -18,12 +18,13 @@ public class BackgroundMusic : MonoBehaviour
    
     [SerializeField] private List<AudioClip> clipList;
 
-
-    private void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         lastChoosenMusicIndex = -1;
-
+    }
+    private void OnEnable()
+    {
         StartMusic();
     }
 

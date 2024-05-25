@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76939782648344845bcd91950073a0ac, type: 3}
   m_Name: TR 1
   m_EditorClassIdentifier: 
+  initial: TR
+  levelTitle: "SEV\u0130YE"
   level1Title: "Limonata Stand\u0131"
   level2Title: "Yak\u0131nda..."
   level3Title: "Yak\u0131nda..."

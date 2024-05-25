@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class FoodPrepareSpeedUpgrade : MonoBehaviour
 {
+    public static FoodPrepareSpeedUpgrade Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+    }
+
+
     //[SerializeField] TextMeshProUGUI titleText;
     //[SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] TextMeshProUGUI moneyText;
@@ -91,15 +101,72 @@ public class FoodPrepareSpeedUpgrade : MonoBehaviour
         }
     }
 
+    //public void ResetUpgrade()
+    //{
+    //    currentLevel = 1;
+    //    currentPrepareSpeed = _level1PrepareSpeed;
+    //    currentRequiredMoney = _level2RequiredMoney;
+
+    //    //titleText.text = upgradeTitle;
+    //    //descriptionText.text = upgradeDescription;
+    //    moneyText.text = currentRequiredMoney.ToString();
+    //    levelText.text = currentLevel.ToString();
+    //}
+
     public void ResetUpgrade()
     {
-        currentLevel = 1;
-        currentPrepareSpeed = _level1PrepareSpeed;
-        currentRequiredMoney = _level2RequiredMoney;
+        switch (currentLevel)
+        {
+            case 0:
+                currentLevel = 1;
+                currentPrepareSpeed = _level1PrepareSpeed;
+                currentRequiredMoney = _level2RequiredMoney;
 
-        //titleText.text = upgradeTitle;
-        //descriptionText.text = upgradeDescription;
-        moneyText.text = currentRequiredMoney.ToString();
-        levelText.text = currentLevel.ToString();
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 1:
+                currentPrepareSpeed = _level1PrepareSpeed;
+                currentRequiredMoney = _level2RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 2:
+                currentPrepareSpeed = _level2PrepareSpeed;
+                currentRequiredMoney = _level3RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 3:
+                currentPrepareSpeed = _level3PrepareSpeed;
+                currentRequiredMoney = _level4RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 4:
+                currentPrepareSpeed = _level4PrepareSpeed;
+                currentRequiredMoney = _level5RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 5:
+                currentPrepareSpeed = _level5PrepareSpeed;
+                //currentRequiredMoney = _level6RequiredMoney;
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+        }
+
+        if (currentLevel == maxLevel)
+        {
+            currentRequiredMoney = 0;
+            moneyText.text = "MAX";
+            levelText.text = currentLevel.ToString();
+        }
     }
+
 }

@@ -5,7 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LA",menuName = "ScriptableObjects/NewLanguage")]
 public class LanguageSO : ScriptableObject
 {
+    [Header("Other")]
+    public string initial;
+
     [Header("Map Texts")]
+    public string levelTitle;
     public string level1Title;
     public string level2Title;
     public string level3Title;
@@ -24,5 +28,8 @@ public class LanguageSO : ScriptableObject
     [Space]
     public string takingOrderTimeUpgradeTitle;
     public string takingOrderTimeUpgradeDescription;
+    [Space]
+    public string addWaiterUpgradeTitle;
+    public string addWaiterUpgradeDescription;
 
 }

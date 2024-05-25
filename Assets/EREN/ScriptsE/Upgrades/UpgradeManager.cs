@@ -6,6 +6,15 @@ using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
+    public static UpgradeManager Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+    }
+
     [Header("Managers & Objects")]
     [SerializeField] private GameObject CustomerManagerObj;
     [SerializeField] private GameObject UpgradesObj;
@@ -19,6 +28,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private FoodCountRateUpgrade foodCountRateUpgrade;
     [SerializeField] private FoodPrepareSpeedUpgrade foodPrepareSpeedUpgrade;
     [SerializeField] private TakingOrderTimeUpgrade takingOrderTimeUpgrade;
+    [SerializeField] private AddWaiterUpgrade addWaiterUpgrade;
 
 
     private CustomerManager customerManager;
@@ -101,6 +111,20 @@ public class UpgradeManager : MonoBehaviour
             UISounds.Instance.PlayDeclinedPurchaseSound();
         }
     }
+    public void AddWaiterUpgradeButton()
+    {
+        if (MoneyManager.Instance.playerMoney >= addWaiterUpgrade.currentRequiredMoney && addWaiterUpgrade.currentLevel != addWaiterUpgrade.maxLevel)
+        {
+            MoneyManager.Instance.RemoveMoney(addWaiterUpgrade.currentRequiredMoney);
+            addWaiterUpgrade.MakeUpgrade();
+
+            UISounds.Instance.PlayAcceptedPurchaseSound();
+        }
+        else
+        {
+            UISounds.Instance.PlayDeclinedPurchaseSound();
+        }
+    }
 
 
     //====================================DÝÐER
@@ -122,6 +146,8 @@ public class UpgradeManager : MonoBehaviour
 
         takingOrderTimeUpgrade.ResetUpgrade();
         LevelManager.Instance._takingOrderTime = takingOrderTimeUpgrade.currentTakingOrderTime;
+
+        addWaiterUpgrade.ResetUpgrade();
 
     }
     public void SetGrayOrGreenButton()    //Gri buton yada yeþil buton.
@@ -161,6 +187,15 @@ public class UpgradeManager : MonoBehaviour
                 Image moneyImage = childObj.transform.GetChild(1).gameObject.GetComponent<Image>();
 
                 if (MoneyManager.Instance.playerMoney < takingOrderTimeUpgrade.currentRequiredMoney)
+                    moneyImage.sprite = grayButton;
+                else
+                    moneyImage.sprite = greenButton;
+            }
+            else if (childObj.name.Contains("AddWaiterUpgrade"))
+            {
+                Image moneyImage = childObj.transform.GetChild(1).gameObject.GetComponent<Image>();
+
+                if (MoneyManager.Instance.playerMoney < addWaiterUpgrade.currentRequiredMoney)
                     moneyImage.sprite = grayButton;
                 else
                     moneyImage.sprite = greenButton;

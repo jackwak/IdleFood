@@ -29,16 +29,19 @@ public class UISounds : MonoBehaviour
 
     public void PlayButtonSound()
     {
+        audioSource.pitch = 1;
         audioSource.clip = buttonSound[Random.Range(0, buttonSound.Count)];
         audioSource.Play();
     }
     public void PlayAcceptedPurchaseSound()
     {
+        audioSource.pitch = 1.5f;
         audioSource.clip = acceptedPurchaseSound[Random.Range(0, acceptedPurchaseSound.Count)];
         audioSource.Play();
     }
     public void PlayDeclinedPurchaseSound()
     {
+        audioSource.pitch = 1.5f;
         audioSource.clip = declinedPurchaseSound[Random.Range(0, declinedPurchaseSound.Count)];
         audioSource.Play();
     }

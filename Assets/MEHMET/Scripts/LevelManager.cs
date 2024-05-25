@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject _waiterBox;
 
+
     public float TakingOrderTime
     {
         get { return _takingOrderTime; }

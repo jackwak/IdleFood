@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76939782648344845bcd91950073a0ac, type: 3}
   m_Name: EN 1
   m_EditorClassIdentifier: 
+  initial: EN
+  levelTitle: LEVEL
   level1Title: Lemonade Stand
   level2Title: Coming Soon...
   level3Title: Coming Soon...
@@ -26,3 +28,5 @@ MonoBehaviour:
   takingOrderTimeUpgradeTitle: Diction Course
   takingOrderTimeUpgradeDescription: You communicate well with customers. You get
     orders faster.
+  addWaiterUpgradeTitle: Hire Waitstaff
+  addWaiterUpgradeDescription: Two heads are better than one.
