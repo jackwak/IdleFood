@@ -27,6 +27,13 @@ public class PrepareState : State
         {
             ResetVariables();
             OrderManager.Instance.SetMachineToAvailable(_waiter.CurrentOrder.Machine, _waiter.CurrentOrder.Food);
+            _waiter.Animator.SetBool("IsCarring",true);
+            GameObject food = _waiter.CurrentOrder.Machine.GetFoodFromPool();
+            food.transform.SetParent(_waiter.FoodTransform);
+            food.transform.localPosition = Vector3.zero;
+            food.transform.rotation = Quaternion.identity;
+            StartCoroutine(Delay(food));
+
 
             return RunToCustomerState;
         }
@@ -78,5 +85,12 @@ public class PrepareState : State
 
         IsFoodCompleted = true;
         _waiter.HasFoodOnHand = true;
+    }
+
+    IEnumerator Delay(GameObject food)
+    {
+        yield return new WaitForSeconds(.25f);
+
+        food.transform.rotation = Quaternion.identity;
     }
 }

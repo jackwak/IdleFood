@@ -1701,7 +1701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1030862403}
-  playerMoney: -1
+  playerMoney: 10000
   upgradeManager: {fileID: 680165207}
   upgradePanelObj: {fileID: 1865217995}
   upgradeMachineControllerList:
@@ -3786,6 +3786,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1adaaeec99124cb44b8173d89a13fca7, type: 3}
+--- !u!1 &421820765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421820766}
+  m_Layer: 0
+  m_Name: Food Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &421820766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421820765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0094, y: 0.0076, z: 0.0202}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1424493608}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &442238356
 GameObject:
   m_ObjectHideFlags: 0
@@ -12986,6 +13017,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!4 &1424493608 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3440414426292545105, guid: 672eca6138280b44da7f07311558dca7, type: 3}
+  m_PrefabInstance: {fileID: 2021326558}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1429752843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b995606417a8fee45bef50324e459c97, type: 3}
@@ -19068,6 +19104,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5850941228729941874, guid: 672eca6138280b44da7f07311558dca7, type: 3}
+      propertyPath: FoodTransform
+      value: 
+      objectReference: {fileID: 421820766}
     - target: {fileID: 5850941228729941876, guid: 672eca6138280b44da7f07311558dca7, type: 3}
       propertyPath: m_Name
       value: Waiter

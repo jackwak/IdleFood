@@ -40,7 +40,7 @@ public abstract class Machine : MonoBehaviour
         return food;
     }
 
-    private void ReturnFoodToPool(GameObject food)
+    public void ReturnFoodToPool(GameObject food)
     {
         food.SetActive(false);
         FoodPool.Enqueue(food);

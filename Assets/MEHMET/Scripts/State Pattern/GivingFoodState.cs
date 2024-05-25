@@ -42,12 +42,17 @@ public class GivingFoodState : State
                 _waiter.CurrentCustomer.MusteriyeYemekVer();
 
                 //yemegi poola yolla
+                GameObject food = _waiter.FoodTransform.GetChild(0).gameObject;
+                food.transform.SetParent(null);
+                _waiter.CurrentOrder.Machine.ReturnFoodToPool(food);
+
 
                 //waiterin elindeki yemegi sil
                 _waiter.HasFoodOnHand = false;
                 HasFoodOnHand = false;
 
                 _isFoodGiving = true;
+                _waiter.Animator.SetBool("IsCarring", false);
 
                 MoneyManager.Instance.AddMoney(_waiter.CurrentOrder.Machine.MachineData.FoodPrefab.GetComponent<Food>().Price);
             }
