@@ -11,6 +11,8 @@ public class DeveloperPanel : MonoBehaviour
     CustomerManager customerManager;
     SpawnerManager spawnerManager;
 
+    public float holdMyBear;
+
     private void Awake()
     {
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
@@ -37,6 +39,31 @@ public class DeveloperPanel : MonoBehaviour
             MoneyAvarageCalculator();
             resultText.GetComponent<TextMeshProUGUI>().text = "Result: \n " + moneyPerSecond.ToString("F2") + " money/s";
         }
+
+        #region 5SecondHoldingToSettingsButtonForOpenTheDeveloperMenu
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if ( Input.GetMouseButton(0))
+        {
+            if (Physics.Raycast(ray, out RaycastHit hit, 100) && hit.collider.gameObject.name == "Settings_button (1)")
+            {
+                holdMyBear += Time.deltaTime;
+                if( holdMyBear >= 5)
+                {
+                    OpenDeveloperMenu();
+                    holdMyBear = 0;
+                }
+            }
+            else
+            {
+                holdMyBear = 0;
+            }
+        }
+        else
+        {
+            holdMyBear = 0;
+        }
+        #endregion
+
     }
 
 

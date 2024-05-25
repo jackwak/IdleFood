@@ -26,7 +26,11 @@ public class SaveManager : MonoBehaviour
     }
     private void Update()
     {
-        SaveGame(); //TEST AMAÇLI
+        //SaveGame(); //TEST AMAÇLI
+    }
+    private void OnApplicationQuit()
+    {
+        SaveGame();
     }
 
     public void SaveGame()
@@ -52,20 +56,21 @@ public class SaveManager : MonoBehaviour
         TakingOrderTimeUpgrade.Instance.currentLevel = PlayerPrefs.GetInt("takingOrderTimeUpgradeCurrentLevel");
         AddWaiterUpgrade.Instance.currentLevel = PlayerPrefs.GetInt("addWaiterUpgradeCurrentLevel");
 
-        Debug.Log("LoadGame Çalýþtý");
         UpgradeManager.Instance.SetAllUpgradesForStart(); //Tüm upgradelerin seviyesine göre ayarlamalarý baþlatýr.
     }
 
     public void ResetGame()
     {
-        PlayerPrefs.SetFloat("playerMoney", 0);
-        PlayerPrefs.SetInt("currentLevelId", 1);
+        //PlayerPrefs.SetFloat("playerMoney", 0);
+        //PlayerPrefs.SetInt("currentLevelId", 1);
 
-        PlayerPrefs.SetInt("customerRateUpgradeCurrentLevel", 1);
-        PlayerPrefs.SetInt("foodCountRateUpgradeCurrentLevel", 1);
-        PlayerPrefs.SetInt("foodPrepareSpeedUpgradeCurrentLevel", 1);
-        PlayerPrefs.SetInt("takingOrderTimeUpgradeCurrentLevel", 1);
-        PlayerPrefs.SetInt("addWaiterUpgradeCurrentLevel", 1);
+        //PlayerPrefs.SetInt("customerRateUpgradeCurrentLevel", 1);
+        //PlayerPrefs.SetInt("foodCountRateUpgradeCurrentLevel", 1);
+        //PlayerPrefs.SetInt("foodPrepareSpeedUpgradeCurrentLevel", 1);
+        //PlayerPrefs.SetInt("takingOrderTimeUpgradeCurrentLevel", 1);
+        //PlayerPrefs.SetInt("addWaiterUpgradeCurrentLevel", 1);
+        PlayerPrefs.DeleteAll();
+        LoadGame();
     }
 
 }

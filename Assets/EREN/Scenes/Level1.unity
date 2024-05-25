@@ -701,19 +701,19 @@ MonoBehaviour:
   _level2OneFoodRate: 20
   _level2TwoFoodRate: 8
   _level2ThreeFoodRate: 3
-  _level2RequiredMoney: 0
+  _level2RequiredMoney: 5
   _level3OneFoodRate: 20
   _level3TwoFoodRate: 12
   _level3ThreeFoodRate: 5
-  _level3RequiredMoney: 0
+  _level3RequiredMoney: 10
   _level4OneFoodRate: 20
   _level4TwoFoodRate: 16
   _level4ThreeFoodRate: 10
-  _level4RequiredMoney: 0
+  _level4RequiredMoney: 15
   _level5OneFoodRate: 20
   _level5TwoFoodRate: 16
   _level5ThreeFoodRate: 15
-  _level5RequiredMoney: 0
+  _level5RequiredMoney: 20
 --- !u!1001 &94514660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1030862403}
-  playerMoney: 0
+  playerMoney: 1000
   upgradeManager: {fileID: 680165207}
   upgradePanelObj: {fileID: 1865217995}
   upgradeMachineControllerList:
@@ -2648,10 +2648,10 @@ MonoBehaviour:
   waiterBoxList:
   - {fileID: 1700049594}
   _level1RequiredMoney: 0
-  _level2RequiredMoney: 10
-  _level3RequiredMoney: 0
-  _level4RequiredMoney: 0
-  _level5RequiredMoney: 0
+  _level2RequiredMoney: 5
+  _level3RequiredMoney: 10
+  _level4RequiredMoney: 15
+  _level5RequiredMoney: 20
 --- !u!1 &273705261
 GameObject:
   m_ObjectHideFlags: 0
@@ -6784,13 +6784,13 @@ MonoBehaviour:
   _level1PrepareSpeed: 5
   _level1RequiredMoney: 0
   _level2PrepareSpeed: 2.5
-  _level2RequiredMoney: 0
+  _level2RequiredMoney: 5
   _level3PrepareSpeed: 1
-  _level3RequiredMoney: 0
+  _level3RequiredMoney: 10
   _level4PrepareSpeed: 0
-  _level4RequiredMoney: 0
+  _level4RequiredMoney: 15
   _level5PrepareSpeed: 0
-  _level5RequiredMoney: 0
+  _level5RequiredMoney: 20
 --- !u!1 &703744603
 GameObject:
   m_ObjectHideFlags: 0
@@ -12833,13 +12833,13 @@ MonoBehaviour:
   _level1Rate: 10
   _level1RequiredMoney: 0
   _level2Rate: 15
-  _level2RequiredMoney: 0
+  _level2RequiredMoney: 5
   _level3Rate: 25
-  _level3RequiredMoney: 0
+  _level3RequiredMoney: 10
   _level4Rate: 40
-  _level4RequiredMoney: 0
+  _level4RequiredMoney: 15
   _level5Rate: 50
-  _level5RequiredMoney: 0
+  _level5RequiredMoney: 20
 --- !u!4 &1201246014
 Transform:
   m_ObjectHideFlags: 0
@@ -16630,13 +16630,13 @@ MonoBehaviour:
   _level1TakingOrderTime: 1.5
   _level1RequiredMoney: 0
   _level2TakingOrderTime: 1
-  _level2RequiredMoney: 0
+  _level2RequiredMoney: 5
   _level3TakingOrderTime: 0.5
-  _level3RequiredMoney: 0
+  _level3RequiredMoney: 10
   _level4TakingOrderTime: 0
-  _level4RequiredMoney: 0
+  _level4RequiredMoney: 15
   _level5TakingOrderTime: 0
-  _level5RequiredMoney: 0
+  _level5RequiredMoney: 20
 --- !u!1 &1657479923
 GameObject:
   m_ObjectHideFlags: 0
@@ -16902,6 +16902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4426a6851473b8b43bfe607da4639dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdMyBear: 0
   timer: 0
   resultText: {fileID: 1450211454}
   avarageMoneyRecord: []
@@ -17799,6 +17800,7 @@ GameObject:
   - component: {fileID: 1751448459}
   - component: {fileID: 1751448458}
   - component: {fileID: 1751448457}
+  - component: {fileID: 1751448460}
   m_Layer: 5
   m_Name: Settings_button (1)
   m_TagString: Untagged
@@ -17932,6 +17934,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1751448455}
   m_CullTransparentMesh: 1
+--- !u!65 &1751448460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751448455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100.43304, y: 100.017624, z: 43.701984}
+  m_Center: {x: 49.716526, y: -49.508057, z: -21.35027}
 --- !u!1 &1761838991
 GameObject:
   m_ObjectHideFlags: 0

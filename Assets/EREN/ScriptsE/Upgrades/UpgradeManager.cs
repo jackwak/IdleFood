@@ -39,7 +39,7 @@ public class UpgradeManager : MonoBehaviour
     {
         customerManager = CustomerManagerObj.GetComponent<CustomerManager>();
 
-        SetAllUpgradesForStart();
+        //SetAllUpgradesForStart();
 
     }
 
