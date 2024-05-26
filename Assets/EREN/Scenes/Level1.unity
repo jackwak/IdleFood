@@ -1192,6 +1192,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117492099}
   m_CullTransparentMesh: 1
+--- !u!1 &151311520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151311521}
+  - component: {fileID: 151311522}
+  m_Layer: 0
+  m_Name: Input Manageer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151311521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151311520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1141716447}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &151311522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151311520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5f8b14f4c019d4fb403a49f25ee1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &151423695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3502,25 +3546,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 390996278543101573, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2209529719167191285, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754015453677342746, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5440552
-      objectReference: {fileID: 0}
-    - target: {fileID: 4563027710212016800, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4773684322064613250, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_Name
-      value: LemonadeMachine (1)
+      value: Lemonade Machine (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4773684322064613250, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_IsActive
@@ -3529,18 +3557,6 @@ PrefabInstance:
     - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_RootOrder
       value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5174,46 +5190,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1141716447}
     m_Modifications:
-    - target: {fileID: 178273068, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 178273068, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 178273068, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 597858775}
-    - target: {fileID: 178273068, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 178273068, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LevelUpMachine
-      objectReference: {fileID: 0}
-    - target: {fileID: 178273068, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UpgradeMachineController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 178273068, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 586179527, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 867318477, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1356450075, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: m_text
-      value: lv. 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4519157356888507376, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5266,22 +5242,10 @@ PrefabInstance:
       propertyPath: Machines.Array.data[0]
       value: 
       objectReference: {fileID: 1963565257}
-    - target: {fileID: 4519157356888507379, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: Machines.Array.data[1]
-      value: 
-      objectReference: {fileID: 607448960}
     - target: {fileID: 5979091223149260212, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
       propertyPath: _machineBoxGO
       value: 
       objectReference: {fileID: 1251667369}
-    - target: {fileID: 5979091223149260212, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: _secondMachineGO
-      value: 
-      objectReference: {fileID: 607448959}
-    - target: {fileID: 5979091223149260212, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
-      propertyPath: _machinePositionManager
-      value: 
-      objectReference: {fileID: 597858776}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60b0fa3021861c74298ba9b788655067, type: 3}
 --- !u!1 &597858773 stripped
@@ -5321,17 +5285,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4773684322064613250, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
   m_PrefabInstance: {fileID: 371801813}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &607448960 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6495036057404090405, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-  m_PrefabInstance: {fileID: 371801813}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607448959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9032f8ce6b605534fbf25424a354e912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &611756743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1adaaeec99124cb44b8173d89a13fca7, type: 3}
@@ -11127,6 +11080,7 @@ Transform:
   - {fileID: 2006340366}
   - {fileID: 615714561}
   - {fileID: 526705998}
+  - {fileID: 151311521}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18248,41 +18202,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 390996278543101573, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 2209529719167191285, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754015453677342746, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5440552
-      objectReference: {fileID: 0}
-    - target: {fileID: 4563027710212016800, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4773684322064613250, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_Name
-      value: LemonadeMachine
+      value: Lemonade Machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773684322064613250, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_RootOrder
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5292952450283824440, guid: 7730d9495f7b6584882452a075cb2533, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,7 @@ public class UpgradeMachineController : MonoBehaviour
     [SerializeField] private MachineData _machineData;
     [SerializeField] private Food _food;
     [SerializeField] private GameObject _machineBoxGO;
-    //[SerializeField] private GameObject _machineUpgradePanel;
+    [SerializeField] private GameObject _machineUpgradePanel;
 
     [SerializeField] private TextMeshProUGUI _timeText;
     [SerializeField] private TextMeshProUGUI _upgradePriceText;
@@ -19,6 +19,7 @@ public class UpgradeMachineController : MonoBehaviour
     [SerializeField] private Image _filledImage;
     [SerializeField] private GameObject _maxLevelImage;
     [SerializeField] private GameObject _upgradeButtonGO;
+    [SerializeField] private GameObject _upgradeImage;
 
     [Header("Variables")]
     [SerializeField] private int _foodPricePercentIncrease = 4;
@@ -29,6 +30,17 @@ public class UpgradeMachineController : MonoBehaviour
     private float _levelCounter = 1;
 
     public float MachineData_UpgradePriceProp { get { return _machineData.UpgradePrice; } }
+
+
+    private void OnEnable()
+    {
+        InputManager.OnStartTouch += OpenMachinePanel;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.OnStartTouch -= OpenMachinePanel;
+    }
 
     public void DecreaseDispenceTime(float percent)
     {
@@ -111,6 +123,42 @@ public class UpgradeMachineController : MonoBehaviour
         else
         {
 
+        }
+    }
+
+    private void OpenMachinePanel(Vector2 vector2)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(vector2);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            GameObject touchedObject = hit.transform.gameObject;
+
+            Debug.Log(touchedObject.name.Split(" ")[0]);
+            Debug.Log(_food.Name);
+
+            if (touchedObject.name.Split(" ")[0] == _food.Name)
+            {
+                _machineUpgradePanel.SetActive(true);
+                _upgradeImage.SetActive(false);
+            }
+            else if (touchedObject.name.Split(" ")[0] == "Panel")
+            {
+                return;
+            }
+            else if (_machineUpgradePanel.activeSelf == true)
+            {
+                _machineUpgradePanel.SetActive(false);
+                MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
+            }
+        }
+        else
+        {
+            if (_machineUpgradePanel.activeSelf == true)
+            {
+                _machineUpgradePanel.SetActive(false);
+                MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
+            }
         }
     }
 }

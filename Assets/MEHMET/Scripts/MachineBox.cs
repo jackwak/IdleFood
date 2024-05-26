@@ -7,29 +7,41 @@ public class MachineBox : MonoBehaviour
     [SerializeField] private GameObject _secondMachineGO;
     [SerializeField] private MachinePositionManager _machinePositionManager;
 
-
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetMouseButtonDown(0))
+        InputManager.OnStartTouch += CheckMachineBox;
+    }
+    private void OnDisable()
+    {
+        InputManager.OnStartTouch -= CheckMachineBox;
+    }
+
+    private void CheckMachineBox(Vector2 vector2)
+    {
+        // Dokunulan noktayý 3D uzayda bir ýþýn haline getir
+        Ray ray = Camera.main.ScreenPointToRay(vector2);
+        RaycastHit hit;
+
+        // Iþýn bir nesneye çarparsa
+        if (Physics.Raycast(ray, out hit))
         {
-            // Dokunulan noktayý 3D uzayda bir ýþýn haline getir
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            GameObject touchedObject = hit.transform.gameObject;
 
-            // Iþýn bir nesneye çarparsa
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Çarpýlan nesneyi kontrol et
-                GameObject touchedObject = hit.transform.gameObject;
-                Debug.Log("Touched object: " + touchedObject.name);
-                // Burada dokunulan nesneyle ilgili yapýlacak iþlemleri gerçekleþtirin
+            if (touchedObject.name != "Machine Box") return;
+            // Çarpýlan nesneyi kontrol et
+            Debug.Log("Touched object: " + touchedObject.name);
+            // Burada dokunulan nesneyle ilgili yapýlacak iþlemleri gerçekleþtirin
 
-                //spawn new machine
-                _secondMachineGO.SetActive(true);
-                _machinePositionManager.AddMachine(_secondMachineGO.GetComponent<Machine>());
-                gameObject.SetActive(false);
-                //Destroy(gameObject);
-            }
+            //spawn new machine
+            SpawnNewMachine();
         }
+    }
+
+    public void SpawnNewMachine()
+    {
+        _secondMachineGO.SetActive(true);
+        _machinePositionManager.AddMachine(_secondMachineGO.GetComponent<Machine>());
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 }

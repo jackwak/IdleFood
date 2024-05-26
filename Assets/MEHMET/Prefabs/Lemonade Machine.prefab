@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Waiter Position
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120576863532863006}
   m_LocalRotation: {x: -0.6977077, y: 0, z: -0, w: 0.71638256}
-  m_LocalPosition: {x: 0.022170544, y: 1.56489, z: 2.4578676}
+  m_LocalPosition: {x: 0, y: 1.56489, z: 2.4578676}
   m_LocalScale: {x: 0.37, y: 0.37, z: 0.37}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -89,7 +89,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4563027710212016800}
   m_LocalRotation: {x: -0.000000026692542, y: 0.7071068, z: 0.000000026692542, w: 0.7071068}
-  m_LocalPosition: {x: 1.6259997, y: 0.18599987, z: 0.19999957}
+  m_LocalPosition: {x: 1.6259997, y: 0.5440552, z: 0.19999957}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -244,8 +244,9 @@ GameObject:
   - component: {fileID: 5292952450283824440}
   - component: {fileID: 5292952450283824441}
   - component: {fileID: 6495036057404090405}
+  - component: {fileID: 69548214248608676}
   m_Layer: 0
-  m_Name: LemonadeMachine
+  m_Name: Lemonade Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +261,7 @@ Transform:
   m_GameObject: {fileID: 4773684322064613250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2209529719167191285}
@@ -307,6 +308,19 @@ MonoBehaviour:
   FoodPreparingGameobject: {fileID: 4563027710212016800}
   Animator: {fileID: 0}
   MachineData: {fileID: 11400000, guid: a8bb92c544ae74445b77ba40eb795472, type: 2}
+--- !u!65 &69548214248608676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773684322064613250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5325351, y: 1.9148809, z: 1.1757137}
+  m_Center: {x: -0.022407247, y: 1.353662, z: 0.013841017}
 --- !u!1 &7087397026912399991
 GameObject:
   m_ObjectHideFlags: 0
