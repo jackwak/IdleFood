@@ -98,7 +98,7 @@ public class LanguageManager : MonoBehaviour
     }
     void ApplySelectedLanguage()
     {
-        //initial.text = selectedSO.initial;
+        initial.text = selectedSO.initial;
 
         levelTitle.text = selectedSO.levelTitle + " " + GameManager.Instance.currentLevelId;
         level1Title.text = selectedSO.level1Title;
@@ -134,14 +134,12 @@ public class LanguageManager : MonoBehaviour
         switch (PlayerPrefs.GetString("languageInitial"))
         {
             case "EN":
-                Debug.Log("en");
                 selectedSO = enSO;
                 currentLanguage = Languages.english;
                 applyedLanguage = Languages.english;
                 ApplyAll();
                 break;
             case "TR":
-                Debug.Log("tr");
                 selectedSO = trSO;
                 currentLanguage = Languages.turkish;
                 applyedLanguage = Languages.turkish;

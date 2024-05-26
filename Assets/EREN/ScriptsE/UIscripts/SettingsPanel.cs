@@ -7,6 +7,9 @@ public class SettingsPanel : MonoBehaviour
 {
     [SerializeField] Sprite _OnSound;
     [SerializeField] Sprite _OffSound;
+
+    [SerializeField] Sprite _OnMusic;
+    [SerializeField] Sprite _OffMusic;
     //Animator animator;
 
     [Header("Other")]
@@ -101,11 +104,12 @@ public class SettingsPanel : MonoBehaviour
         if(backgroundMusic.activeSelf == true)
         {
             backgroundMusic.SetActive(false);
+            transform.GetChild(3).GetComponent<Image>().sprite = _OffMusic;
         }
         else
         {
             backgroundMusic.SetActive(true);
-
+            transform.GetChild(3).GetComponent<Image>().sprite = _OnMusic;
         }
     }
 

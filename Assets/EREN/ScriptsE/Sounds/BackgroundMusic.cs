@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
 {
+    public static BackgroundMusic Instance;
+
     private AudioSource audioSource;
     [Space]
     [EditorAttributes.ReadOnly, SerializeField]private AudioClip currentAudioClip;
@@ -20,6 +22,11 @@ public class BackgroundMusic : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+
         audioSource = GetComponent<AudioSource>();
         lastChoosenMusicIndex = -1;
     }

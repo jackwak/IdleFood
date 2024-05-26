@@ -22,11 +22,7 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        LoadGame(); //TEST AMAÇLI
-    }
-    private void Update()
-    {
-        //SaveGame(); //TEST AMAÇLI
+        LoadGame(); 
     }
     private void OnApplicationQuit()
     {
@@ -35,15 +31,38 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        #region MainSettings
         PlayerPrefs.SetFloat("playerMoney", MoneyManager.Instance.playerMoney);
         PlayerPrefs.SetInt("currentLevelId", GameManager.Instance.currentLevelId);
-        PlayerPrefs.SetString("languageInitial", LanguageManager.Instance.selectedSO.initial);
+        #endregion
 
+        #region SoundSettings
+        int soundSettings = 0;
+        if (UISounds.Instance.gameObject.activeSelf) soundSettings = 1;
+        else soundSettings = 0;
+
+        PlayerPrefs.SetInt("soundSettings", soundSettings);
+        #endregion
+
+        #region MusicSettings
+        int musicSettings = 0;
+        if (BackgroundMusic.Instance.gameObject.activeSelf) musicSettings = 1;
+        else musicSettings = 0;
+
+        PlayerPrefs.SetInt("musicSettings", musicSettings);
+        #endregion
+
+        #region LanguageSettings
+        PlayerPrefs.SetString("languageInitial", LanguageManager.Instance.selectedSO.initial);
+        #endregion
+
+        #region UpgradeSettings
         PlayerPrefs.SetInt("customerRateUpgradeCurrentLevel", CustomerRateUpgrade.Instance.currentLevel);
         PlayerPrefs.SetInt("foodCountRateUpgradeCurrentLevel", FoodCountRateUpgrade.Instance.currentLevel);
         PlayerPrefs.SetInt("foodPrepareSpeedUpgradeCurrentLevel", FoodPrepareSpeedUpgrade.Instance.currentLevel);
         PlayerPrefs.SetInt("takingOrderTimeUpgradeCurrentLevel", TakingOrderTimeUpgrade.Instance.currentLevel);
         PlayerPrefs.SetInt("addWaiterUpgradeCurrentLevel", AddWaiterUpgrade.Instance.currentLevel);
+        #endregion
     }
 
     public void LoadGame()
