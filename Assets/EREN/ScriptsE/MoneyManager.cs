@@ -32,7 +32,7 @@ public class MoneyManager : MonoBehaviour
     {
         UpdateMoneyText(); 
         CheckMoneyForUpgradeButtonGreenOrGray();
-        CheckMoneyForFoodMachineUpgradeButton();
+        //CheckMoneyForFoodMachineUpgradeButton();
     }
 
     public void AddMoney(float money)
@@ -40,7 +40,7 @@ public class MoneyManager : MonoBehaviour
         playerMoney += money;
         UpdateMoneyText();
         CheckMoneyForUpgradeButtonGreenOrGray();
-        CheckMoneyForFoodMachineUpgradeButton();
+        //CheckMoneyForFoodMachineUpgradeButton();
     }
     public void RemoveMoney(float money)
     {

@@ -983,8 +983,40 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 500347098841178585}
+  - {fileID: 8015250377334486067}
   m_Father: {fileID: 5226168733749165717}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4233645420494692270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8015250377334486067}
+  m_Layer: 0
+  m_Name: Food Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8015250377334486067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233645420494692270}
+  m_LocalRotation: {x: 0.000000014901156, y: 0.000000074040116, z: -0.000000011175867, w: 1}
+  m_LocalPosition: {x: -0.009400096, y: 0.0076000844, z: 0.02019998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3440414426292545105}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4240156298815603888
 GameObject:
@@ -1802,7 +1834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5850941228729941878
 Transform:
   m_ObjectHideFlags: 0
@@ -1896,6 +1928,7 @@ MonoBehaviour:
   ProgressBarController: {fileID: 0}
   SleepingGO: {fileID: 5850941228692970401}
   RotationSpeed: 0.3
+  FoodTransform: {fileID: 8015250377334486067}
   HasFoodOnHand: 0
   HasAnyCustomer: 0
   HasAnyOrder: 0
