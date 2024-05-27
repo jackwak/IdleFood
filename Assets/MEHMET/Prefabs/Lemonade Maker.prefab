@@ -308,7 +308,6 @@ MonoBehaviour:
   FoodPreparingGameobject: {fileID: 4563027710212016800}
   Animator: {fileID: 0}
   MachineData: {fileID: 11400000, guid: a8bb92c544ae74445b77ba40eb795472, type: 2}
-  IsUseable: 0
 --- !u!65 &69548214248608676
 BoxCollider:
   m_ObjectHideFlags: 0
