@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UpgradeMachineController : MonoBehaviour
 {
@@ -137,10 +138,23 @@ public class UpgradeMachineController : MonoBehaviour
             Debug.Log(touchedObject.name.Split(" ")[0]);
             Debug.Log(_food.Name);
 
-            if (touchedObject.name.Split(" ")[0] == _food.Name)
+            if (touchedObject.name.Split(" ")[0] == _food.Name && _machineUpgradePanel.activeSelf == false)
             {
                 _machineUpgradePanel.SetActive(true);
                 _upgradeImage.SetActive(false);
+
+                //Sound
+
+                //Feeling
+                touchedObject.transform.DOShakeScale(1f, .2f, 10, 90, true);
+                _machineUpgradePanel.transform.DOScale(Vector3.one, .5f).From(Vector3.zero).SetEase(Ease.OutBack);
+            }
+            else if (touchedObject.name.Split(" ")[0] == _food.Name && _machineUpgradePanel.activeSelf == true)
+            {
+                MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
+
+                //Feeling
+                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).OnComplete(() => _machineUpgradePanel.SetActive(false));
             }
             else if (touchedObject.name.Split(" ")[0] == "Panel")
             {
@@ -148,16 +162,20 @@ public class UpgradeMachineController : MonoBehaviour
             }
             else if (_machineUpgradePanel.activeSelf == true)
             {
-                _machineUpgradePanel.SetActive(false);
                 MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
+
+                //Feeling
+                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).OnComplete(() => _machineUpgradePanel.SetActive(false));
             }
         }
         else
         {
             if (_machineUpgradePanel.activeSelf == true)
             {
-                _machineUpgradePanel.SetActive(false);
                 MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
+
+                //Feeling
+                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).OnComplete(()=> _machineUpgradePanel.SetActive(false));
             }
         }
     }
