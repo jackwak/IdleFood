@@ -48,7 +48,7 @@ public class MoneyManager : MonoBehaviour
     }
     public void UpdateMoneyText()
     {
-        moneyText.text = playerMoney.ToString();
+        moneyText.text = ((int)playerMoney).ToString();
     }
     public void CheckMoneyForUpgradeButtonGreenOrGray()
     {

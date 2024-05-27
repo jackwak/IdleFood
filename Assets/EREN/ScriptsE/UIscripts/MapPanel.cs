@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MapPanel : MonoBehaviour
@@ -45,6 +46,22 @@ public class MapPanel : MonoBehaviour
         this.gameObject.transform.parent.gameObject.transform.Find("SettingsPanel").gameObject.GetComponent<SettingsPanel>().CloseMenu();
         this.gameObject.transform.parent.gameObject.transform.Find("MainPanel").gameObject.SetActive(true);
         this.gameObject.SetActive(false);
+    }
+
+    public void LoadLevel2()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Level1" /*Tüm Upgradeler Yapýldý Mý?*/)
+        {
+            SaveManager.Instance.ResetGame();
+
+            GameManager.Instance.currentLevelId = 2;
+            SaveManager.Instance.SaveGame();
+
+
+            SceneManager.LoadScene("Level2");
+            this.gameObject.SetActive(false);
+        }
     }
 
 

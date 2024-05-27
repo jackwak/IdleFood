@@ -16,6 +16,7 @@ TagManager:
   - FoodManager
   - QuestManager
   - MachineManager
+  - CarEnemy
   layers:
   - Default
   - TransparentFX

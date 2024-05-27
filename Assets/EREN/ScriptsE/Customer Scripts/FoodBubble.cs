@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FoodBubble : MonoBehaviour
@@ -33,7 +34,18 @@ public class FoodBubble : MonoBehaviour
     }
     public void LookCamera()
     {
-        transform.eulerAngles = new Vector3(GameObject.Find("Main Camera").transform.eulerAngles.x * -1, transform.eulerAngles.y, transform.eulerAngles.z);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        switch (currentSceneName)
+        {
+            case "Level1":
+                transform.eulerAngles = new Vector3(GameObject.Find("Main Camera").transform.eulerAngles.x * -1, transform.eulerAngles.y, transform.eulerAngles.z);
+
+                break;
+            case "Level2":
+
+                break;
+        }
+
     }
 
     public void SetCountText()

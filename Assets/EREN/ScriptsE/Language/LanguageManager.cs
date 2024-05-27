@@ -124,7 +124,21 @@ public class LanguageManager : MonoBehaviour
                 addWaiterUpgradeTitle.text = selectedSO.addWaiterUpgradeTitle;
                 addWaiterUpgradeDescription.text = selectedSO.addWaiterUpgradeDescription;
                 break;
-            case "Level2":
+            case "Level1Copy":
+                upgradesTitle.text = selectedSO.upgradesTitle;
+                customerRateUpgradeTitle.text = selectedSO.customerRateUpgradeTitle;
+                customerRateUpgradeDescription.text = selectedSO.customerRateUpgradeDescription;
+                foodCountRateUpgradeTitle.text = selectedSO.foodCountRateUpgradeTitle;
+                foodCountRateUpgradeDescription.text = selectedSO.foodCountRateUpgradeDescription;
+
+                foodPrepareSpeedUpgradeTitle.text = selectedSO.foodPrepareSpeedUpgradeTitle;
+                foodPrepareSpeedUpgradeDescription.text = selectedSO.foodPrepareSpeedUpgradeDescription;
+
+                takingOrderTimeUpgradeTitle.text = selectedSO.takingOrderTimeUpgradeTitle;
+                takingOrderTimeUpgradeDescription.text = selectedSO.takingOrderTimeUpgradeDescription;
+
+                addWaiterUpgradeTitle.text = selectedSO.addWaiterUpgradeTitle;
+                addWaiterUpgradeDescription.text = selectedSO.addWaiterUpgradeDescription;
                 break;
         }
     }

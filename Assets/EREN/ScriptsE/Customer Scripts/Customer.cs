@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
@@ -225,6 +226,25 @@ public class Customer : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
 
         }
+
+    }
+    public void SuEkseneDogruBakYeniYeni()
+    {
+
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        switch (currentSceneName)
+        {
+            case "Level1":
+                if ((durumAciklamasi == "Stand Önündeyim" || durumAciklamasi == "Sipariþ Verdim" || durumAciklamasi == "Garson Bana Geliyor") && buNpcMusteriMi == true)
+                {
+                    Quaternion targetRotation = selectedParkPoint.transform.rotation;
+
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+                }
+                break;
+        }
+
     }
 
 

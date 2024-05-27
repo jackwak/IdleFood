@@ -32,6 +32,8 @@ public class AddWaiterUpgrade : MonoBehaviour
     [SerializeField] public float currentWaiterCount;
     [SerializeField] public float currentRequiredMoney;
     [Space(10)]
+    [SerializeField] private GameObject waiterObj;
+    [SerializeField] private Transform waiterSpawnPoint;
     [SerializeField] private List<GameObject> waiterBoxList;
 
     [Header("________________________________________________________________________________________________________________________________________________")]
@@ -99,15 +101,85 @@ public class AddWaiterUpgrade : MonoBehaviour
         }
     }
 
+    //public void ResetUpgrade()
+    //{
+    //    currentLevel = 1;
+    //    currentWaiterCount = 1;
+    //    currentRequiredMoney = _level2RequiredMoney;
+
+    //    //titleText.text = upgradeTitle;
+    //    //descriptionText.text = upgradeDescription;
+    //    moneyText.text = currentRequiredMoney.ToString();
+    //    levelText.text = currentLevel.ToString();
+    //}
+
     public void ResetUpgrade()
     {
-        currentLevel = 1;
-        currentWaiterCount = 1;
-        currentRequiredMoney = _level2RequiredMoney;
+        switch (currentLevel)
+        {
+            case 0:
+                currentLevel = 1;
+                currentRequiredMoney = _level2RequiredMoney;
 
-        //titleText.text = upgradeTitle;
-        //descriptionText.text = upgradeDescription;
-        moneyText.text = currentRequiredMoney.ToString();
-        levelText.text = currentLevel.ToString();
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 1:
+                currentRequiredMoney = _level2RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 2:
+                //waiterBoxList[currentLevel - 2].SetActive(true);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                currentRequiredMoney = _level3RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 3:
+                //waiterBoxList[currentLevel - 2].SetActive(true);
+                //waiterBoxList[currentLevel - 3].SetActive(true);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                currentRequiredMoney = _level4RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 4:
+                //waiterBoxList[currentLevel - 2].SetActive(true);
+                //waiterBoxList[currentLevel - 3].SetActive(true);
+                //waiterBoxList[currentLevel - 4].SetActive(true);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                currentRequiredMoney = _level5RequiredMoney;
+
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+            case 5:
+                //waiterBoxList[currentLevel - 2].SetActive(true);
+                //waiterBoxList[currentLevel - 3].SetActive(true);
+                //waiterBoxList[currentLevel - 4].SetActive(true);
+                //waiterBoxList[currentLevel - 5].SetActive(true);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                Instantiate(waiterObj, waiterSpawnPoint.position, Quaternion.identity);
+                //currentRequiredMoney = _level6RequiredMoney;
+                moneyText.text = currentRequiredMoney.ToString();
+                levelText.text = currentLevel.ToString();
+                break;
+        }
+
+        if (currentLevel == maxLevel)
+        {
+            currentRequiredMoney = 0;
+            moneyText.text = "MAX";
+            levelText.text = currentLevel.ToString();
+        }
     }
 }
