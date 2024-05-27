@@ -32,7 +32,7 @@ public class MoneyManager : MonoBehaviour
     {
         UpdateMoneyText(); 
         CheckMoneyForUpgradeButtonGreenOrGray();
-        //CheckMoneyForFoodMachineUpgradeButton();
+        CheckMoneyForFoodMachineUpgradeButton();
     }
 
     public void AddMoney(float money)
@@ -40,7 +40,7 @@ public class MoneyManager : MonoBehaviour
         playerMoney += money;
         UpdateMoneyText();
         CheckMoneyForUpgradeButtonGreenOrGray();
-        //CheckMoneyForFoodMachineUpgradeButton();
+        CheckMoneyForFoodMachineUpgradeButton();
     }
     public void RemoveMoney(float money)
     {
@@ -59,15 +59,18 @@ public class MoneyManager : MonoBehaviour
     }
     public void CheckMoneyForFoodMachineUpgradeButton()
     {
-        for (int i = 0; i < upgradeMachineControllerList.Count; i++)
+        if(upgradeMachineControllerList.Count > 0)
         {
-            if (playerMoney >= upgradeMachineControllerList[i].MachineData_UpgradePriceProp && !upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(0).gameObject.activeSelf)
+            for (int i = 0; i < upgradeMachineControllerList.Count; i++)
             {
-                upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
-            }
-            else
-            {
-                upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+                if (playerMoney >= upgradeMachineControllerList[i].MachineData_UpgradePriceProp && !upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(0).gameObject.activeSelf)
+                {
+                    upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+                }
+                else
+                {
+                    upgradeMachineControllerList[i].gameObject.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+                }
             }
         }
     }
