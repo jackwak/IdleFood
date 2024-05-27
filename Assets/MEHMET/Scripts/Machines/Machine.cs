@@ -15,9 +15,6 @@ public abstract class Machine : MonoBehaviour
     [Header("Data")]
     public MachineData MachineData;
 
-    public bool IsUseable;
-
-
     private void Start()
     {
         Animator = GetComponent<Animator>();
@@ -49,5 +46,4 @@ public abstract class Machine : MonoBehaviour
     }
 
     public abstract IEnumerator ShowPreparingFood();
-
 }

@@ -33,6 +33,7 @@ public class SaveSystem : MonoBehaviour
             {
                 PlayerPrefs.SetInt(manager.MachineName + "MachineCount", 0);
             }
+            Debug.Log("Machine Position Manager Count: " + PlayerPrefs.GetInt(manager.MachineName + "MachineCount"));
         }
 
         LoadGame();
@@ -73,10 +74,17 @@ public class SaveSystem : MonoBehaviour
     {
         LoadMachines();
     }
-
+    [ContextMenu("ResetDatas")]
     public void ResetGame()
     {
-
+        foreach (MachinePositionManager manager in MachinePositionManager)
+        {
+            if (PlayerPrefs.HasKey(manager.MachineName + "MachineCount"))
+            {
+                PlayerPrefs.SetInt(manager.MachineName + "MachineCount", 0);
+            }
+            Debug.Log("Machine Position Manager Count: " + PlayerPrefs.GetInt(manager.MachineName + "MachineCount"));
+        }
     }
 
     public void SaveMachineCount()
@@ -113,14 +121,13 @@ public class SaveSystem : MonoBehaviour
     {
         List<GameObject> lemonadeObjects = FindObjectsStartingWith(machine.MachineName + " Maker");
 
-        Debug.Log(machineCount);
-        Debug.Log(lemonadeObjects.Count);
+        Debug.Log("Aktif Edilecek Machine Count: " + machineCount);
+        Debug.Log("Bulunan Makine sayýsý: " + lemonadeObjects.Count);
 
         for (int i = 0; i < machineCount && i < lemonadeObjects.Count; i++)
         {
             lemonadeObjects[i].SetActive(true);
             machine.AddMachine(lemonadeObjects[i].GetComponent<Machine>());
-            lemonadeObjects[i].GetComponent<Machine>().IsUseable = true;
         }
     }
 

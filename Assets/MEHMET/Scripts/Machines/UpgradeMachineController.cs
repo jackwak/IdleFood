@@ -39,11 +39,23 @@ public class UpgradeMachineController : MonoBehaviour
         SaveSystem.LoadUpgradeMachineControllerData(_machineData);
         if (!PlayerPrefs.HasKey(_machineData.FoodPrefab.name + "Level"))
         {
-            PlayerPrefs.SetInt("Level", 1);
+            PlayerPrefs.SetInt(_machineData.FoodPrefab.name + "Level", 1);
             _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
         }
 
         InitializeMachineUpgradePanel();
+    }
+    [ContextMenu("ResetDatas")]
+    public void ResetDatas()
+    {
+        if (PlayerPrefs.HasKey(_machineData.FoodPrefab.name + "Level"))
+        {
+            PlayerPrefs.SetInt(_machineData.FoodPrefab.name + "Level", 1);
+            _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
+        }
+
+        _machineData.FoodPrice = 3;
+        _machineData.UpgradePrice = 4;
     }
 
     private void InitializeMachineUpgradePanel()
@@ -53,7 +65,13 @@ public class UpgradeMachineController : MonoBehaviour
         _foodPriceText.text = ((int)_machineData.FoodPrice).ToString();
         _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
         _levelText.text = _levelCounter.ToString();
-        _filledImage.fillAmount = _levelCounter / _maxLevelCount;
+        float number = _levelCounter;
+        if (_levelCounter > 10)
+        {
+            number = _levelCounter % _maxLevelCount;
+        }
+
+        _filledImage.fillAmount = number / _maxLevelCount;
     }
 
     private void OnApplicationQuit()
@@ -182,8 +200,11 @@ public class UpgradeMachineController : MonoBehaviour
             {
                 MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
 
+                //Sound
+
                 //Feeling
-                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).OnComplete(() => _machineUpgradePanel.SetActive(false));
+                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).
+                    OnComplete(() => _machineUpgradePanel.SetActive(false));
             }
             else if (touchedObject.name.Split(" ")[0] == "Panel")
             {
@@ -193,8 +214,11 @@ public class UpgradeMachineController : MonoBehaviour
             {
                 MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
 
+                //Sound
+
                 //Feeling
-                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).OnComplete(() => _machineUpgradePanel.SetActive(false));
+                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).
+                    OnComplete(() => _machineUpgradePanel.SetActive(false));
             }
         }
         else
@@ -204,7 +228,8 @@ public class UpgradeMachineController : MonoBehaviour
                 MoneyManager.Instance.CheckMoneyForFoodMachineUpgradeButton();
 
                 //Feeling
-                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).OnComplete(()=> _machineUpgradePanel.SetActive(false));
+                _machineUpgradePanel.transform.DOScale(Vector3.zero, .5f).From(Vector3.one).SetEase(Ease.InBack).
+                    OnComplete(()=> _machineUpgradePanel.SetActive(false));
             }
         }
     }

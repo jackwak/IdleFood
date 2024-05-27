@@ -21,7 +21,7 @@ public class WaiterBox : MonoBehaviour
     private void CheckWaiterBox(Vector2 vector2)
     {
         // Dokunulan noktayý 3D uzayda bir ýþýn haline getir
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(vector2);
         RaycastHit hit;
 
         // Iþýn bir nesneye çarparsa
