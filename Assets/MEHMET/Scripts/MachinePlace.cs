@@ -27,6 +27,7 @@ public class MachinePlace : MonoBehaviour
 
         if (PlayerPrefs.GetInt(_machine.name + "Bought") == 1)
         {
+            Destroy(_hand.gameObject);
             Destroy(gameObject);
         }
         Debug.Log("Satýn Alýndý mý" + PlayerPrefs.GetInt(_machine.name + "Bought"));
@@ -108,7 +109,11 @@ public class MachinePlace : MonoBehaviour
             _machine.gameObject.SetActive(true);
             _machinePositionManager.AddMachine(_machine);
             _machine.transform.DOScale(_machine.transform.localScale, .4f).From(Vector3.zero).SetEase(Ease.OutBack).
-                OnComplete(()=> Destroy(gameObject));
+                OnComplete(() =>
+                {
+                    Destroy(_hand.gameObject);
+                    Destroy(gameObject);
+                });
 
             PlayerPrefs.SetInt(_machine.name + "Bought", 1);
         }

@@ -5972,6 +5972,7 @@ MonoBehaviour:
   foodCountRateUpgrade: {fileID: 92401030}
   foodPrepareSpeedUpgrade: {fileID: 693548968}
   takingOrderTimeUpgrade: {fileID: 1640828208}
+  addWaiterUpgrade: {fileID: 0}
 --- !u!4 &680165208
 Transform:
   m_ObjectHideFlags: 0
@@ -6670,6 +6671,9 @@ MonoBehaviour:
   applyedLanguage: 1
   enSO: {fileID: 11400000, guid: b8b16ac244cc91140abac070d507768a, type: 2}
   trSO: {fileID: 11400000, guid: ff55a3d9ce2dfaa46923123b10316704, type: 2}
+  selectedSO: {fileID: 0}
+  initial: {fileID: 0}
+  levelTitle: {fileID: 0}
   level1Title: {fileID: 501620574}
   level2Title: {fileID: 563846655}
   level3Title: {fileID: 1748723537}
@@ -6682,6 +6686,8 @@ MonoBehaviour:
   foodPrepareSpeedUpgradeDescription: {fileID: 273705263}
   takingOrderTimeUpgradeTitle: {fileID: 651188235}
   takingOrderTimeUpgradeDescription: {fileID: 1464653006}
+  addWaiterUpgradeTitle: {fileID: 0}
+  addWaiterUpgradeDescription: {fileID: 0}
 --- !u!4 &732394906
 Transform:
   m_ObjectHideFlags: 0
@@ -15073,6 +15079,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _OnSound: {fileID: 21300000, guid: 75bb9aa49d44ca1419fc9f8805c6c3d4, type: 3}
   _OffSound: {fileID: 21300000, guid: 8c169d362e5347243b743dc199639ff8, type: 3}
+  _OnMusic: {fileID: 0}
+  _OffMusic: {fileID: 0}
+  soundsList: []
+  backgroundMusic: {fileID: 0}
 --- !u!1 &1697449619
 GameObject:
   m_ObjectHideFlags: 0
@@ -15136,6 +15146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4426a6851473b8b43bfe607da4639dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdMyBear: 0
   timer: 0
   resultText: {fileID: 1450211454}
   avarageMoneyRecord: []
@@ -19108,6 +19119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waiter
       objectReference: {fileID: 0}
+    - target: {fileID: 5850941228729941876, guid: 672eca6138280b44da7f07311558dca7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5850941228729941878, guid: 672eca6138280b44da7f07311558dca7, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -19151,6 +19166,10 @@ PrefabInstance:
     - target: {fileID: 5850941228729941878, guid: 672eca6138280b44da7f07311558dca7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015250377334486067, guid: 672eca6138280b44da7f07311558dca7, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 672eca6138280b44da7f07311558dca7, type: 3}

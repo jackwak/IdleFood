@@ -119,13 +119,14 @@ public class SaveSystem : MonoBehaviour
 
     public void SpawnNewMachine(MachinePositionManager machine, int machineCount)
     {
-        List<GameObject> lemonadeObjects = FindObjectsStartingWith(machine.MachineName + " Maker");
+        List<GameObject> lemonadeObjects = FindObjectsStartingWith(machine.MachineName + " Make");
 
         Debug.Log("Aktif Edilecek Machine Count: " + machineCount);
         Debug.Log("Bulunan Makine sayýsý: " + lemonadeObjects.Count);
 
         for (int i = 0; i < machineCount && i < lemonadeObjects.Count; i++)
         {
+            Debug.Log(lemonadeObjects[i].name);
             lemonadeObjects[i].SetActive(true);
             machine.AddMachine(lemonadeObjects[i].GetComponent<Machine>());
         }
