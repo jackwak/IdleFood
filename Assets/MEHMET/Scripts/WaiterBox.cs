@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,49 +9,34 @@ public class WaiterBox : MonoBehaviour
     [SerializeField] private GameObject _waiterGO;
     [SerializeField] private Transform _waiterSpawnPosition;
 
-
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetMouseButtonDown(0))
+        InputManager.OnStartTouch += CheckWaiterBox;
+    }
+    private void OnDisable()
+    {
+        InputManager.OnStartTouch -= CheckWaiterBox;
+    }
+
+    private void CheckWaiterBox(Vector2 vector2)
+    {
+        // Dokunulan noktayý 3D uzayda bir ýþýn haline getir
+        Ray ray = Camera.main.ScreenPointToRay(vector2);
+        RaycastHit hit;
+
+        // Iþýn bir nesneye çarparsa
+        if (Physics.Raycast(ray, out hit))
         {
-            // Dokunulan noktayý 3D uzayda bir ýþýn haline getir
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            // Çarpýlan nesneyi kontrol et
 
-            // Iþýn bir nesneye çarparsa
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Çarpýlan nesneyi kontrol et
-                GameObject touchedObject = hit.transform.gameObject;
-                Debug.Log("Touched object: " + touchedObject.name);
-                // Burada dokunulan nesneyle ilgili yapýlacak iþlemleri gerçekleþtirin
+            GameObject touchedObject = hit.transform.gameObject;
+            if (touchedObject.name != "Waiter Box") return;
 
-                Instantiate(_waiterGO, _waiterSpawnPosition.position, Quaternion.identity);
-                gameObject.SetActive(false);
-            }
+            Debug.Log("Touched object: " + touchedObject.name);
+            // Burada dokunulan nesneyle ilgili yapýlacak iþlemleri gerçekleþtirin
+
+            Instantiate(_waiterGO, _waiterSpawnPosition.position, Quaternion.identity);
+            gameObject.SetActive(false);
         }
-
-        //TOUCH ÇALIÞTIÐINDA BURAYI AKTÝF ET
-        /*if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            // Dokunulan noktayý al
-            Vector3 touchPosition = Input.GetTouch(0).position;
-
-            // Dokunulan noktayý 3D uzayda bir ýþýn haline getir
-            Ray ray = Camera.main.ScreenPointToRay(touchPosition);
-            RaycastHit hit;
-
-            // Iþýn bir nesneye çarparsa
-            if (Physics.Raycast(ray, out hit))
-            {
-                // Çarpýlan nesneyi kontrol et
-                GameObject touchedObject = hit.transform.gameObject;
-                Debug.Log("Touched object: " + touchedObject.name);
-                // Burada dokunulan nesneyle ilgili yapýlacak iþlemleri gerçekleþtirin
-
-                Instantiate(_waiterGO, _waiterSpawnPosition.position, Quaternion.identity);
-                gameObject.SetActive(false);
-            }
-        }*/
     }
 }

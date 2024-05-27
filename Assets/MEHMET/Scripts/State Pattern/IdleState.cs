@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class IdleState : State
 {
@@ -22,6 +23,14 @@ public class IdleState : State
     private void Awake()
     {
         _waiter = transform.parent.parent.GetComponent<Waiter>();
+    }
+
+    private void Start()
+    {
+        Transform availableTransform = IdlePositionManager.Instance.GetAvaibleIdlePosition(_waiter);
+        ICommand command = new MoveCommand(_waiter, availableTransform.position);
+        CommandInvoker commandInvoker = new CommandInvoker();
+        commandInvoker.ExecuteCommand(command);
     }
 
     public override State RunCurrentState()

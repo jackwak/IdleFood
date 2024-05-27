@@ -11,6 +11,7 @@ public class MachinePositionManager : MonoBehaviour
     [Header("Variables")]
     private Waiter[] _waiters;
     private bool[] _isPositionAvailable;
+    public string MachineName;
 
     private void Awake()
     {

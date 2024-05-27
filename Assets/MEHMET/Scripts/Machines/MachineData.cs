@@ -11,4 +11,5 @@ public class MachineData : ScriptableObject
     [Header("Settings")]
     public float DispenseTime;
     public float UpgradePrice;
+    public float FoodPrice;
 }

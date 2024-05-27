@@ -59,6 +59,7 @@ public class TakingOrderState : State
         yield return new WaitForSeconds(takingOrderTime);
 
         //siparis alma sesi
+        AudioManager.Instance.Play("OrderTook");
 
         //siparisi siparis listine ekle
         int foodCount = _waiter.CurrentCustomer.FoodCount;
