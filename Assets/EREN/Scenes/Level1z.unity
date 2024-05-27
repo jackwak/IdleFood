@@ -2051,8 +2051,7 @@ MonoBehaviour:
   playerMoney: 1000
   upgradeManager: {fileID: 680165207}
   upgradePanelObj: {fileID: 1865217995}
-  upgradeMachineControllerList:
-  - {fileID: 0}
+  upgradeMachineControllerList: []
 --- !u!4 &178391911
 Transform:
   m_ObjectHideFlags: 0
