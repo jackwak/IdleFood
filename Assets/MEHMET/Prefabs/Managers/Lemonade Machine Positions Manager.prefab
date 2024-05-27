@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563d5e54c82777e4bac85fac85f448d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Machines:
-  - {fileID: 0}
+  Machines: []
+  MachineName: Lemonade
 --- !u!114 &5979091223149260212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   _maxLevelImage: {fileID: 1345041448}
   _upgradeButtonGO: {fileID: 178273058}
   _upgradeImage: {fileID: 867318477}
+  _data: {fileID: 11400000, guid: 7050a86810d576e4aa0ac16fe274651d, type: 2}
   _foodPricePercentIncrease: 4
   _foodLevelUpPercentIncrease: 40
   _upgradePricePercentIncrease: 4

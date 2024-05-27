@@ -41,6 +41,7 @@ public class MachineBox : MonoBehaviour
     {
         _secondMachineGO.SetActive(true);
         _machinePositionManager.AddMachine(_secondMachineGO.GetComponent<Machine>());
+        _secondMachineGO.GetComponent<Machine>().IsUseable = true;
         gameObject.SetActive(false);
         //Destroy(gameObject);
     }

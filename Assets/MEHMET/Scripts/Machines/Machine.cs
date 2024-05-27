@@ -15,6 +15,8 @@ public abstract class Machine : MonoBehaviour
     [Header("Data")]
     public MachineData MachineData;
 
+    public bool IsUseable;
+
 
     private void Start()
     {

@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
+using Unity.VisualScripting;
 
 public class UpgradeMachineController : MonoBehaviour
 {
@@ -28,10 +30,37 @@ public class UpgradeMachineController : MonoBehaviour
     [SerializeField] private int _upgradePricePercentIncrease = 4;
     [SerializeField] private int _upgradeLevelUpPercentIncrease = 40;
     [SerializeField] private float _maxLevelCount = 10;
-    private float _levelCounter = 1;
+    private int _levelCounter = 1;
 
     public float MachineData_UpgradePriceProp { get { return _machineData.UpgradePrice; } }
 
+    private void Start()
+    {
+        SaveSystem.LoadUpgradeMachineControllerData(_machineData);
+        if (!PlayerPrefs.HasKey(_machineData.FoodPrefab.name + "Level"))
+        {
+            PlayerPrefs.SetInt("Level", 1);
+            _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
+        }
+
+        InitializeMachineUpgradePanel();
+    }
+
+    private void InitializeMachineUpgradePanel()
+    {
+        _upgradePriceText.text = ((int)_machineData.UpgradePrice).ToString();
+        _timeText.text = _machineData.DispenseTime.ToString();
+        _foodPriceText.text = ((int)_machineData.FoodPrice).ToString();
+        _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
+        _levelText.text = _levelCounter.ToString();
+        _filledImage.fillAmount = _levelCounter / _maxLevelCount;
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveSystem.SaveUpgradeMachineControllerData(_machineData);
+        PlayerPrefs.SetInt(_machineData.FoodPrefab.name + "Level", _levelCounter);
+    }
 
     private void OnEnable()
     {
@@ -62,9 +91,9 @@ public class UpgradeMachineController : MonoBehaviour
             if (_levelCounter % _maxLevelCount != 0)
             {
                 //update food price
-                float foodPrice = _food.Price;
+                float foodPrice = _machineData.FoodPrice;
                 float newFoodPrice = foodPrice * (100 + _foodPricePercentIncrease) / 100;
-                _food.Price = newFoodPrice;
+                _machineData.FoodPrice = newFoodPrice;
 
                 //update upgrade price
 
@@ -96,10 +125,10 @@ public class UpgradeMachineController : MonoBehaviour
                     _machineBoxGO.SetActive(true);
                 }
 
-                float foodPrice = _food.Price;
+                float foodPrice = _machineData.FoodPrice;
                 float newFoodPrice = foodPrice * (100 + _foodLevelUpPercentIncrease) / 100;
 
-                _food.Price = newFoodPrice;
+                _machineData.FoodPrice = newFoodPrice;
 
                 //update upgrade price
 
