@@ -32,4 +32,8 @@ public class LoadingScene : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        LoadScene(1);
+    }
 }

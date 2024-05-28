@@ -224,11 +224,10 @@ MonoBehaviour:
   _maxLevelImage: {fileID: 1345041448}
   _upgradeButtonGO: {fileID: 178273058}
   _upgradeImage: {fileID: 867318477}
-  _data: {fileID: 11400000, guid: 7050a86810d576e4aa0ac16fe274651d, type: 2}
-  _foodPricePercentIncrease: 4
-  _foodLevelUpPercentIncrease: 40
-  _upgradePricePercentIncrease: 4
-  _upgradeLevelUpPercentIncrease: 40
+  _foodPricePercentIncrease: 80
+  _foodLevelUpPercentIncrease: 400
+  _upgradePricePercentIncrease: 80
+  _upgradeLevelUpPercentIncrease: 400
   _maxLevelCount: 10
 --- !u!1001 &2759164747049513307
 PrefabInstance:
@@ -265,13 +264,29 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2759164747206789752, guid: 8d9d776cf2238f949a1c4cb6989143c5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759164747206789752, guid: 8d9d776cf2238f949a1c4cb6989143c5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759164747206789752, guid: 8d9d776cf2238f949a1c4cb6989143c5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759164747206789752, guid: 8d9d776cf2238f949a1c4cb6989143c5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2759164747206789753, guid: 8d9d776cf2238f949a1c4cb6989143c5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2759164747497707288, guid: 8d9d776cf2238f949a1c4cb6989143c5, type: 3}
       propertyPath: m_Name
-      value: Time Price Text
+      value: Time Text
       objectReference: {fileID: 0}
     - target: {fileID: 2759164747614704284, guid: 8d9d776cf2238f949a1c4cb6989143c5, type: 3}
       propertyPath: m_Name

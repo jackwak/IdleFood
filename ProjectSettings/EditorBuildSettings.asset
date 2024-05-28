@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/EREN/Scenes/Level1z.unity
-    guid: 2e556368d78ee644a965c9c259ab1f8f
+    path: Assets/MEHMET/Scenes/LoadingScene.unity
+    guid: 5d414eb658a2fe44196e2a57aeb7e697
+  - enabled: 1
+    path: Assets/EREN/Scenes/asdasdasd.unity
+    guid: 1b11d8d5f75f87148858db769221a45c
   - enabled: 1
     path: Assets/EREN/Scenes/Level2.unity
     guid: 9d7ac7db784f6cc44844b92d3a0d3b24

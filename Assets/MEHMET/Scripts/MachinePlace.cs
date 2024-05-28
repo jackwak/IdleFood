@@ -103,7 +103,11 @@ public class MachinePlace : MonoBehaviour
     {
         if (MoneyManager.Instance.playerMoney >= _buyMachinePrice)
         {
+            //remove money
+            MoneyManager.Instance.RemoveMoney(_buyMachinePrice);
+
             //Sound
+            AudioManager.Instance.Play("Coin");
 
             GetComponent<MeshRenderer>().enabled = false;
             _machine.gameObject.SetActive(true);

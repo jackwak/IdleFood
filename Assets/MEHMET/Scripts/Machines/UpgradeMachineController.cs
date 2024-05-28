@@ -114,9 +114,11 @@ public class UpgradeMachineController : MonoBehaviour
                 _machineData.FoodPrice = newFoodPrice;
 
                 //update upgrade price
-
                 float upgradePrice = _machineData.UpgradePrice;
                 float newUpgradePrice = upgradePrice * (100 + _upgradePricePercentIncrease) / 100;
+
+                //remove money
+                MoneyManager.Instance.RemoveMoney(upgradePrice);
 
                 _machineData.UpgradePrice = newUpgradePrice;
 
@@ -153,6 +155,9 @@ public class UpgradeMachineController : MonoBehaviour
                 float upgradePrice = _machineData.UpgradePrice;
                 float newUpgradePrice = upgradePrice * (100 + _upgradeLevelUpPercentIncrease) / 100;
 
+                //remove money
+                MoneyManager.Instance.RemoveMoney(upgradePrice);
+
                 _machineData.UpgradePrice = newUpgradePrice;
 
                 //update ui
@@ -167,10 +172,11 @@ public class UpgradeMachineController : MonoBehaviour
                     _upgradeButtonGO.SetActive(false);
                 }
             }
+
         }
         else
         {
-
+            AudioManager.Instance.Play("Cancel");
         }
     }
 
@@ -191,6 +197,7 @@ public class UpgradeMachineController : MonoBehaviour
                 _upgradeImage.SetActive(false);
 
                 //Sound
+                AudioManager.Instance.Play("UIClick");
 
                 //Feeling
                 touchedObject.transform.DOShakeScale(1f, .2f, 10, 90, true);
