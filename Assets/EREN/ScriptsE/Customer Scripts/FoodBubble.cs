@@ -39,7 +39,9 @@ public class FoodBubble : MonoBehaviour
         {
             case "Level1":
                 transform.eulerAngles = new Vector3(GameObject.Find("Main Camera").transform.eulerAngles.x * -1, transform.eulerAngles.y, transform.eulerAngles.z);
-
+                break;
+            case "asdasdasd":
+                transform.eulerAngles = new Vector3(GameObject.Find("Main Camera").transform.eulerAngles.x * -1, transform.eulerAngles.y, transform.eulerAngles.z);
                 break;
             case "Level2":
 

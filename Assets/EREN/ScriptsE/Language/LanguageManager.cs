@@ -124,7 +124,7 @@ public class LanguageManager : MonoBehaviour
                 addWaiterUpgradeTitle.text = selectedSO.addWaiterUpgradeTitle;
                 addWaiterUpgradeDescription.text = selectedSO.addWaiterUpgradeDescription;
                 break;
-            case "Level1Copy":
+            case "asdasdasd":
                 upgradesTitle.text = selectedSO.upgradesTitle;
                 customerRateUpgradeTitle.text = selectedSO.customerRateUpgradeTitle;
                 customerRateUpgradeDescription.text = selectedSO.customerRateUpgradeDescription;
@@ -142,6 +142,7 @@ public class LanguageManager : MonoBehaviour
                 break;
         }
     }
+
 
     public void CheckSavedLanguageInitialForLoadGame()
     {
