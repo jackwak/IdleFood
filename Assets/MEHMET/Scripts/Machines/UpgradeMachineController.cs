@@ -37,10 +37,10 @@ public class UpgradeMachineController : MonoBehaviour
     private void Start()
     {
         SaveSystem.LoadUpgradeMachineControllerData(_machineData);
-        if (!PlayerPrefs.HasKey(_machineData.FoodPrefab.name + "Level"))
+        if (!PlayerPrefs.HasKey(_machineData.FoodPrefabb.name + "Level"))
         {
-            PlayerPrefs.SetInt(_machineData.FoodPrefab.name + "Level", 1);
-            _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
+            PlayerPrefs.SetInt(_machineData.FoodPrefabb.name + "Level", 1);
+            _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefabb.name + "Level");
         }
 
         InitializeMachineUpgradePanel();
@@ -48,10 +48,10 @@ public class UpgradeMachineController : MonoBehaviour
     [ContextMenu("ResetDatas")]
     public void ResetDatas()
     {
-        if (PlayerPrefs.HasKey(_machineData.FoodPrefab.name + "Level"))
+        if (PlayerPrefs.HasKey(_machineData.FoodPrefabb.name + "Level"))
         {
-            PlayerPrefs.SetInt(_machineData.FoodPrefab.name + "Level", 1);
-            _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
+            PlayerPrefs.SetInt(_machineData.FoodPrefabb.name + "Level", 1);
+            _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefabb.name + "Level");
         }
 
         _machineData.FoodPrice = 3;
@@ -63,7 +63,7 @@ public class UpgradeMachineController : MonoBehaviour
         _upgradePriceText.text = ((int)_machineData.UpgradePrice).ToString();
         _timeText.text = _machineData.DispenseTime.ToString();
         _foodPriceText.text = ((int)_machineData.FoodPrice).ToString();
-        _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefab.name + "Level");
+        _levelCounter = PlayerPrefs.GetInt(_machineData.FoodPrefabb.name + "Level");
         _levelText.text = _levelCounter.ToString();
         float number = _levelCounter;
         if (_levelCounter > 10)
@@ -77,7 +77,7 @@ public class UpgradeMachineController : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveSystem.SaveUpgradeMachineControllerData(_machineData);
-        PlayerPrefs.SetInt(_machineData.FoodPrefab.name + "Level", _levelCounter);
+        PlayerPrefs.SetInt(_machineData.FoodPrefabb.name + "Level", _levelCounter);
     }
 
     private void OnEnable()

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScene : MonoBehaviour
 {
-    public GameObject LoadingScreen;
     public Image LoadingBarFill;
 
     public void LoadScene(int sceneId)
@@ -16,8 +15,6 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadSceneAsync(int sceneId)
     {
-        LoadingScreen.SetActive(true);
-
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
 
 

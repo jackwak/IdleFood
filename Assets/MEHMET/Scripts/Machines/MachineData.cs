@@ -6,7 +6,7 @@ using UnityEngine;
 public class MachineData : ScriptableObject
 {
     [Header("Prefabs")]
-    public GameObject FoodPrefab;
+    public GameObject FoodPrefabb;
 
     [Header("Settings")]
     public float DispenseTime;

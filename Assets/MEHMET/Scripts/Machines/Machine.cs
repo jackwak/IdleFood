@@ -24,7 +24,7 @@ public abstract class Machine : MonoBehaviour
 
         for (int i = 0; i < POOL_SIZE; ++i)
         {
-            GameObject food = Instantiate(MachineData.FoodPrefab, Vector3.zero, Quaternion.identity);
+            GameObject food = Instantiate(MachineData.FoodPrefabb, Vector3.zero, Quaternion.identity);
             food.SetActive(false);
             FoodPool.Enqueue(food);
         }

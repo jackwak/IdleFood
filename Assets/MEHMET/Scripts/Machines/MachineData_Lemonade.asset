@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfbebd693de4d641b48cc4b958ba06b, type: 3}
   m_Name: MachineData_Lemonade
   m_EditorClassIdentifier: 
-  FoodPrefab: {fileID: 8986036963834045151, guid: 876c899b70957994594a8f61236a5d0a, type: 3}
+  FoodPrefabb: {fileID: 8986036963834045151, guid: 876c899b70957994594a8f61236a5d0a, type: 3}
   DispenseTime: 5
-  UpgradePrice: 4
-  FoodPrice: 3
+  UpgradePrice: 21.73616
+  FoodPrice: 16.302122

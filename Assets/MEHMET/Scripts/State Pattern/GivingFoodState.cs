@@ -55,7 +55,7 @@ public class GivingFoodState : State
                 _isFoodGiving = true;
                 _waiter.Animator.SetBool("IsCarring", false);
 
-                MoneyManager.Instance.AddMoney(_waiter.CurrentOrder.Machine.MachineData.FoodPrefab.GetComponent<Food>().Price);
+                MoneyManager.Instance.AddMoney(_waiter.CurrentOrder.Machine.MachineData.FoodPrefabb.GetComponent<Food>().Price);
             }
 
 
