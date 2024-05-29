@@ -1834,7 +1834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5850941228729941878
 Transform:
   m_ObjectHideFlags: 0
@@ -1896,7 +1896,7 @@ NavMeshAgent:
   m_Height: 1.45
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!114 &5850941228729941875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1945,7 +1945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5661f850d83e149877f336112cf279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: {fileID: 5850941229593728762}
+  CurrentState: {fileID: 5850941229250303888}
 --- !u!1 &5850941228734634790
 GameObject:
   m_ObjectHideFlags: 0

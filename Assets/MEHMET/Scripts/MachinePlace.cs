@@ -38,7 +38,8 @@ public class MachinePlace : MonoBehaviour
     [ContextMenu("ResetDatas")]
     public void ResetDatas()
     {
-        
+        _machine.MachineData.FoodPrice = 4;
+        _machine.MachineData.UpgradePrice = 3;
         PlayerPrefs.SetInt(_machine.name + "Bought", 0);
         Debug.Log(" machine place :" + PlayerPrefs.GetInt(_machine.name + "Bought"));
     }
